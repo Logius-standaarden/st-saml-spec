@@ -8,6 +8,7 @@ let respecConfig = {
   shortName: "saml",
   publishDate: "2023-06-21",
   publishVersion: "0.0.3",
+  prevVersion: [],
 
   // TODO: Verwijder voordat de release plaats vindt
   latestVersion: "https://github.com/logius-standaarden/respec-template/",
