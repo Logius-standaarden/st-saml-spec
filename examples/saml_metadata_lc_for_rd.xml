@@ -1,0 +1,114 @@
+<md:EntitiesDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
+                       xmlns:dsig="http://www.w3.org/2000/09/xmldsig#"
+                       ID="_e611bce3fb2b4ee587bd508acfb89f2f1154815c"
+                       validUntil="2021-03-03T10:00:00Z"
+>
+    <dsig:Signature xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+        <dsig:SignedInfo>
+            <dsig:CanonicalizationMethod
+                    Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+            <dsig:SignatureMethod
+                    Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+            <dsig:Reference
+                    URI="#_e611bce3fb2b4ee587bd508acfb89f2f1154815c">
+                <dsig:Transforms>
+                    <dsig:Transform
+                            Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+                    <dsig:Transform
+                            Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                </dsig:Transforms>
+                <dsig:DigestMethod
+                        Algorithm="http://www.w3.org/2001/04/xmldsig-more#sha256"/>
+                <dsig:DigestValue>...</dsig:DigestValue>
+            </dsig:Reference>
+        </dsig:SignedInfo>
+        <dsig:SignatureValue>...</dsig:SignatureValue>
+        <dsig:KeyInfo>
+            <dsig:X509Data>
+                <dsig:X509Certificate>...</dsig:X509Certificate>
+            </dsig:X509Data>
+        </dsig:KeyInfo>
+    </dsig:Signature>
+    <md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
+                         xmlns:dsig="http://www.w3.org/2000/09/xmldsig#"
+                         ID="_5d9c0e0ccb144714937dabffbf36e90ee57ee8ea"
+                         entityID="urn:nl-eid-gdi:1.0:LC:00000008000000020000:entities:9011"
+                         validUntil="2021-03-03T10:00:00Z"
+    >
+        <md:SPSSODescriptor AuthnRequestsSigned="true" WantAssertionsSigned="true"
+                            protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+            <md:KeyDescriptor use="signing">
+                <dsig:KeyInfo>
+                    <dsig:KeyName>5138f7018e8a9f81dade8cf0e554134c4cefaf06</dsig:KeyName>
+                    <dsig:X509Data>
+                        <dsig:X509Certificate>...</dsig:X509Certificate>
+                    </dsig:X509Data>
+                </dsig:KeyInfo>
+            </md:KeyDescriptor>
+            <md:KeyDescriptor use="signing">
+                <dsig:KeyInfo>
+                    <dsig:KeyName>6cfed4024668054e3cbf327c060aed4b050e0e7e</dsig:KeyName>
+                    <dsig:X509Data>
+                        <dsig:X509Certificate>...</dsig:X509Certificate>
+                    </dsig:X509Data>
+                </dsig:KeyInfo>
+            </md:KeyDescriptor>
+            <md:SingleLogoutService
+                    Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+                    Location="https://login.lc.test/saml/sp/logout"/>
+            <md:AssertionConsumerService
+                    Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact"
+                    Location="https://login.lc.test/saml/sp/acs" index="0" isDefault="true"/>
+        </md:SPSSODescriptor>
+    </md:EntityDescriptor>
+    <md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
+                         xmlns:dsig="http://www.w3.org/2000/09/xmldsig#"
+                         ID="_d611bce3fb2b4ee587bd508acfb89f2f1154815b"
+                         entityID="urn:nl-eid-gdi:1.0:DV:00000004000000010000:entities:9002"
+                         validUntil="2021-03-03T10:00:00Z"
+    >
+        <md:SPSSODescriptor AuthnRequestsSigned="true" WantAssertionsSigned="true"
+                            protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+            <md:KeyDescriptor use="encryption">
+                <dsig:KeyInfo>
+                    <dsig:KeyName>cdb948c5dfde5c9a53bf4916763dc973d55e8dd0</dsig:KeyName>
+                    <dsig:X509Data>
+                        <dsig:X509Certificate>...</dsig:X509Certificate>
+                    </dsig:X509Data>
+                </dsig:KeyInfo>
+            </md:KeyDescriptor>
+            <md:AssertionConsumerService
+                    Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact"
+                    Location="https://login.lc.test/saml/sp/acs" index="0" isDefault="true"/>
+        </md:SPSSODescriptor>
+    </md:EntityDescriptor>
+    <md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
+                         xmlns:dsig="http://www.w3.org/2000/09/xmldsig#"
+                         ID="_c611bce3fb2b4ee587bd508acfb89f2f1154815a"
+                         entityID="urn:nl-eid-gdi:1.0:DV:00000004000000020000:entities:9003"
+                         validUntil="2021-03-03T10:00:00Z"
+    >
+        <md:SPSSODescriptor AuthnRequestsSigned="true" WantAssertionsSigned="true"
+                            protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+            <md:KeyDescriptor use="encryption">
+                <dsig:KeyInfo>
+                    <dsig:KeyName>b459c1ecee731f2be4f50f68abe9bb070b5e2509</dsig:KeyName>
+                    <dsig:X509Data>
+                        <dsig:X509Certificate>...</dsig:X509Certificate>
+                    </dsig:X509Data>
+                </dsig:KeyInfo>
+            </md:KeyDescriptor>
+            <md:KeyDescriptor use="encryption">
+                <dsig:KeyInfo>
+                    <dsig:KeyName>45214df11fbed62751adf608d768f65d7fcd1e25</dsig:KeyName>
+                    <dsig:X509Data>
+                        <dsig:X509Certificate>...</dsig:X509Certificate>
+                    </dsig:X509Data>
+                </dsig:KeyInfo>
+            </md:KeyDescriptor>
+            <md:AssertionConsumerService
+                    Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact"
+                    Location="https://login.lc.test/saml/sp/acs" index="0" isDefault="true"/>
+        </md:SPSSODescriptor>
+    </md:EntityDescriptor>
+</md:EntitiesDescriptor>

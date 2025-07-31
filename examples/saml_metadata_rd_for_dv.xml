@@ -1,0 +1,51 @@
+<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
+                     xmlns:dsig="http://www.w3.org/2000/09/xmldsig#"
+                     ID="_c92a6365a0d0ff7e3187ef1ca6cc14918f390db3"
+                     entityID="urn:nl-eid-gdi:1.0:RD:00000004000000149000:entities:9002"
+                     validUntil="2021-05-01T12:00:00Z">
+    <dsig:Signature xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" Id="Id0001597663996617-fffffffff8db1b55-1">
+        <dsig:SignedInfo>
+            <dsig:CanonicalizationMethod
+                    Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+            <dsig:SignatureMethod
+                    Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+            <dsig:Reference
+                    URI="#_c92a6365a0d0ff7e3187ef1ca6cc14918f390db3">
+                <dsig:Transforms>
+                    <dsig:Transform
+                            Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+                    <dsig:Transform
+                            Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                </dsig:Transforms>
+                <dsig:DigestMethod
+                        Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                <dsig:DigestValue>...</dsig:DigestValue>
+            </dsig:Reference>
+        </dsig:SignedInfo>
+        <dsig:SignatureValue>...</dsig:SignatureValue>
+        <dsig:KeyInfo xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" Id="Id0001597663996617-fffffffff8db1b55-2">
+            <dsig:KeyName>07c3d08bc6c3303a85c5e0c9547dfd91047f7c58</dsig:KeyName>
+        </dsig:KeyInfo>
+    </dsig:Signature>
+    <md:IDPSSODescriptor WantAuthnRequestsSigned="true"
+                         protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+        <md:KeyDescriptor use="signing">
+            <dsig:KeyInfo>
+                <dsig:KeyName>07c3d08bc6c3303a85c5e0c9547dfd91047f7c58</dsig:KeyName>
+                <dsig:X509Data>
+                    <dsig:X509Certificate>...</dsig:X509Certificate>
+                </dsig:X509Data>
+            </dsig:KeyInfo>
+        </md:KeyDescriptor>
+        <md:ArtifactResolutionService
+                Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP"
+                Location="https://artifact-pp2.toegang.overheid.nl/kvs/rd/resolve_artifact"
+                index="0"/>
+        <md:SingleLogoutService
+                Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+                Location="https://pp2.toegang.overheid.nl/kvs/rd/request_logout"/>
+        <md:SingleSignOnService
+                Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+                Location="https://pp2.toegang.overheid.nl/kvs/rd/request_authentication"/>
+    </md:IDPSSODescriptor>
+</md:EntityDescriptor>

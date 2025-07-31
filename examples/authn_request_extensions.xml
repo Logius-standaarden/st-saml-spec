@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<samlp:AuthnRequest xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+                    xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
+                    xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+                    Destination="http://idp.example.com/request_authentication"
+                    ForceAuthn="false" ID="_d68fdd07cb64ca845317aa145969187c1514129b"
+                    IsPassive="false" IssueInstant="2021-04-15T14:20:38Z" Version="2.0">
+    <saml:Issuer Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity">
+        urn:nl-eid-gdi:1.0:DV:00000009999999999001:entities:0000
+    </saml:Issuer>
+    <ds:Signature Id="uuidd5e7c2bf-0178-146b-8597-ef90aa0f4487">
+        <ds:SignedInfo>
+            <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"></ds:CanonicalizationMethod>
+            <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></ds:SignatureMethod>
+            <ds:Reference URI="#_d68fdd07cb64ca845317aa145969187c1514129b">
+                <ds:Transforms>
+                    <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"></ds:Transform>
+                    <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
+                        <xc14n:InclusiveNamespaces xmlns:xc14n="http://www.w3.org/2001/10/xml-exc-c14n#"
+                                                   PrefixList="samlp saml ds"></xc14n:InclusiveNamespaces>
+                    </ds:Transform>
+                </ds:Transforms>
+                <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></ds:DigestMethod>
+                <ds:DigestValue>...</ds:DigestValue>
+            </ds:Reference>
+        </ds:SignedInfo>
+        <ds:SignatureValue>...</ds:SignatureValue>
+    </ds:Signature>
+    <samlp:Extensions>
+        <saml:Attribute Name="urn:nl-eid-gdi:1.0:ServiceUUID">
+            <saml:AttributeValue>336fa5edb569-13fb-b3e4-8968-86c62aea</saml:AttributeValue>
+        </saml:Attribute>
+        <saml:Attribute Name="urn:nl-eid-gdi:1.0:IntendedAudience">
+            <saml:AttributeValue>urn:nl-eid-gdi:1.0:DV:00000009999999999001:entities:0000</saml:AttributeValue>
+        </saml:Attribute>
+    </samlp:Extensions>
+</samlp:AuthnRequest>
+
