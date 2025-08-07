@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap11:Envelope xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap11:Body>
+        <saml2p:ArtifactResponse xmlns:saml2p="urn:oasis:names:tc:SAML:2.0:protocol"
+                                 ID="_4d4d3e6984b2b2c036d7ee55d424ac78"
+                                 InResponseTo="_8ecc43a04fc541f850fb66eb7259232b2d55627a"
+                                 IssueInstant="2021-10-06T08:09:50.226Z" Version="2.0">
+            <saml2:Issuer xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">
+                urn:nl-eid-gdi:1.0:TD:00000004183317817000:entities:9000
+            </saml2:Issuer>
+            <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                <ds:SignedInfo>
+                    <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                    <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+                    <ds:Reference URI="#_4d4d3e6984b2b2c036d7ee55d424ac78">
+                        <ds:Transforms>
+                            <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </ds:Transforms>
+                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                        <ds:DigestValue>...</ds:DigestValue>
+                    </ds:Reference>
+                </ds:SignedInfo>
+                <ds:SignatureValue>...</ds:SignatureValue>
+                <ds:KeyInfo>
+                    <ds:KeyName>356b4241808341cc9ff6295a43b01d00daab27406ddcd3f708a0a3761a057abb</ds:KeyName>
+                </ds:KeyInfo>
+            </ds:Signature>
+            <saml2p:Status>
+                <saml2p:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success"/>
+            </saml2p:Status>
+            <saml2p:Response
+                    Destination="http://sp.example.com"
+                    ID="_99e95c51026d2af9914a2269a39519c5" InResponseTo="_e1234e91b14755343ff8c69c046cc4abfd37c116"
+                    IssueInstant="2021-10-06T08:09:50.229Z" Version="2.0">
+                <saml2:Issuer xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">
+                    urn:nl-eid-gdi:1.0:TD:00000004183317817000:entities:9000
+                </saml2:Issuer>
+                <saml2p:Status>
+                    <saml2p:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success"/>
+                </saml2p:Status>
+                <saml2:Assertion xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion"
+                                 ID="_12bb5ba7a77b6e09983fa26af000cfac" IssueInstant="2021-10-06T08:09:50.232Z"
+                                 Version="2.0">
+                    <saml2:Issuer>urn:nl-eid-gdi:1.0:TD:00000004183317817000:entities:9000</saml2:Issuer>
+                    <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                        <ds:SignedInfo>
+                            <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                            <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+                            <ds:Reference URI="#_12bb5ba7a77b6e09983fa26af000cfac">
+                                <ds:Transforms>
+                                    <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+                                    <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                                </ds:Transforms>
+                                <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                                <ds:DigestValue>...</ds:DigestValue>
+                            </ds:Reference>
+                        </ds:SignedInfo>
+                        <ds:SignatureValue>...</ds:SignatureValue>
+                        <ds:KeyInfo>
+                            <ds:KeyName>356b4241808341cc9ff6295a43b01d00daab27406ddcd3f708a0a3761a057abb</ds:KeyName>
+                        </ds:KeyInfo>
+                    </ds:Signature>
+                    <saml2:Subject>
+                        <saml2:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">
+                            6cdd6d85-a822-45cf-98f2-87792ab4c930
+                        </saml2:NameID>
+                        <saml2:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+                            <saml2:SubjectConfirmationData InResponseTo="_e1234e91b14755343ff8c69c046cc4abfd37c116"
+                                                           NotOnOrAfter="2021-10-06T08:11:48.953Z"
+                                                           Recipient="http://sp.example.com"/>
+                        </saml2:SubjectConfirmation>
+                    </saml2:Subject>
+                    <saml2:Conditions NotBefore="2021-10-06T08:07:48.953Z" NotOnOrAfter="2021-10-06T08:11:48.953Z">
+                        <saml2:AudienceRestriction>
+                            <saml2:Audience>urn:nl-eid-gdi:1.0:DV:00000009999999999004:entities:0000</saml2:Audience>
+                        </saml2:AudienceRestriction>
+                    </saml2:Conditions>
+                    <saml2:Advice>
+                        <saml2:Assertion ID="_8de0f8271f4938285bfb6f66541a3b33" IssueInstant="2021-10-06T08:09:50.299Z"
+                                         Version="2.0" xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion">
+                            <saml2:Issuer>urn:nl-eid-gdi:1.0:AD:0000000273813120000:entities:0000</saml2:Issuer>
+                            <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                                <ds:SignedInfo>
+                                    <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                                    <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+                                    <ds:Reference URI="#_8de0f8271f4938285bfb6f66541a3b33">
+                                        <ds:Transforms>
+                                            <ds:Transform
+                                                    Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+                                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                                        </ds:Transforms>
+                                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                                        <ds:DigestValue>...</ds:DigestValue>
+                                    </ds:Reference>
+                                </ds:SignedInfo>
+                                <ds:SignatureValue>...</ds:SignatureValue>
+                                <ds:KeyInfo>
+                                    <ds:KeyName>24b1a2189f8af57114df0b93120f88b1d9cd38a0f06780377f6f8ace82fb0b18
+                                    </ds:KeyName>
+                                </ds:KeyInfo>
+                            </ds:Signature>
+                            <saml2:Subject>
+                                <saml2:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">
+                                    6cdd6d85-a822-45cf-98f2-87792ab4c930
+                                </saml2:NameID>
+                                <saml2:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+                                    <saml2:SubjectConfirmationData
+                                            InResponseTo="_e1234e91b14755343ff8c69c046cc4abfd37c116"
+                                            NotOnOrAfter="2021-10-06T08:11:48.953Z"
+                                            Recipient="http://sp.example.com"/>
+                                </saml2:SubjectConfirmation>
+                            </saml2:Subject>
+                            <saml2:Conditions NotBefore="2021-10-06T08:07:48.953Z"
+                                              NotOnOrAfter="2021-10-06T08:11:48.953Z">
+                                <saml2:AudienceRestriction>
+                                    <saml2:Audience>urn:nl-eid-gdi:1.0:DV:00000009999999999004:entities:0000
+                                    </saml2:Audience>
+                                </saml2:AudienceRestriction>
+                            </saml2:Conditions>
+                            <saml2:AuthnStatement AuthnInstant="2021-10-06T08:09:50.300Z" SessionIndex="6cdd6d85-a822-45cf-98f2-87792ab4c930">
+                                <saml2:AuthnContext>
+                                    <saml2:AuthnContextClassRef>http://eid.logius.nl/LoA/basic
+                                    </saml2:AuthnContextClassRef>
+                                </saml2:AuthnContext>
+                            </saml2:AuthnStatement>
+                            <saml2:AttributeStatement>
+                                <saml2:Attribute Name="urn:nl-eid-gdi:1.0:ServiceUUID">
+                                    <saml2:AttributeValue>375b1cb114b7-12e9-3534-16cc-4d8997b0</saml2:AttributeValue>
+                                </saml2:Attribute>
+                                <saml2:Attribute Name="urn:nl-eid-gdi:1.0:ActingSubjectID">
+                                    <saml2:AttributeValue>
+                                        <saml2:EncryptedID>
+                                            <xenc:EncryptedData xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"
+                                                                Id="_d0d48b29e94d76c6a0eec7601a7754a1"
+                                                                Type="http://www.w3.org/2001/04/xmlenc#Element">
+                                                <xenc:EncryptionMethod
+                                                        Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc"
+                                                        xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"/>
+                                                <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                                                    <ds:RetrievalMethod
+                                                            Type="http://www.w3.org/2001/04/xmlenc#EncryptedKey"
+                                                            URI="#_ab71ea3bafb606b8a89c4788ff95f8d9"/>
+                                                </ds:KeyInfo>
+                                                <xenc:CipherData xmlns:xenc="http://www.w3.org/2001/04/xmlenc#">
+                                                    <xenc:CipherValue>
+                                                        5q5RNYI9w79gCyq78PC8Pd3IY7GPaW3ycZP53Q/RqDbZl33bX7icn92+cFdpc3RYEjm39jMkus9a9iktnYV7bJVjgJqsOqGcp60CLWwH5Dij8sh6UqRoUw4JEyqfpyOlUbH3BHe9x6/dv6/fHgNm4xDL3tetyePmw+X5198eJIdmcMNpAVY1aL5aOfmk853IDCyIK1MeTZxW1nipwBX/WqUnWhOVxkS2PcbhwCJJyB3WY/psRvThr+T4fGHwE7DGeAk30xkuiyYLQXJGOmRG9ZA3PMJwV6eHZjCj66XVNf0=
+                                                    </xenc:CipherValue>
+                                                </xenc:CipherData>
+                                            </xenc:EncryptedData>
+                                            <xenc:EncryptedKey xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"
+                                                               Id="_ab71ea3bafb606b8a89c4788ff95f8d9"
+                                                               Recipient="urn:nl-eid-gdi:1.0:DV:00000009999999999004:entities:0000">
+                                                <xenc:EncryptionMethod
+                                                        Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p"
+                                                        xmlns:xenc="http://www.w3.org/2001/04/xmlenc#">
+                                                    <ds:DigestMethod xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+                                                                     Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+                                                </xenc:EncryptionMethod>
+                                                <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                                                    <ds:KeyName>1d0bc832d839df789eca8bae611c3ad7ec5c5074</ds:KeyName>
+                                                </ds:KeyInfo>
+                                                <xenc:CipherData xmlns:xenc="http://www.w3.org/2001/04/xmlenc#">
+                                                    <xenc:CipherValue>
+                                                        YoXfK3SOPgipqMg8bvkQ2hDOWwp6sbWrp/DHW38/Z6gaCm63WjnALczITc0ZuLuZe9FsEwim+ye5Fi/uahM/IPrcz0lkhDpSDARRhoOlZDOxbagMUN4d+9RBEwwoWnPYmy/bKC/wj3t103foJPixFzqwGgw5mxj9uWLPAJubGkBdz+XkwPJTbUvZ2U44ZKIAdxuOhsvpdtu1KcZE4P/zn/5Nf8SV/Rc/1dmlsh6wf003IEYJXSevqP58tVT7k+L6JyXtHZe3NJuy/AeBS+3LdeUD6m1bEHoOk+E9yYLbf32DVEa5uVyA7Q4ViQnnHBMO6enaeGki6lOC6ywwY+07lg==
+                                                    </xenc:CipherValue>
+                                                </xenc:CipherData>
+                                                <xenc:ReferenceList>
+                                                    <xenc:DataReference URI="#_d0d48b29e94d76c6a0eec7601a7754a1"/>
+                                                </xenc:ReferenceList>
+                                            </xenc:EncryptedKey>
+                                        </saml2:EncryptedID>
+                                    </saml2:AttributeValue>
+                                </saml2:Attribute>
+                            </saml2:AttributeStatement>
+                        </saml2:Assertion>
+                    </saml2:Advice>
+                    <saml2:AuthnStatement AuthnInstant="2021-10-06T08:09:50.236Z" SessionIndex="6cdd6d85-a822-45cf-98f2-87792ab4c930">
+                        <saml2:AuthnContext>
+                            <saml2:AuthnContextClassRef>http://eid.logius.nl/LoA/basic</saml2:AuthnContextClassRef>
+                            <saml2:AuthenticatingAuthority>urn:nl-eid-gdi:1.0:AD:0000000273813120000:entities:0000
+                            </saml2:AuthenticatingAuthority>
+                        </saml2:AuthnContext>
+                    </saml2:AuthnStatement>
+                    <saml2:AttributeStatement>
+                        <saml2:Attribute Name="urn:nl-eid-gdi:1.0:ServiceUUID">
+                            <saml2:AttributeValue>375b1cb114b7-12e9-3534-16cc-4d8997b0</saml2:AttributeValue>
+                        </saml2:Attribute>
+                        <saml2:Attribute Name="urn:nl-eid-gdi:1.0:ActingSubjectID">
+                            <saml2:AttributeValue>
+                                <saml2:EncryptedID>
+                                    <xenc:EncryptedData xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"
+                                                        Id="_91c893eba1c1f87099c1d5a10b870b51"
+                                                        Type="http://www.w3.org/2001/04/xmlenc#Element">
+                                        <xenc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc"
+                                                               xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"/>
+                                        <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                                            <ds:RetrievalMethod Type="http://www.w3.org/2001/04/xmlenc#EncryptedKey"
+                                                                URI="#_449673558dd0810e91009297f56fd051"/>
+                                        </ds:KeyInfo>
+                                        <xenc:CipherData xmlns:xenc="http://www.w3.org/2001/04/xmlenc#">
+                                            <xenc:CipherValue>...</xenc:CipherValue>
+                                        </xenc:CipherData>
+                                    </xenc:EncryptedData>
+                                    <xenc:EncryptedKey xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"
+                                                       Id="_449673558dd0810e91009297f56fd051"
+                                                       Recipient="urn:nl-eid-gdi:1.0:DV:00000009999999999004:entities:0000">
+                                        <xenc:EncryptionMethod
+                                                Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p"
+                                                xmlns:xenc="http://www.w3.org/2001/04/xmlenc#">
+                                            <ds:DigestMethod xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+                                                             Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+                                        </xenc:EncryptionMethod>
+                                        <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                                            <ds:KeyName>1d0bc832d839df789eca8bae611c3ad7ec5c5074</ds:KeyName>
+                                        </ds:KeyInfo>
+                                        <xenc:CipherData xmlns:xenc="http://www.w3.org/2001/04/xmlenc#">
+                                            <xenc:CipherValue>...</xenc:CipherValue>
+                                        </xenc:CipherData>
+                                        <xenc:ReferenceList>
+                                            <xenc:DataReference URI="#_91c893eba1c1f87099c1d5a10b870b51"/>
+                                        </xenc:ReferenceList>
+                                    </xenc:EncryptedKey>
+                                </saml2:EncryptedID>
+                            </saml2:AttributeValue>
+                        </saml2:Attribute>
+                    </saml2:AttributeStatement>
+                </saml2:Assertion>
+            </saml2p:Response>
+        </saml2p:ArtifactResponse>
+    </soap11:Body>
+</soap11:Envelope>
