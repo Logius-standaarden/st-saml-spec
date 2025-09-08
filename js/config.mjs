@@ -1,4 +1,6 @@
-let respecConfig = {
+import { loadRespecWithConfiguration } from "https://logius-standaarden.github.io/publicatie/respec/organisation-config.mjs";
+
+loadRespecWithConfiguration({
   maxTocLevel: 5,
   lint: {
         "no-unused-dfns": false
@@ -15,7 +17,7 @@ let respecConfig = {
   prevVersion: [],
 
   // TODO: Verwijder voordat de release plaats vindt
-  latestVersion: "https://github.com/logius-standaarden/respec-template/",
+  latestVersion: "https://logius-standaarden.github.io/st-saml-spec/",
 
   editors: [{
     name: "Frans de Kok",
@@ -33,14 +35,5 @@ let respecConfig = {
     },{
       name: "Carlo Huiden (ICTU)"
   }],
-  github: "https://github.com/Logius-standaarden/ReSpec-template",
-
-
-  // Create PDF and link to file in header (optional):
-  alternateFormats: [
-      {
-          label: "pdf",
-          uri: "template.pdf",
-      },
-  ],
-};
+  github: "https://github.com/Logius-standaarden/st-saml-spec",
+});
