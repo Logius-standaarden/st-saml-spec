@@ -1,4 +1,5 @@
 import { loadRespecWithConfiguration } from "https://logius-standaarden.github.io/publicatie/respec/organisation-config.mjs";
+import { generateMermaidFigures } from "https://logius-standaarden.github.io/publicatie/respec/plugins/mermaid.mjs";
 
 loadRespecWithConfiguration({
   maxTocLevel: 5,
@@ -36,6 +37,8 @@ loadRespecWithConfiguration({
       name: "Carlo Huiden (ICTU)"
   }],
   github: "https://github.com/Logius-standaarden/st-saml-spec",
+
+  postProcess: [generateMermaidFigures],
 
   localBiblio: {
     "ST-SAML1.0": {
