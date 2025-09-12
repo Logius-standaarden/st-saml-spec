@@ -30,32 +30,8 @@ Sender|Recipient
 
 
 <figure>
-     <pre class="diagram mermaid">
-    %%{init: {"themeVariables": {"fontSize": "24px"}, "sequence": {"boxMargin": 20}}}%%
-    sequenceDiagram
-    autonumber
-    participant A as User Agent
-    participant B as DV / LC
-    participant C as RD&lt;br/&gt;front-channel-channel
-    participant D as RD&lt;br/&gt;back-channel-channel
-    participant E as AD
-    A->>B: local logout
-    rect rgba(255,0,0,.1)
-        B-->>A: LogoutRequest
-        A->>C: LogoutRequest
-    end
-    rect rgba(75, 75, 75,.4)
-    rect rgba(75, 75, 75,.4)
-        Note over D,E:  Out of Scope: see RD#8594;AD/BVD
-        C->>E: 
-        E->>E: 
-        E-->>C: 
-    end 
-    end
-    C-->>A: LogoutResponse
-    A->>B: LogoutResponse
-</pre>
-<figcaption>LogoutRequest DV/LC - RD</figcaption>
+    <div class="mermaid" data-figure-name="logout-request-dv-lc-rd.mermaid"></div>
+    <figcaption>LogoutRequest DV/LC - RD</figcaption>
 </figure>
 
 Only SP ([=DV=]) initiated logout is supported by [=RD=]. On receiving a logout request (1) a [=DV=] which participates in a [=SSO=] federation MUST send a [Logout request](#dv-logout-request-message) to [=RD=] (2b).
@@ -90,32 +66,8 @@ Sender|Recipient
 
 
 <figure>
-     <pre class="diagram mermaid">
-    %%{init: {"themeVariables": {"fontSize": "24px"}, "sequence": {"boxMargin": 20}}}%%
-    sequenceDiagram
-        autonumber
-        participant A as User Agent
-        participant B as DV / LC
-        participant C as RD&lt;br/&gt;front-channel-channel
-        participant D as RD&lt;br/&gt;back-channel-channel
-        participant E as AD
-        A->>B: local logout
-        B-->>A: LogoutRequest
-        A->>C: LogoutRequest
-        rect rgba(75, 75, 75,.4)
-            Note over D,E:  Out of Scope: see RD#8594;AD/BVD
-            C->>E: 
-            E->>E: 
-            E-->>C: 
-        end 
-        rect rgba(255,0,0,.1)
-        rect rgba(255,0,0,.1)
-            C-->>A: LogoutResponse
-            A->>B: LogoutResponse
-        end
-        end
-</pre>
-<figcaption>LogoutResponse DV/LC - RD</figcaption>
+    <div class="mermaid" data-figure-name="logout-response-dv-lc-rd.mermaid"></div>
+    <figcaption>LogoutResponse DV/LC - RD</figcaption>
 </figure>
 
 #### DV&larr;RD logout Response - Message {#dv-logout-response-message}

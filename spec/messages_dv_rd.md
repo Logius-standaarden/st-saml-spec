@@ -9,35 +9,8 @@ SAML authentication messages between [=DV=] (or [=LC=]) and [=RD=] are described
 The diagram below contains the authentication steps that are made when an [=EU=] authenticates with a [=DV=] through the [=RD=]. When an [=LC=] is present between [=DV=] and [=RD=] the [=LC=] will take the role of [=DV=] in relation to the [=RD=].
 
 <figure>
-     <pre class="diagram mermaid">
-    %%{init: {"themeVariables": {"fontSize": "24px"}, "sequence": {"boxMargin": 20}}}%%
-    sequenceDiagram
-    autonumber
-    participant A as User Agent
-    participant B as DV / LC
-    participant C as RD&lt;br/&gt;front-channel
-    participant D as RD&lt;br/&gt;back-channel
-    participant E as AD/BVD
-    A->>B: GET resource
-    B-->>A: AuthnRequest
-    A->>C: AuthnRequest
-    rect rgba(75, 75, 75,.4)
-    rect rgba(75, 75, 75,.4)
-        Note over D,E: Out of Scope: see RD#8594;AD/BVD
-        C-->>A: 
-        A->>E: 
-        E-->>A: 
-        A->>C: 
-    end
-    end
-    C-->>A: artifact
-    A->>B: artifact
-    B->>D: ArtifactResolve
-    D-->>B: ArtifactResponse
-    B->>B: establish security context
-    B-->>A: access resource
-</pre>
-<figcaption>SAML authentication flow - DV/LC - RD</figcaption>
+    <div class="mermaid" data-figure-name="saml-authentication-flow-dv-lc-rd.mermaid"></div>
+    <figcaption>SAML authentication flow - DV/LC - RD</figcaption>
 </figure>
 
 #### DV&rarr;RD - authentication - steps {#dv-saml-authentication-diagram}
@@ -105,37 +78,8 @@ Sender|Recipient
 [=LC=]|[=RD=]
 
 <figure>
-     <pre class="diagram mermaid">
-    %%{init: {"themeVariables": {"fontSize": "24px"}, "sequence": {"boxMargin": 20}}}%%
-    sequenceDiagram
-    autonumber
-    participant A as User Agent
-    participant B as DV / LC
-    participant C as RD&lt;br/&gt;front-channel
-    participant D as RD&lt;br/&gt;back-channel
-    participant E as AD/BVD
-    A->>B: GET resource
-    rect rgba(255,0,0,.1)
-        B-->>A: AuthnRequest
-        A->>C: AuthnRequest
-    end
-    rect rgba(75, 75, 75,.4)
-    rect rgba(75, 75, 75,.4)
-        Note over D,E: Out of Scope: see RD#8594;AD/BVD
-        C-->>A: 
-        A->>E: 
-        E-->>A: 
-        A->>C: 
-    end 
-    end
-    C-->>A: artifact
-    A->>B: artifact
-    B->>D: ArtifactResolve
-    D-->>B: ArtifactResponse
-    B->>B: establish security context
-    B-->>A: access resource
-</pre>
-<figcaption>SAML authentication flow - DV/LC - RD - AuthN-Request</figcaption>
+    <div class="mermaid" data-figure-name="saml-authentication-flow-dv-lc-rd-authn-request.mermaid"></div>
+    <figcaption>SAML authentication flow - DV/LC - RD - AuthN-Request</figcaption>
 </figure>
 
 ##### DV&rarr;RD AuthnRequest Message {#dv-authn-request-message}
@@ -197,37 +141,8 @@ Sender|Recipient
 [=RD=]|[=LC=]
 
 <figure>
-     <pre class="diagram mermaid">
-    %%{init: {"themeVariables": {"fontSize": "24px"}, "sequence": {"boxMargin": 20}}}%%
-    sequenceDiagram
-    autonumber
-    participant A as User Agent
-    participant B as DV / LC
-    participant C as RD&lt;br/&gt;front-channel
-    participant D as RD&lt;br/&gt;back-channel
-    participant E as AD/BVD
-    A->>B: GET resource
-    B-->>A: AuthnRequest
-    A->>C: AuthnRequest
-    rect rgba(75, 75, 75,.4)
-        Note over D,E: Out of Scope: see RD#8594;AD/BVD
-        C-->>A: 
-        A->>E: 
-        E-->>A: 
-        A->>C: 
-    end 
-    rect rgba(255,0,0,.1)
-    rect rgba(255,0,0,.1)
-        C-->>A: artifact
-        A->>B: artifact
-    end
-    end
-    B->>D: ArtifactResolve
-    D-->>B: ArtifactResponse
-    B->>B: establish security context
-    B-->>A: access resource
-</pre>
-<figcaption>SAML authentication flow - DV/LC - RD - Artifact Response</figcaption>
+    <div class="mermaid" data-figure-name="saml-authentication-flow-dv-lc-rd-artifact-response.mermaid"></div>
+    <figcaption>SAML authentication flow - DV/LC - RD - Artifact Response</figcaption>
 </figure>
 
 ##### DV&larr;RD - Artifact Binding - Message {#dv-saml-response-artifact-binding-message} 
@@ -249,37 +164,8 @@ DV|RD
 LC|RD
 
 <figure>
-     <pre class="diagram mermaid">
-    %%{init: {"themeVariables": {"fontSize": "24px"}, "sequence": {"boxMargin": 20}}}%%
-    sequenceDiagram
-        autonumber
-        participant A as User Agent
-        participant B as DV / LC
-        participant C as RD&lt;br/&gt;front-channel
-        participant D as RD&lt;br/&gt;back-channel
-        participant E as AD/BVD
-        A->>B: GET resource
-        B-->>A: AuthnRequest
-        A->>C: AuthnRequest
-        rect rgba(75, 75, 75,.4)
-            Note over D,E: Out of Scope: see RD#8594;AD/BVD
-            C-->>A: 
-            A->>E: 
-            E-->>A: 
-            A->>C: 
-        end 
-        C-->>A: artifact
-        A->>B: artifact
-        rect rgba(255,0,0,.1)
-        rect rgba(255,0,0,.1)
-            B->>D: ArtifactResolve
-        end
-        end
-        D-->>B: ArtifactResponse
-        B->>B: establish security context
-        B-->>A: access resource
-</pre>
-<figcaption>SAML authentication flow - DV/LC - RD - Artifact Resolve</figcaption>
+    <div class="mermaid" data-figure-name="saml-authentication-flow-dv-lc-rd-artifact-resolve.mermaid"></div>
+    <figcaption>SAML authentication flow - DV/LC - RD - Artifact Resolve</figcaption>
 </figure>
 
 ##### DV&rarr;RD ArtifactResolve Message {#dv-artifact-resolve-message}
@@ -307,37 +193,8 @@ RD|DV
 RD|LC
 
 <figure>
-     <pre class="diagram mermaid">
-    %%{init: {"themeVariables": {"fontSize": "24px"}, "sequence": {"boxMargin": 20}}}%%
-    sequenceDiagram
-    autonumber
-    participant A as User Agent
-    participant B as DV / LC
-    participant C as RD&lt;br/&gt;front-channel
-    participant D as RD&lt;br/&gt;back-channel
-    participant E as AD/BVD
-    A->>B: GET resource
-    B-->>A: AuthnRequest
-    A->>C: AuthnRequest
-    rect rgba(75, 75, 75,.4)
-        Note over D,E: Out of Scope: see RD#8594;AD/BVD
-        C-->>A: 
-        A->>E: 
-        E-->>A: 
-        A->>C: 
-    end 
-    C-->>A: artifact
-    A->>B: artifact
-    B->>D: ArtifactResolve
-    rect rgba(255,0,0,.1)
-    rect rgba(255,0,0,.1)
-        D-->>B: ArtifactResponse
-    end
-    end
-    B->>B: establish security context
-    B-->>A: access resource
-</pre>
-<figcaption>SAML authentication flow - DV/LC - RD - Artifact Response</figcaption>
+    <div class="mermaid" data-figure-name="saml-authentication-flow-dv-lc-rd-artifact-response.mermaid"></div>
+    <figcaption>SAML authentication flow - DV/LC - RD - Artifact Response</figcaption>
 </figure>
 
 ##### DV&larr;RD ArtifactResponse Message {#dv-artifact-response-message}
