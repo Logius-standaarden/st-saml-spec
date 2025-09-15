@@ -1,23 +1,23 @@
 %%{init: {
-    "themeVariables": {"fontSize": "24px"}, 
+    "themeVariables": {"fontSize": "24px"},
     "sequence": {"boxMargin": 20}
 }}%%
 sequenceDiagram
 autonumber
 participant A as UA
 participant B as DV / LC
-participant C as RD&lt;br/&gt;front-channel
-participant D as RD&lt;br/&gt;back-channel
+participant C as RD <> front-channel
+participant D as RD <> back-channel
 participant E as AD/BVD
 A->>B: GET resource
 B-->>A: AuthnRequest
 A->>C: AuthnRequest
 rect rgba(75, 75, 75,.4)
     Note over C,E: Out of Scope - see RD#8594;AD/BVD
-    C-->>A:     
-    A->>E: 
-    E-->>A: 
-    A->>C: 
+    C-->>A:
+    A->>E:
+    E-->>A:
+    A->>C:
 end
 C-->>A: artifact
 A->>B: artifact
