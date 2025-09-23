@@ -10,47 +10,9 @@ The diagram below depicts the authentication flow between a [=RD=] and an [=AD=]
 
 > See also [RD→AD/BVD - SAML authentication proces](#rd-saml-authentication 'Specification of SAML messages in the authentication proces between RD and AD/BVD')
 
-
 <figure>
-     <pre class="diagram mermaid">
-    %%{init: {"themeVariables": {"fontSize": "24px"}, "sequence": {"boxMargin": 20}}}%%
-    sequenceDiagram
-    autonumber
-    participant A as User Agent
-    participant B as DV / LC
-    participant C as RD&lt;br/&gt;front-channel
-    participant D as RD&lt;br/&gt;back-channel
-    participant E as AD/BVD&lt;br/&gt;front-channel
-    participant F as AD/BVD&lt;br/&gt;back-channel   
-    rect rgba(75, 75, 75, .4)
-        Note over B,C: See DV#8594;RD
-        A->>B: 
-        B-->>A:  
-        A->>C: 
-    end 
-    C-->>A: AuthnRequest
-    A->>E: AuthnRequest
-    rect rgba(75, 75, 75, .4)
-        Note over C,E: Out of Scope - Authentication or representation interactions
-        E-->>A:  
-        A->>E: 
-    end
-    E-->>A: artifact
-    A->>C: artifact
-    C->>F: ArtifactResolve
-    F-->>C: ArtifactResponse
-    rect rgba(75, 75, 75, .4)
-    rect rgba(75, 75, 75, .4)
-        Note over C,D: See DV#8594;RD
-        C-->>A: 
-        A->>B: 
-        B->>D: 
-        D-->>B: 
-        B-->>A: 
-    end 
-    end
-</pre>
-<figcaption>SAML authentication flow RD - AD/BVD</figcaption>
+    <div class="mermaid" data-figure-name="saml-authentication-flow-rd-ad-bvd.mermaid"></div>
+    <figcaption>SAML authentication flow RD - AD/BVD</figcaption>
 </figure>
 
 
@@ -83,40 +45,10 @@ Step&nbsp;#|Route|Message|Endpoint|Binding|Meta-data
 A [=RD=] that supports [=SSO=] to [=DV=]s or [=LC=]s must propagate logout requests to the appropriate [=RD=]. The diagram below depicts the flow between a [=RD=] and an [=AD=].
 > See also [RD→AD/BVD Federated login & logout](#rd-saml-sso)
 
-<div style="max-width: 80%;">
-
 <figure>
-     <pre class="diagram mermaid">
-    %%{init: {"themeVariables": {"fontSize": "24px"}, "sequence": {"boxMargin": 20}}}%%
-    sequenceDiagram
-        autonumber
-        participant A as UA
-        participant B as DV / LC
-        participant C as RD
-        participant E as AD
-        rect rgba(75, 75, 75,.4)
-            Note over B,C: See DV#8594;RD
-            A->>B: 
-            B-->>A: 
-            A->>C: 
-        end 
-        C-->>A: LogoutRequest!
-        A->>E: LogoutRequest
-        E->>E: terminate SSO session
-        E-->>A: LogoutResponse 
-        A->>C: LogoutResponse
-        rect rgba(75, 75, 75, .4)
-        rect rgba(75, 75, 75, .4)
-            Note over B,C: See DV#8594;RD
-            C-->>A: 
-            A->>B: 
-        end
-        end 
-</pre>
-<figcaption>Single Logout RD - AD/BVD</figcaption>
+    <div class="mermaid" data-figure-name="saml-logout-rd-ad-bvd.mermaid"></div>
+    <figcaption>Single Logout RD - AD/BVD</figcaption>
 </figure>
-
-</div>
 
 > This flow continues between DV and RD, see [DV/LC&larr;RD - authentication flow](#dv-sso-flow)
 

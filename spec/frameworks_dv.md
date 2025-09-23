@@ -9,35 +9,8 @@ The diagram below depicts the authentication flow between a [=DV=] and  [=LC=] a
 > See also [DV-RD - SAML authentication messages](#dv-saml-authentication 'Specification of SAML messages for authentication')
 
 <figure>
-<pre class="diagram mermaid">
-    %%{init: {"themeVariables": {"fontSize": "24px"}, "sequence": {"boxMargin": 20}}}%%
-    sequenceDiagram
-    autonumber
-    participant A as UA
-    participant B as DV / LC
-    participant C as RD&lt;br/&gt;front-channel
-    participant D as RD&lt;br/&gt;back-channel
-    participant E as AD/BVD
-    A->>B: GET resource
-    B-->>A: AuthnRequest
-    A->>C: AuthnRequest
-    rect rgba(75, 75, 75,.4)
-        Note over C,E: Out of Scope - see RD#8594;AD/BVD
-        C-->>A:     
-        A->>E: 
-        E-->>A: 
-        A->>C: 
-    end
-    C-->>A: artifact
-    A->>B: artifact
-    B->>D: ArtifactResolve
-    D-->>B: ArtifactResponse
-    B->>B: establish security context
-    rect rgba(75, 75, 75, 0)
-      B-->>A: access resource
-    end
-</pre>
-<figcaption>Authentication and representation flow - overview</figcaption>
+    <div class="mermaid" data-figure-name="authentication-representation-flow.mermaid"></div>
+    <figcaption>Authentication and representation flow - overview</figcaption>
 </figure>
 
 #### Front-channel (re)authentication
@@ -72,33 +45,8 @@ The diagram below depicts the single logout flow between a [=DV=] and [=LC=] and
 
 
 <figure>
-<pre class="diagram mermaid">
-    %%{init: {
-        "themeVariables": {"fontSize": "24px"}, 
-        "sequence": {"boxMargin": 20}
-    }}%%
-    sequenceDiagram
-    autonumber
-    participant A as UA
-    participant B as DV / LC
-    participant C as RD&lt;br/&gt;front-channel
-    participant D as RD&lt;br/&gt;back-channel
-    participant E as AD
-    A->>B: local logout
-    B-->>A: LogoutRequest
-    A->>C: LogoutRequest
-    rect rgba(75, 75, 75,.4)
-        Note over C,E: Out of Scope: see RD#8594;AD/BVD
-        C->>E: 
-        E->>E: 
-        E-->>C: 
-    end
-    rect rgba(75, 75, 75, 0)
-        C-->>A: LogoutResponse
-        A->>B: LogoutResponse
-    end
-</pre>
-<figcaption>SAML Federated Logout overview</figcaption>
+    <div class="mermaid" data-figure-name="saml-federated-logout-overview.mermaid"></div>
+    <figcaption>SAML Federated Logout overview</figcaption>
 </figure>
 
 <span style="font-size: 90%;">

@@ -5,22 +5,8 @@ This [=ST-SAML=] specification facilitates Stelsel Toegang release 1. [[ST-SAML1
 [=ST-SAML=] specifies the communication between [=DV=] and [=RD=] and also between [=LC=]  and [=RD=]. [=ST-SAML=] also specifies the communication between Routeringsdienst ([=RD=]) and [=BVD=] for parental authority ([=BVD-OG=]). [[eID SAML4.5]] specifies the communication between [=RD=] and DigiD (as [=AD=]) and between [=RD=] and [=BVD=] for registered mandates in DigiD-Machtigen: [=BVD-DDM=]. These DigiD specific specifications are out of scope for this [=ST-SAML=] specification.
 
 <figure>
-     <pre class="diagram mermaid">
-flowchart LR
-  classDef InScope color:black,font-weight:bold,fill:#ddd,stroke-width:3px,stroke:#111;
-  classDef OutScope color:#888,font-weight:bold,fill:#444,stroke-width:3px,stroke:#777;
-  
-  DV:::InScope ==> LC:::InScope
-  DV:::InScope ==>|Single| RD:::InScope;
-  LC:::InScope ==>|Clustered| RD:::InScope;
-  RD ---|out of scope|DigiD:::OutScope;
-  RD ---|out of scope|BVD_DDM:::OutScope;
-  RD:::InScope ==> BVD_OG:::InScope;
-
-  linkStyle 3 stroke:#444444,stroke-width:4px,anything;
-  linkStyle 4 stroke:#444444,stroke-width:4px,anything;
-</pre>
-<figcaption>Stelsel Toegang SAML1.0</figcaption>
+    <div class="mermaid" data-figure-name="stelsel-toegang-saml-1.mermaid"></div>
+    <figcaption>Stelsel Toegang SAML1.0</figcaption>
 </figure>
 
 Routeringsdienst ([=RD=]) supports the use cases summarized below:

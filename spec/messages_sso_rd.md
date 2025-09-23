@@ -12,36 +12,8 @@ Sender|Recipient
 [=RD=]|[=AD=]
 
 <figure>
-     <pre class="diagram mermaid">
-    %%{init: {"themeVariables": {"fontSize": "24px"}, "sequence": {"boxMargin": 20}}}%%
-    sequenceDiagram
-        autonumber
-        participant A as User Agent
-        participant B as DV / LC
-        participant C as RD
-        participant E as AD
-        rect rgba(75, 75, 75,.4)
-            Note over B,C: See DV#8594;RD
-            A->>B: 
-            B-->>A: 
-            A->>C: 
-        end 
-        rect rgba(255,0,0,.1)
-            C-->>A: LogoutRequest
-            A->>E: LogoutRequest
-        end
-        E->>E: terminate SSO session
-        E-->>A: LogoutResponse 
-        A->>C: LogoutResponse
-        rect rgba(75, 75, 75,.4)
-        rect rgba(75, 75, 75,.4)
-            Note over B,C: See DV#8594;RD
-            C-->>A: 
-            A->>B: 
-        end
-        end
-</pre>
-<figcaption>Logout Response RD -AD</figcaption>
+    <div class="mermaid" data-figure-name="saml-logout-rd-ad-bvd.mermaid"></div>
+    <figcaption>Logout Response RD -AD</figcaption>
 </figure>
 
 
@@ -61,36 +33,8 @@ Sender|Recipient
 [=AD=]|[=RD=]
 
 <figure>
-     <pre class="diagram mermaid">
-    %%{init: {"themeVariables": {"fontSize": "24px"}, "sequence": {"boxMargin": 20}}}%%
-    sequenceDiagram
-        autonumber
-        participant A as User Agent
-        participant B as DV / LC
-        participant C as RD
-        participant E as AD
-        rect rgba(75, 75, 75,.4)
-            Note over B,C: See DV#8594;RD
-            A->>B: 
-            B-->>A: 
-            A->>C: 
-        end 
-        C-->>A: LogoutRequest
-        A->>E: LogoutRequest
-        E->>E: terminate SSO session
-        rect rgba(255,0,0,.1)
-            E-->>A: LogoutResponse
-            A->>C: LogoutResponse
-        end
-        rect rgba(75, 75, 75,.4)
-        rect rgba(75, 75, 75,.4)
-            Note over B,C: See DV#8594;RD
-            C-->>A: 
-            A->>B: 
-        end
-        end 
-</pre>
-<figcaption>Logout Response RD - AD</figcaption>
+    <div class="mermaid" data-figure-name="saml-logout-rd-ad-bvd.mermaid"></div>
+    <figcaption>Logout Response RD -AD</figcaption>
 </figure>
 
 #### RD→AD logout Response - Message {#rd-logout-response-message}
