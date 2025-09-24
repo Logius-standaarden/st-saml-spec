@@ -77,22 +77,22 @@ loadRespecWithConfiguration({
     },
     "SAML2.CORE": {
       title: "Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0 – Errata Composite",
-      href: "https://groups.oasis-open.org/higherlogic/ws/public/document?document_id=56776",
+      href: "https://groups.oasis-open.org/higherlogic/ws/public/download/56776/sstc-saml-core-errata-2.0-wd-07.pdf",
       publisher: "OASIS"
     },
     "SAML2.PROFILES": {
       title: "Profiles for the OASIS Security Assertion Markup Language (SAML) V2.0 – Errata Composite",
-      href: "https://groups.oasis-open.org/higherlogic/ws/public/document?document_id=56782",
+      href: "https://groups.oasis-open.org/higherlogic/ws/public/download/56782/sstc-saml-profiles-errata-2.0-wd-07.pdf",
       publisher: "OASIS"
     },
     "SAML2.METADATA": {
       title: "Metadata for the OASIS Security Assertion Markup Language (SAML) V2.0 – Errata Composite",
-      href: "https://groups.oasis-open.org/higherlogic/ws/public/document?document_id=56785",
+      href: "https://groups.oasis-open.org/higherlogic/ws/public/download/56785/sstc-saml-metadata-errata-2.0-wd-05.pdf",
       publisher: "OASIS"
     },
     "SAML2.BINDINGS": {
       title: "Bindings for the OASIS Security Assertion Markup Language (SAML) V2.0 – Errata Composite",
-      href: "https://groups.oasis-open.org/higherlogic/ws/public/document?document_id=56779",
+      href: "https://groups.oasis-open.org/higherlogic/ws/public/download/56779/sstc-saml-bindings-errata-2.0-wd-06.pdf",
       publisher: "OASIS"
     },
     "SAML2.ERRATA.05": {
