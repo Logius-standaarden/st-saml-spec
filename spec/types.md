@@ -73,7 +73,7 @@ The `<index>` is a number with 4 positions between 0000 and 8999 that can be sel
 ### Level of Assurance {#level-of-assurance}
 The table shows the four Levels of Assurance supported by [=ST-SAML=] and the corresponding urn’s which are used in the SAML messages.
 
-[=LoA=]|urn
+LoA|urn
 ---|---
 Basis|`http://eID.logius.nl/LoA/basic`
 Midden|`http://eidas.europa.eu/LoA/low`
