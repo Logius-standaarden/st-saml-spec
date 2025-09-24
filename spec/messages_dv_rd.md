@@ -88,7 +88,7 @@ Sender|Recipient
 > See also [Example AuthnRequest DV for RD](#example-authnrequest)
 
 
-Element/@Attribute|0..n|Description<br/>Issuer = [=DV=] or [=LC=]<br/>Recipient = [=RD=]
+Element/@Attribute|0..n|Description<br/>Issuer = DV or LC<br/>Recipient = RD
 ---|---|---
 &#64;<dfn title="Unique message identifier. MUST identify the message uniquely within the scope of the sender and receiver for a period of at least 12 months." data-dfn-for="dv-authn-request-message">ID</dfn>|1|Unique message identifier. MUST identify the message uniquely within the scope of the sender and receiver for a period of at least 12 months.
 &#64;<dfn title="Version of the SAML protocol. The value MUST be 2.0." data-dfn-for="dv-authn-request-message">Version</dfn>|1|Version of the SAML protocol. The value MUST be `2.0`.
@@ -359,7 +359,7 @@ Upon decryption, elements without an [=dv-attributestatement/EncryptedKey=] inte
 ##### Generic attributes
 In all cases the following attributes will be provided as an unencrypted [=dv-attributestatement/Attribute=].
 
-Attribute|1..n|Attribute [=dv-attributestatement/Name=]|Description
+Attribute|1..n|Attribute Name|Description
 ---|---|---|---
 ServiceUUID|1|`[=dv-attributestatement/Name=]="urn:nl-eid-gdi:1.0:ServiceUUID"`	
 -AttributeValue|1..n| |The ServiceUUID of the [=Service Catalog=] for which this Assertions is intended as indicated in the [AuthN Request message](#dv-authn-request-message). In case of legal representation the [=ServiceUUID=] will be a copy of [=ServiceUUID/Attribute=] in [AuthN Request message](#dv-authn-request-message)
@@ -368,7 +368,7 @@ ServiceUUID|1|`[=dv-attributestatement/Name=]="urn:nl-eid-gdi:1.0:ServiceUUID"`
 ##### Attribute types in case of legal representation {#attribute-for-legal-representation}
 In case of legal representation, via [=BVD=] the following attribute will be provided as an unencrypted [=dv-attributestatement/Attribute=].
 
-Type|1..n|Attribute [=dv-attributestatement/Name=]|Description
+Type|1..n|Attribute Name|Description
 ---|---|---|---
 RepresentationType|0-1|`[=dv-attributestatement/Name=]="urn:nl-eid-gdi:1.1:RepresentationType"`| Optional for DigiD Machtigen, required for any type of legal representation by the [=BVD=]
 -AttributeValue|1..n| |The [type of representation ](#representation-types), to be used by Service Provider [=DV=] for access decision<br/>multiple values of [=Legal Representation=] allowed.
@@ -376,7 +376,7 @@ RepresentationType|0-1|`[=dv-attributestatement/Name=]="urn:nl-eid-gdi:1.1:Repre
 ##### Attribute types in case of authentication
 In case of authentication the following attributes will be provided as [=dv-attributestatement/EncryptedID=].
 
-Attribute|1..n|Attribute [=dv-attributestatement/Name=]|Description
+Attribute|1..n|Attribute Name|Description
 ---|---|---|---
 ActingSubjectID|1|`[=dv-attributestatement/Name=]="urn:nl-eid-gdi:1.0:ActingSubjectID"`.	
 -AttributeValue|1..n| |All contain identities of the same [=EU=].
@@ -384,7 +384,7 @@ ActingSubjectID|1|`[=dv-attributestatement/Name=]="urn:nl-eid-gdi:1.0:ActingSubj
 ##### Attribute types issuer in case of representation
 In case of representation the following attributes will be provided as [=dv-attributestatement/EncryptedID=]
 
-Type|1..n|Attribute [=dv-attributestatement/Name=]|Description
+Type|1..n|Attribute Name|Description
 ---|---|---|---
 <dfn title="Identity of the EndUser (EU)" data-dfn-for="dv-attributestatement">ActingSubjectID</dfn>|1|`[=dv-attributestatement/Name=]="urn:nl-eid-gdi:1.0:ActingSubjectID"`| Identity of the EndUser ([=EU=])
 -AttributeValue|1..n| |The (encrypted) ActingSubjectID as received from the AD at which the [=EU=] was authenticated.<br/>All contain identities of the same [=EU=].
@@ -394,7 +394,7 @@ Type|1..n|Attribute [=dv-attributestatement/Name=]|Description
 ##### Attribute type conversion eTD {#attribute-type-conversion-etd}
 In case of authentication with eTD the following Attributes will be provided as [EncryptedID](#dv-encryptedid)
 
-Type|1..n|eTD [=dv-attributestatement/Name=]|[=ST-SAML=] [=dv-attributestatement/Name=]|Description
+Type|1..n|eTD Name|ST-SAML Name|Description
 ---|---|---|---|---
 Attribute|0..1|urn:etoegang:core:ActingSubjectID|urn:nl-eid-gdi:1.0:ActingSubjectID|Identity of the EndUser ([=EU=]) 
 --AttributeValue|1..n| | |All contain identities of the same [=EU=].
