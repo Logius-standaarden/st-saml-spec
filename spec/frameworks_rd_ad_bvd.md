@@ -57,6 +57,6 @@ A [=RD=] that supports [=SSO=] to [=DV=]s or [=LC=]s must propagate logout reque
 Step&nbsp;#|Route|Message|Endpoint|Binding|Meta-data
 ---|---|---|---|---|---
 4 + 5|[=RD=] (&rarr;[=UA=])&rarr;[=AD=]|[Logout Request](#rd-logout-request-message 'Specification of Federated logout request message of DV/LC to RD')|[=ad-metadata/SingleLogoutService=]|HTTP-POST|[AD/BVD](#ad-bvd-metadata)
-7 + 8|[=AD=]/[=BVD=] (&rarr;[=UA=]) &rarr;[=RD=]|[Logout Response](#rd-logout-response-message)|[=rd-sp-entitydescriptor/SingleLogoutService=]|HTTP-POST|[RD]("#rd-sp-metadata")</a>
+7 + 8|[=AD=]/[=BVD=] (&rarr;[=UA=]) &rarr;[=RD=]|[Logout Response](#rd-logout-response-message)|[=rd-sp-entitydescriptor/SingleLogoutService=]|HTTP-POST|[RD](#rd-sp-metadata)</a>
 
 </span>

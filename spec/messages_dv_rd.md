@@ -48,7 +48,7 @@ Artifacts are stored by [=RD=] for a maximum of 15 minutes and can only be retri
 
 **Step 11**
 
-[=RD=] replies with an [Artifact Response message](#dv-artifact-response) that belongs to the [=Artifact=]. In this message, [=RD=] provides an [Assertion](#dv-authn-response-assertion) that includes the authentication result and optionally the representation selection. And, if the authentication / representation selection was successful, the requested (encrypted) identifier(s) and attribute(s) of the [=EU=] and optionally the [=Represented Party=]. The identities and attributes are encrypted so that only the intended [=DV=](s) can obtain the plain text value.
+[=RD=] replies with an [Artifact Response message](#dv-artifact-response) that belongs to the [=Artifact=]. In this message, [=RD=] provides an [Assertion](#dv-authn-response-assertion) that includes the authentication result and optionally the representation selection. And, if the authentication / representation selection was successful, the requested (encrypted) identifier(s) and attribute(s) of the [=EU=] and optionally the [=Represented Party=]. The identities and attributes are encrypted so that only the intended [=DV=]\(s\) can obtain the plain text value.
 
 If the authentication or attempt to select representation was unsuccessful, it is indicated in the Status Code of the Response message and if possible, a reason is given so that the web service can inform the [=EU=].
 

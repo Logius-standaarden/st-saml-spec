@@ -42,7 +42,7 @@ An [Artifact Response message](#rd-artifact-response-message) is valid for a max
 
 **Step 11**
 
-[=AD=]/[=BVD=] replies with an [Artifact Response message](#rd-artifact-response) that belongs to the [=Artifact=]. In this message, [=AD=]/[=BVD=] provides an [Assertion]( #rd-authn-response-assertion) that includes the authentication result or the proof of representation. And, if the authentication / representation selection was successful, the requested (encrypted) identifier(s) and attribute(s) of the [=EU=] or the [=Represented Party=]. The identities and attributes are encrypted so that only the intended [=DV=](s) can obtain the plain text value.
+[=AD=]/[=BVD=] replies with an [Artifact Response message](#rd-artifact-response) that belongs to the [=Artifact=]. In this message, [=AD=]/[=BVD=] provides an [Assertion]( #rd-authn-response-assertion) that includes the authentication result or the proof of representation. And, if the authentication / representation selection was successful, the requested (encrypted) identifier(s) and attribute(s) of the [=EU=] or the [=Represented Party=]. The identities and attributes are encrypted so that only the intended [=DV=]\(s\) can obtain the plain text value.
 
 If the authentication or attempt to select representation was unsuccessful, it is indicated in the Status Code of the Response message and if possible, a reason is given so that the [=DV=] can inform the [=EU=].
 
