@@ -10,11 +10,14 @@ jobs:
   build-index:
     name: Build index.html
     uses: Logius-standaarden/Automatisering/.github/workflows/build.yml@pr-timvdlippe-meerdere-documenten
+    with:
+      multiple_files: true
   build-index-dv:
     name: Build index-dv.html
     uses: Logius-standaarden/Automatisering/.github/workflows/build.yml@pr-timvdlippe-meerdere-documenten
     with:
       source_input_file_name: 'index_dv.html'
+      multiple_files: true
   build:
     needs: [ build-index, build-index-dv ]
     name: Update cache
@@ -24,18 +27,13 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: ~/static
-          key: ${{ github.run_id }}
+          key: ${{ github.run_id }}-index.html
       - name: Restore cache for `index_dv.html`
         uses: actions/cache/restore@v4
         with:
           path: ~/static
           key: ${{ github.run_id }}-index_dv.html
-      # Delete the old cache on hit to emulate a cache update. See
-      # https://github.com/actions/cache/issues/342.
-      # - name: Delete old cache
-      #   env:
-      #     GH_TOKEN: ${{ github.token }}
-      #   run: gh cache delete --repo ${{ github.repository }} ${{ github.run_id }}
+      - run: ls ~/static
       - name: Save cache for both
         uses: actions/cache/save@v4
         with:
