@@ -67,7 +67,7 @@ loadRespecWithConfiguration({
     },
     SAML2: {
       title: "Security Assertion Markup Language (SAML) V2.0",
-      href: "https://wiki.oasis-open.org/security/FrontPage",
+      href: "https://www.oasis-open.org/standard/saml/",
       publisher: "OASIS"
     },
     "SAML2.TO": {
