@@ -22,7 +22,6 @@ jobs:
     steps:
       - name: Restore cache for `index.html`
         uses: actions/cache/restore@v4
-        id: cache_restore
         with:
           path: ~/static
           key: ${{ github.run_id }}
@@ -33,10 +32,10 @@ jobs:
           key: ${{ github.run_id }}-index_dv.html
       # Delete the old cache on hit to emulate a cache update. See
       # https://github.com/actions/cache/issues/342.
-      - name: Delete old cache
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh cache delete --repo ${{ github.repository }} ${{ steps.cache_restore.outputs.cache-primary-key }}
+      # - name: Delete old cache
+      #   env:
+      #     GH_TOKEN: ${{ github.token }}
+      #   run: gh cache delete --repo ${{ github.repository }} ${{ github.run_id }}
       - name: Save cache for both
         uses: actions/cache/save@v4
         with:
