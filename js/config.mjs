@@ -67,7 +67,7 @@ loadRespecWithConfiguration({
     },
     SAML2: {
       title: "Security Assertion Markup Language (SAML) V2.0",
-      href: "https://wiki.oasis-open.org/security/FrontPage",
+      href: "https://www.oasis-open.org/standard/saml/",
       publisher: "OASIS"
     },
     "SAML2.TO": {
@@ -77,22 +77,22 @@ loadRespecWithConfiguration({
     },
     "SAML2.CORE": {
       title: "Assertions and Protocols for the OASIS Security Assertion Markup Language (SAML) V2.0 – Errata Composite",
-      href: "https://www.oasis-open.org/committees/download.php/56776/sstc-saml-core-errata-2.0-wd-07.pdf",
+      href: "https://groups.oasis-open.org/higherlogic/ws/public/download/56776/sstc-saml-core-errata-2.0-wd-07.pdf",
       publisher: "OASIS"
     },
     "SAML2.PROFILES": {
       title: "Profiles for the OASIS Security Assertion Markup Language (SAML) V2.0 – Errata Composite",
-      href: "https://www.oasis-open.org/committees/download.php/56782/sstc-saml-profiles-errata-2.0-wd-07.pdf",
+      href: "https://groups.oasis-open.org/higherlogic/ws/public/download/56782/sstc-saml-profiles-errata-2.0-wd-07.pdf",
       publisher: "OASIS"
     },
     "SAML2.METADATA": {
       title: "Metadata for the OASIS Security Assertion Markup Language (SAML) V2.0 – Errata Composite",
-      href: "https://www.oasis-open.org/committees/download.php/56785/sstc-saml-metadata-errata-2.0-wd-05.pdf",
+      href: "https://groups.oasis-open.org/higherlogic/ws/public/download/56785/sstc-saml-metadata-errata-2.0-wd-05.pdf",
       publisher: "OASIS"
     },
     "SAML2.BINDINGS": {
       title: "Bindings for the OASIS Security Assertion Markup Language (SAML) V2.0 – Errata Composite",
-      href: "https://www.oasis-open.org/committees/download.php/56779/sstc-saml-bindings-errata-2.0-wd-06.pdf",
+      href: "https://groups.oasis-open.org/higherlogic/ws/public/download/56779/sstc-saml-bindings-errata-2.0-wd-06.pdf",
       publisher: "OASIS"
     },
     "SAML2.ERRATA.05": {
@@ -125,8 +125,8 @@ loadRespecWithConfiguration({
       publisher: "W3C"
     },
     "BSNk.DEC": {
-      title: "BSNk Decryptiecomponent",
-      href: "https://wiki.bsn-koppelregister.nl/display/DC/",
+      title: "BSNk PP technische specificaties",
+      href: "https://gitlab.com/logius/bsnk/bsnk-techspecs/bsnk/-/raw/main/BPTSlive.pdf",
       publisher: "Logius"
     },
   },
