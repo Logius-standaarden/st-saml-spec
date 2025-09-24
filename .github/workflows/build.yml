@@ -33,7 +33,7 @@ jobs:
         with:
           path: ~/static
           key: ${{ github.run_id }}-index_dv.html
-      - name: Welke bestanden zijn er?
+      - name: Welke bestanden zijn er
         run: ls ~/static
       - name: Save cache for both
         uses: actions/cache/save@v4
