@@ -88,7 +88,7 @@ Sender|Recipient
 > See also [Example AuthnRequest DV for RD](#example-authnrequest)
 
 
-Element/@Attribute|0..n|Description<br/>Issuer = [=DV=] or [=LC=]<br/>Recipient = [=RD=]
+Element/@Attribute|0..n|Description<br/>Issuer = DV or LC<br/>Recipient = RD
 ---|---|---
 &#64;<dfn title="Unique message identifier. MUST identify the message uniquely within the scope of the sender and receiver for a period of at least 12 months." data-dfn-for="dv-authn-request-message">ID</dfn>|1|Unique message identifier. MUST identify the message uniquely within the scope of the sender and receiver for a period of at least 12 months.
 &#64;<dfn title="Version of the SAML protocol. The value MUST be 2.0." data-dfn-for="dv-authn-request-message">Version</dfn>|1|Version of the SAML protocol. The value MUST be `2.0`.

@@ -88,7 +88,7 @@ Sender|Recipient
 
 ##### AuthN-Request differences between DV/LC&rarr;RD, RD&rarr;AD and RD&rarr;BVD {#authnrequest-diffs}
 
-Element/@Attribute|[=DV=]/[=LC=]&rarr;[=RD=]|[=RD=]&rarr;[=AD=]|[=RD=]&rarr;[=BVD=]
+Element/@Attribute|DV / LC&rarr;RD|RD&rarr;AD|RD&rarr;BVD
 ---|---|---|---
 [=dv-authn-request-message/AttributeConsumingServiceIndex=]|If present, [=dv-authn-request-message/Extensions=] MUST NOT be present.</br>Forbidden for [=LC=]|MUST not be present (ignored)|MUST not be present (ignored)
 [=dv-authn-request-message/Extensions=]|If present, [=dv-authn-request-message/AttributeConsumingServiceIndex=] MUST NOT be present.</br>Mandatory for [=LC=]|Mandatory|Mandatory
@@ -186,7 +186,7 @@ The [SAML Response Message](#rd-authn-response-message) to the [AuthN Request me
 
 ##### Assertion and AttributeStatement differences between DV/LC&larr;RD and RD&larr;AD/BVD {#assertion-diffs}
 
-Element/@Attribute|[=DV=]/[=LC=]&larr;[=RD=]|[=RD=]&larr;[=AD=]|[=RD=]&larr;[=BVD=]
+Element/@Attribute|DV / LC&larr;RD|RD&larr;AD|RD&larr;BVD
 ---|---|---|---
 [=dv-authn-response-assertion/Conditions=]</br>-[=dv-authn-response-assertion/AudienceRestriction=]<br/>--[=dv-authn-response-assertion/Audience=]|MUST contain [=EntityID=] of [=DV=] and (if applicable) [=LC=].|MUST contain [=EntityID=] of [=RD=] and (in case of representation)[=BVD=] .|MUST contain [=EntityID=] of [=RD=].
 [=dv-authn-response-assertion/AuthnStatement=]</br>‐[=dv-authn-response-assertion/AuthnContext=]</br>‐‐[=dv-authn-response-assertion/AuthnContextClassRef=]|MUST be present.|MUST be present.|MUST be `urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified`.
