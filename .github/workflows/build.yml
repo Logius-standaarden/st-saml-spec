@@ -7,19 +7,13 @@ on:
       - main
       - develop
 jobs:
-  build-index:
+  build:
     name: Build index.html
     uses: Logius-standaarden/Automatisering/.github/workflows/build.yml@pr-timvdlippe-meerdere-documenten
     with:
-      multiple_files: true
-  build-index-dv:
-    name: Build index-dv.html
-    uses: Logius-standaarden/Automatisering/.github/workflows/build.yml@pr-timvdlippe-meerdere-documenten
-    with:
-      source_input_file_name: 'index_dv.html'
-      multiple_files: true
-  build:
-    needs: [ build-index, build-index-dv ]
+      workflow_input_file_names: ['index.html', 'index_dv.html']
+  update-cache:
+    needs: build
     name: Update cache
     runs-on: ubuntu-22.04
     steps:
@@ -40,13 +34,12 @@ jobs:
         with:
           path: ~/static
           key: ${{ github.run_id }}
-
   check:
-    needs: build
+    needs: update-cache
     name: Check
     uses: Logius-standaarden/Automatisering/.github/workflows/check.yml@pr-timvdlippe-meerdere-documenten
   publish:
-    needs: build
+    needs: update-cache
     name: Publish (Logius)
     uses: Logius-standaarden/Automatisering/.github/workflows/publish.yml@pr-timvdlippe-meerdere-documenten
     secrets: inherit
