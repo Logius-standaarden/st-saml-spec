@@ -11,7 +11,7 @@ jobs:
     name: Build index.html
     uses: Logius-standaarden/Automatisering/.github/workflows/build.yml@pr-timvdlippe-meerdere-documenten
     with:
-      workflow_input_file_names: ['index.html', 'index_dv.html']
+      workflow_input_file_names: '["index.html", "index_dv.html"]'
   update-cache:
     needs: build
     name: Update cache
