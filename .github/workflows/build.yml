@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     name: Build
-    uses: Logius-standaarden/Automatisering/.github/workflows/build.yml@pr-timvdlippe-meerdere-documenten
+    uses: Logius-standaarden/Automatisering/.github/workflows/build.yml@main
     with:
       workflow_input_file_names: '["index.html", "index_dv.html"]'
   update-cache:
@@ -37,9 +37,9 @@ jobs:
   check:
     needs: update-cache
     name: Check
-    uses: Logius-standaarden/Automatisering/.github/workflows/check.yml@pr-timvdlippe-meerdere-documenten
+    uses: Logius-standaarden/Automatisering/.github/workflows/check.yml@main
   publish:
     needs: update-cache
     name: Publish (Logius)
-    uses: Logius-standaarden/Automatisering/.github/workflows/publish.yml@pr-timvdlippe-meerdere-documenten
+    uses: Logius-standaarden/Automatisering/.github/workflows/publish.yml@main
     secrets: inherit
