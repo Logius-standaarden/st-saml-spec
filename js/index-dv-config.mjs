@@ -3,5 +3,5 @@ import { baseConfig } from "./config.mjs";
 
 loadRespecWithConfiguration({
     ...baseConfig,
-    publishVersion: "0.0.3-dv",
+    fileName: "dv.html",
 });
