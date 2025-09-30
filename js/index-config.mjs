@@ -4,8 +4,9 @@ import { baseConfig } from "./config.mjs";
 loadRespecWithConfiguration({
   ...baseConfig,
   alternateFormats: [{
-    label: "versie voor dienstverleners",
+    label: "Versie voor dienstverleners",
     uri: "dv.html",
   }],
 });
+
 
