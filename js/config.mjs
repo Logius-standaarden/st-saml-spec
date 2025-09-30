@@ -1,7 +1,6 @@
-import { loadRespecWithConfiguration } from "https://logius-standaarden.github.io/publicatie/respec/organisation-config.mjs";
 import { generateMermaidFigures } from "https://logius-standaarden.github.io/publicatie/respec/plugins/mermaid.mjs";
 
-loadRespecWithConfiguration({
+export const baseConfig = {
   maxTocLevel: 5,
   lint: {
         "no-unused-dfns": false
@@ -130,4 +129,4 @@ loadRespecWithConfiguration({
       publisher: "Logius"
     },
   },
-});
+};
