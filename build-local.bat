@@ -29,20 +29,14 @@ REM echo Waiting for ReSpec server to start...
 REM powershell -Command "Start-Sleep -Seconds 7"
 
 REM === Run ReSpec builds ===
-echo Building index_dv.html...
-call npx respec@%RESPEC_VERSION% --localhost --port %PORT% --verbose --src index_dv.html --out snapshot\ED\index_dv.html
+echo Building dv.html...
+call npx respec@%RESPEC_VERSION% --localhost --port %PORT% --verbose --src dv.html --out snapshot\ED\dv.html
 
 REM echo Stopping ReSpec server...
 REM taskkill /F /FI "WINDOWTITLE eq respec-server*" >nul 2>&1
 REM powershell -Command "Start-Sleep -Seconds 3"
 echo Building index.html...
 call npx respec@%RESPEC_VERSION% --localhost --port %PORT% --verbose --src index.html --out snapshot\ED\index.html
-
-REM echo Stopping ReSpec server...
-REM taskkill /F /FI "WINDOWTITLE eq respec-server*" >nul 2>&1
-REM powershell -Command "Start-Sleep -Seconds 3"
-REM echo Building errata.html...
-REM call npx respec@%RESPEC_VERSION% --localhost --port %PORT% --verbose --src errata.html --out snapshot\ED\errata.html
 
 REM === Kill ReSpec server ===
 echo Stopping ReSpec server...
@@ -52,7 +46,7 @@ REM === Optional: HTML diff ===
 REM IF EXIST snapshot\%PUBLISHED_VERSION%\index.html (
 REM     echo Generating HTML diff...
 REM     npx node-htmldiff@0.9.3 snapshot\%PUBLISHED_VERSION%\index.html snapshot\ED\index.html snapshot\ED\ed-diff.html
-REM     npx node-htmldiff@0.9.3 snapshot\%PUBLISHED_VERSION%\index_dv.html snapshot\ED\index_dv.html snapshot\ED\ed-diff_dv.html
+REM     npx node-htmldiff@0.9.3 snapshot\%PUBLISHED_VERSION%\dv.html snapshot\ED\dv.html snapshot\ED\ed-diff_dv.html
 REM ) ELSE (
 REM     echo Skipping HTML diff (no previous version found)
 REM )

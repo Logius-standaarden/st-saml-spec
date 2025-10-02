@@ -139,31 +139,6 @@
 <section id='conformance'></section>
 <section id='tof'></section>
 <section id="index"></section>
-<script>
-// Voeg tooltips toe aan alle interne verwijzingen op basis van gekoppelde dfn title="..."
-window.addEventListener("load", () => {
-  (() => {
-    document.querySelectorAll("a[href^='#']").forEach(link => {
-      const targetId = link.getAttribute("href").substring(1);
-      const dfn = document.getElementById(targetId);
-      if (dfn && dfn.tagName.toLowerCase() === 'dfn') {
-        const title = dfn.getAttribute("title");
-        if (title) {
-          link.setAttribute("title", title);
-        }
-      }
-    });
-  })();
-});
-
-// Deze code verbergt elementen met data-hide-if die overeenkomen met de huidige bestandsnaam
-const filename = window.location.pathname.split('/').pop();
-document.querySelectorAll('[data-hide-if]').forEach(el => {
-  if (el.dataset.hideIf === filename) {
-    el.style.display = 'none';
-  }
-});
-</script>
 </body>
 
 </html>
