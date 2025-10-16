@@ -404,7 +404,8 @@ Attribute|0..1|urn:etoegang:core:LegalSubjectID|urn:nl-eid-gdi:1.0:LegalSubjectI
 Other scenario's (e.g. support for IntermediarySubjectID) are not yet supported and may be added in future iterations of this specification. Attributes from eTD as included in the HM summary assertion will be copied unaltered into the AttributeStatement of the [=RD=]. They may contain either [EncryptedID](#dv-encryptedid) or EncryptedAttribute elements. See https://afsprakenstelsel.etoegang.nl/Startpagina/as/attribuutcatalogus
 
 ###### Example Attribute Statement for Legal Representation
-<code>
+
+```xml
 <saml2:AttributeStatement>
     <saml2:Attribute Name="urn:nl-eid-gdi:1.1:RepresentationType">
          <saml2:AttributeValue>urn:nl-eid-gdi:1.1:RT:Zorg_Volledig_Gezag_Kind</saml2:AttributeValue>
@@ -421,11 +422,11 @@ Other scenario's (e.g. support for IntermediarySubjectID) are not yet supported 
        </saml2:AttributeValue>
     </saml2:Attribute>
 </saml2:AttributeStatement>
-
-</code>
+```
 
 ###### Example EncryptedID
-<code>
+
+```xml
 <saml2:EncryptedID xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion"
      xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"
      xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
@@ -464,16 +465,16 @@ Other scenario's (e.g. support for IntermediarySubjectID) are not yet supported 
         </xenc:ReferenceList>
     </xenc:EncryptedKey>
 </saml2:EncryptedID>
-</code>
+```
 
 ###### Example nameID (after decryption) {#example-nameid}
 
-<code>
+```xml
 <saml2:NameID 
     xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" 
     Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent" 
     NameQualifier="urn:nl-eid-gdi:1.0:id:legacy-BSN">999999047</saml2:NameID>
-</code>
+```
 
 ##### DV&larr;RD AuthN Response - Message processing rules for DV {#dv-authn-response-processing}
 
