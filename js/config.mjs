@@ -8,16 +8,13 @@ export const baseConfig = {
   useLogo: true,
   useLabel: true,
   license: "cc-by",
-  specStatus: "WV",
+  specStatus: "DEF",
   specType: "HR",
   pubDomain: "st",
   shortName: "saml",
-  publishDate: "2025-07-30",
-  publishVersion: "0.0.3",
+  publishDate: "2026-06-01",
+  publishVersion: "1.0.0",
   prevVersion: [],
-
-  // TODO: Verwijder voordat de release plaats vindt
-  latestVersion: "https://logius-standaarden.github.io/st-saml-spec/",
 
   editors: [{
     name: "Frans de Kok",
