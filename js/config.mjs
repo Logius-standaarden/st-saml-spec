@@ -22,15 +22,25 @@ export const baseConfig = {
     companyURL: "https://www.logius.nl"
   }],
   authors: [{
-      name: "Frans de Kok (Logius)"
+      name: "Frans de Kok",
+      company: "Logius",
+      companyURL: "https://www.logius.nl"
     },{
-      name: "Jan Geert Koops (DICTU)"
+      name: "Jan Geert Koops",
+      company: "DICTU",
+      companyURL: "https://www.dictu.nl/"
     },{
-      name: "Mark Nijmeijer (DICTU)"
+      name: "Mark Nijmeijer",
+      company: "DICTU",
+      companyURL: "https://www.dictu.nl/"
     },{
-      name: "Wiljan Pitlo (ICTU)"
+      name: "Wiljan Pitlo",
+      company: "ICTU",
+      companyURL: "https://www.ictu.nl/"
     },{
-      name: "Carlo Huiden (ICTU)"
+      name: "Carlo Huiden",
+      company: "ICTU",
+      companyURL: "https://www.ictu.nl/"
   }],
   github: "https://github.com/Logius-standaarden/st-saml-spec",
 
