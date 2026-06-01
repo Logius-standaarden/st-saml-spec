@@ -112,7 +112,7 @@ export const baseConfig = {
     },
     "NCSC.TLS": {
       title: "ICT-beveiligingsrichtlijnen voor Transport Layer Security (TLS)",
-      href: "https://www.ncsc.nl/documenten/publicaties/2019/mei/01/ict-beveiligingsrichtlijnen-voor-transport-layer-security-tls",
+      href: "https://www.ncsc.nl/transport-layer-security/ICT-beveiligingsrichtlijnen-voor-TLS",
       publisher: "NCSC"
     },
     "XML.SIG": {
