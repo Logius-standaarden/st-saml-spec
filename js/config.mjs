@@ -8,7 +8,7 @@ export const baseConfig = {
   useLogo: true,
   useLabel: true,
   license: "cc-by",
-  specStatus: "DEF",
+  specStatus: "WV",
   specType: "HR",
   pubDomain: "st",
   shortName: "saml",
