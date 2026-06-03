@@ -8,16 +8,13 @@ export const baseConfig = {
   useLogo: true,
   useLabel: true,
   license: "cc-by",
-  specStatus: "WV",
+  specStatus: "DEF",
   specType: "HR",
   pubDomain: "st",
   shortName: "saml",
-  publishDate: "2025-07-30",
-  publishVersion: "0.0.3",
+  publishDate: "2026-06-01",
+  publishVersion: "1.0.0",
   prevVersion: [],
-
-  // TODO: Verwijder voordat de release plaats vindt
-  latestVersion: "https://logius-standaarden.github.io/st-saml-spec/",
 
   editors: [{
     name: "Frans de Kok",
@@ -25,15 +22,25 @@ export const baseConfig = {
     companyURL: "https://www.logius.nl"
   }],
   authors: [{
-      name: "Frans de Kok (Logius)"
+      name: "Frans de Kok",
+      company: "Logius",
+      companyURL: "https://www.logius.nl"
     },{
-      name: "Jan Geert Koops (DICTU)"
+      name: "Jan Geert Koops",
+      company: "DICTU",
+      companyURL: "https://www.dictu.nl/"
     },{
-      name: "Mark Nijmeijer (DICTU)"
+      name: "Mark Nijmeijer",
+      company: "DICTU",
+      companyURL: "https://www.dictu.nl/"
     },{
-      name: "Wiljan Pitlo (ICTU)"
+      name: "Wiljan Pitlo",
+      company: "ICTU",
+      companyURL: "https://www.ictu.nl/"
     },{
-      name: "Carlo Huiden (ICTU)"
+      name: "Carlo Huiden",
+      company: "ICTU",
+      companyURL: "https://www.ictu.nl/"
   }],
   github: "https://github.com/Logius-standaarden/st-saml-spec",
 
@@ -105,7 +112,7 @@ export const baseConfig = {
     },
     "NCSC.TLS": {
       title: "ICT-beveiligingsrichtlijnen voor Transport Layer Security (TLS)",
-      href: "https://www.ncsc.nl/documenten/publicaties/2019/mei/01/ict-beveiligingsrichtlijnen-voor-transport-layer-security-tls",
+      href: "https://www.ncsc.nl/transport-layer-security/ICT-beveiligingsrichtlijnen-voor-TLS",
       publisher: "NCSC"
     },
     "XML.SIG": {
