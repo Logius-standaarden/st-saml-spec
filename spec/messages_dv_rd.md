@@ -333,6 +333,17 @@ An [=dv-attributestatement/EncryptedID=] MUST contain a SAML `NameID` after decr
 
 See also: [Example NameID (after decryption)](#example-nameid)
 
+
+###### EncryptedAttribute
+An <EncryptedAttribute> MUST contain a SAML <Attribute> after decryption, with the following properties:
+Element/@Attribute|0..n|Description
+---|---|---
+-&#64;<dfn data-dfn-for="dv-attributestatement">Name</dfn>|1|MUST contain the type of the attribute.
+-&#64;<dfn data-dfn-for="dv-attributestatement">AttributeValue</dfn>|1..n|The Attribute MUST contain one or more AttributeValues.
+
+See also: [Example Encrypted Attribute](#example-encrypted-attribute) and
+[Example Encrypted Attribute after decryption](#example-encrypted-attribute-after-decryption)
+
 ###### Multiple recipients
 
 SAML and XML-encryption allow for multiple recipients of the same encrypted element. The construct for this is specified in more detail in errata E43 of [[SAML2.ERRATA.05]]. In case of multiple recipients:
@@ -381,8 +392,8 @@ Attribute|1..n|Attribute Name|Description
 ActingSubjectID|1|`[=dv-attributestatement/Name=]="urn:nl-eid-gdi:1.0:ActingSubjectID"`.	
 -AttributeValue|1..n| |All contain identities of the same [=EU=].
 
-##### Attribute types issuer in case of representation
-In case of representation the following attributes will be provided as [=dv-attributestatement/EncryptedID=]
+##### Attribute types issuer in case of chain representation
+In case of a 'chain' representation (legalsubject mandates intermediary and intermdiary mandates actingsubject) the following attributes will be provided as Attribute or EncryptedAttribute  
 
 Type|1..n|Attribute Name|Description
 ---|---|---|---
@@ -390,6 +401,15 @@ Type|1..n|Attribute Name|Description
 -AttributeValue|1..n| |The (encrypted) ActingSubjectID as received from the AD at which the [=EU=] was authenticated.<br/>All contain identities of the same [=EU=].
 <dfn title="Identity of the Represented Party" data-dfn-for="dv-attributestatement">LegalSubjectID</dfn>|1|`[=dv-attributestatement/Name=]="urn:nl-eid-gdi:1.0:LegalSubjectID"`| Identity of the [=Represented Party=]
 -AttributeValue|1..n| |The (encrypted) LegalSubjectID as received from BVD.<br/>All contain identities of the same [=Represented Party=].
+<dfn title="Identity of the Intermediate Party" data-dfn-for="dv-attributestatement">IntermediateEntityID</dfn>|1|`[=dv-attributestatement/Name=]="urn:etoegang:1.9:IntermediateEntityID:KvKnr" OR "urn:etoegang:1.13:IntermediateEntityID:TRR-BD"`| Identity of the [=Intermediate Party=]
+-AttributeValue|1| |The IntermediateEntityID as received from [=MR=]
+
+Type|1..n|Encrypted Attribute Name|Description
+---|---|---|---
+<dfn title="CompanyName of the Intermediate Party" data-dfn-for="dv-attributestatement">Intermediate.CompanyName</dfn>|1|`[=dv-attributestatement/Name=]="urn:etoegang:1.13:attribute-intermediate:CompanyName"`| CompanyName of the [=Intermediate Party=]
+-AttributeValue|1| |The Intermediate CompanyName as received from [=MR=]
+Intermediate.CompanyName 
+
 
 ##### Attribute type conversion eTD {#attribute-type-conversion-etd}
 In case of authentication with eTD the following Attributes will be provided as [EncryptedID](#dv-encryptedid)
@@ -424,7 +444,7 @@ Other scenario's (e.g. support for IntermediarySubjectID) are not yet supported 
 </saml2:AttributeStatement>
 ```
 
-###### Example EncryptedID
+###### Example EncryptedID 
 
 ```xml
 <saml2:EncryptedID xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion"
@@ -475,6 +495,46 @@ Other scenario's (e.g. support for IntermediarySubjectID) are not yet supported 
     Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent" 
     NameQualifier="urn:nl-eid-gdi:1.0:id:legacy-BSN">999999047</saml2:NameID>
 ```
+
+###### Example EncryptedAttribute
+
+```xml
+ <saml2:EncryptedAttribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion"
+    xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"
+    xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+    <xenc:EncryptedData Id="_3c63798db8a16b54ade207ea0df28ad4" Type="http://www.w3.org/2001/04/xmlenc#Element">
+        <xenc:EncryptionMethod xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"
+            Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" />
+        <ds:KeyInfo>
+            <ds:KeyName>_dd0d7a0215f94ea81b170a2e65834ce8</ds:KeyName>
+        </ds:KeyInfo>
+        <xenc:CipherData>
+            <xenc:CipherValue>5efOYLEoY1PD2145...</xenc:CipherValue>
+        </xenc:CipherData>
+    </xenc:EncryptedData>
+    <xenc:EncryptedKey Id="_fd73ad54daf1ca14a4aac30ea850340a" Recipient="urn:etoegang:...">
+        <xenc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p">
+            <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        </xenc:EncryptionMethod>
+        <ds:KeyInfo>
+            <ds:KeyName>...</ds:KeyName>
+        </ds:KeyInfo>
+        <xenc:CipherData>
+            <xenc:CipherValue>H5nzimm7fAZuzdnZ...</xenc:CipherValue>
+        </xenc:CipherData>
+        <xenc:ReferenceList>
+            <xenc:DataReference URI="#_3c63798db8a16b54ade207ea0df28ad4" />
+        </xenc:ReferenceList>
+        <xenc:CarriedKeyName>_dd0d7a0215f94ea81b170a2e65834ce8</xenc:CarriedKeyName>
+    </xenc:EncryptedKey>
+</saml2:EncryptedAttribute>
+```
+ 
+###### Example Attribute after decryption 
+<saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:attrext="urn:oasis:names:tc:SAML:attributes:ext" Name="urn:etoegang:1.13:attribute-intermediate:CompanyName" attrext:OriginalIssuer="urn:etoegang:1.11:attribute-sourceid:NLKvK" attrext:LastModified="2026-03-31T12:00:00Z">
+    <saml2:AttributeValue>Bedrijfsnaam BV</saml2:AttributeValue>
+</saml2:Attribute>
+
 
 ##### DV&larr;RD AuthN Response - Message processing rules for DV {#dv-authn-response-processing}
 
