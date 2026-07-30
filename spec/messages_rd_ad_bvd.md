@@ -5,7 +5,7 @@
 SAML authentication between [=RD=] and [=AD=] or [=BVD=] are described in this chapter. The [=RD=]→[=AD=]/[=BVD=] SAML messages are almost identical to the SAML messages of [DV/LC→RD - SAML authentication](#dv-saml-authentication). Therefor only a reference to the appropriate [DV/LC→RD - SAML messages](#dv-saml-authentication) will be given and the differences described.
 
 #### RD→AD - Authentication - diagram {#rd-saml-authentication-diagram}
-The diagram below depicts the flow between a [=RD=] and an [=AD=]/[=BVD=]. The encompassing flow, between [=DV=]/[=LC=] and [=RD=], is out of scope (see [[[eID SAML4.4]]] for details).
+The diagram below depicts the flow between a [=RD=] and an [=AD=]/[=BVD=]. The encompassing flow, between [=DV=]/[=LC=] and [=RD=], is out of scope (see [[eID SAML4.4]] for details).
 
 
 <figure>

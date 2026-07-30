@@ -2,7 +2,7 @@
 
 This section is extending the [DV/LC→RD SAML Federated login and logout](#dv-saml-sso) between [=RD=] and [=AD=].
 
-A [=RD=] that supports [=SSO=] to [=DV=] s or [=LC=]s must propagate logout requests to the correct [=AD=] or [=AD=]s. The diagram below depicts the flow between a [=RD=] and an [=AD=]. The encompassing flow, between [=DV=]/[=LC=] and [=RD=], is out of scope (see [[[eID SAML4.4]]] for details).
+A [=RD=] that supports [=SSO=] to [=DV=] s or [=LC=]s must propagate logout requests to the correct [=AD=] or [=AD=]s. The diagram below depicts the flow between a [=RD=] and an [=AD=]. The encompassing flow, between [=DV=]/[=LC=] and [=RD=], is out of scope (see [[eID SAML4.4]] for details).
 
 #### RD→AD logout Request - Diagram {#rd-logout-request-diagram}
 A [=DV=] or [=LC=] can send this message to [=RD=] when a user logs out at an [=DV=]. A [=RD=] can send this message to an [=AD=].
