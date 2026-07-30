@@ -338,8 +338,8 @@ See also: [Example NameID (after decryption)](#example-nameid)
 An <EncryptedAttribute> MUST contain a SAML <Attribute> after decryption, with the following properties:
 Element/@Attribute|0..n|Description
 ---|---|---
--&#64;<dfn data-dfn-for="dv-attributestatement">Name</dfn>|1|MUST contain the type of the attribute.
--&#64;<dfn data-dfn-for="dv-attributestatement">AttributeValue</dfn>|1..n|The Attribute MUST contain one or more AttributeValues.
+-&#64;Name|1|MUST contain the type of the attribute.
+-&#64;AttributeValue|1..n|The Attribute MUST contain one or more AttributeValues.
 
 See also: [Example Encrypted Attribute](#example-encrypted-attribute) and
 [Example Encrypted Attribute after decryption](#example-encrypted-attribute-after-decryption)
