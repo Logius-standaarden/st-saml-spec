@@ -2,10 +2,11 @@
 
 This page and underlying pages describe identifier types which are used by [=ST-SAML=]
 
-- [Attribute Identifier types](#attribute-identifier-types)
-- [Attribute representation Types](#representation-types)
-- [EntityID Format](#entityid_format)
-- [Level of Assurance](#level-of-assurance)
+- [Type definitions](#type-definitions)
+  - [Attribute identifier types](#attribute-identifier-types)
+  - [Attribute representation types {#representation-types}](#attribute-representation-types-representation-types)
+  - [EntityID Format {#entityid\_format}](#entityid-format-entityid_format)
+  - [Level of Assurance {#level-of-assurance}](#level-of-assurance-level-of-assurance)
 
 
 ### Attribute identifier types
@@ -14,9 +15,10 @@ This page and underlying pages describe identifier types which are used by [=ST-
 
 Attribute|urn|Remarks
 ---|---|---
-BSN|`urn:nl-eid-gdi:1.0:id:legacy-BSN`|BSN. encoded in 9-digits, padded with leading 0 if needed.<br/>Example: 123456789 or 012345678.
-BSN|`urn:nl-eid-gdi:1.0:id:BSN`|Encrypted Identity (see [[BSNk.DEC]], Encrypted structures )
-Pseudonym|`urn:nl-eid-gdi:1.0:id:Pseudonym`|Encrypted Pseudonym (see [[BSNk.DEC]] Encrypted structures)
+<dfn title="BSN (dutch national citizen registration number) encoded in 9-digits, padded with leading 0 if needed. Example: 123456789 or 012345678." data-dfn-for="identifier_types_legacy_bsn">Legacy-BSN</dfn>|`urn:nl-eid-gdi:1.0:id:legacy-BSN`|[=BSN=] encoded in 9-digits, padded with leading 0 if needed.<br/>Example: 123456789 or 012345678.
+<dfn title="BSN Encrypted Identity (EI) - BSN (dutch national citizen registration number) encrypted using BSNk polymorphic encryption." data-dfn-for="identifier_types_bsn">BSN</dfn>|`urn:nl-eid-gdi:1.0:id:BSN` `urn:etoegang:1.12:EntityConcernedID:BSN`|[=BSNk=] Encrypted Identity (EI) - [=BSN=] encrypted using [=BSNk=] polymorphic encryption. For notation see [[BSNk.DEC]], Encrypted structures
+<dfn title="BSN Encrypted Identity (EI) see BSNk Encrypted structures." data-dfn-for="identifier_types_pseudonym">Pseudonym</dfn>|`urn:nl-eid-gdi:1.0:id:Pseudonym`<br>`urn:etoegang:1.12:EntityConcernedID:PseudoID`|[=BSNk=] Encrypted Pseudonym (EP) - Pseudonym is cryptografically derived from [=BSN=] or eIDAS UniquenessID using [=BSNk=] polymorphic encryption. This pseudonym is both persistent and recipient specific (pseudonym@DV). For notation see [[BSNk.DEC]], Encrypted structures
+<dfn title="ETD Specific Pseudonym." data-dfn-for="identifier_types_specific_pseudonym">ETD Specific Pseudonym</dfn>|`urn:etoegang:1.13:EntityConcernedID:Pseudo`|An ETD Specific Pseudonym is used to identify an [=EU=] that represents a [=Service Consumer=]. The pseudonym is specific for the [=DV=], the represented (employer) and the authentication means used by the [=EU=].
 
 The following attributes may be supplied additionally, only through [=ETD=] (see https://afsprakenstelsel.etoegang.nl/Startpagina/as/identificerende-kenmerken )
 
@@ -26,6 +28,9 @@ The table shows the allowed representationTypes in URN format that are supported
 representation-types|urn|Sector|description
 ---|---|:---:|---
 Zorg_Volledig_Gezag_Kind|urn:nl-eid-gdi:1.1:RT:Zorg_Volledig_Gezag_Kind|health care| Specific Parental authority for children under 12 years old in healthcare
+Curatele|urn:nl-eid-gdi:1.1:RT:WV_Curator|All| "Curatele" as registered at the "centraal curatele- en bewindregister (CCBR)"
+Bewindvoering|urn:nl-eid-gdi:1.1:RT:WV_Bewindvoerder|All| "Bewindvoering" as registered at the "centraal curatele- en bewindregister (CCBR)"
+Mentorschap|urn:nl-eid-gdi:1.1:RT:WV_Mentor|All| "Mentoring" as registered at the "centraal curatele- en bewindregister (CCBR)"
 
 
 ### EntityID Format {#entityid_format}
