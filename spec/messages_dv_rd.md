@@ -324,7 +324,7 @@ ServiceID|1|`[=dv-attributestatement/Name=]="urn:etoegang:core:ServiceID"`
 &#8209;AttributeValue|1..n|`urn:etoegang:DV:<OIN>:services:<index>` |The [=ServiceID=] of the [=Service=] for which this [SAML Response](#dv-artifact-response) is intended as indicated in the original [AuthN Request message](#dv-authn-request-message).
 
 
-In case of representation in combination with (https://afsprakenstelsel.etoegang.nl/Startpagina/as/guc4-3-portaalfunctie)[ETD PortalService] a [=ServiceUUID=] and [ServiceID] can be multivalued, expressing the relevant services within the webportal (as registered in the ETD [=Service Catalog=]) for which the [=EU=] has a mandate.
+In case of representation in combination with [https://afsprakenstelsel.etoegang.nl/Startpagina/as/guc4-3-portaalfunctie](ETD PortalService) a [=ServiceUUID=] and [ServiceID] can be multivalued, expressing the relevant services within the webportal (as registered in the ETD [=Service Catalog=]) for which the [=EU=] has a mandate.
 
 In case of legal representation the [=ServiceUUID=] and [=ServiceID=] have only 1 value, a copy of [=ServiceUUID/Attribute=] in [AuthN Request message](#dv-authn-request-message) and the associated [=ServiceID=].
 
