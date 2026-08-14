@@ -157,6 +157,8 @@ Element/@Attribute|0..n|Description
 -&#64;Name|1|MUST contain the type of the attribute.
 -&#64;AttributeValue|1..n|The Attribute MUST contain one or more AttributeValues.
 
+An [=RD=] MUST NOT decrypt or modify an EncryptedAttribute intended for a [=DV=]. The complete EncryptedAttribute MUST be copied unchanged, including the encrypted Attribute name, namespace and AttributeValue(s).
+
 See also: [Example Encrypted Attribute](#example-encrypted-attribute) and
 [Example Encrypted Attribute after decryption](#example-encrypted-attribute-after-decryption)
 
@@ -206,10 +208,11 @@ Although a [=LC=] or [=RD=] may be an [=dv-authn-response-assertion/Audience=] a
 ```
  
 ###### Example (Encrypted) Attribute after decryption 
-
+```xml
 <saml2:Attribute xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:attrext="urn:oasis:names:tc:SAML:attributes:ext" Name="urn:etoegang:1.13:attribute-intermediate:CompanyName" attrext:OriginalIssuer="urn:etoegang:1.11:attribute-sourceid:NLKvK" attrext:LastModified="2026-03-31T12:00:00Z">
     <saml2:AttributeValue>Bedrijfsnaam BV</saml2:AttributeValue>
 </saml2:Attribute>
+```
 
 ### End-to-End encryption
 
@@ -235,34 +238,34 @@ The data that must be protected, is categorised as:
 
 Both categories contain data that is considered business and/or privacy sensitive, but the measures to protect them, while partly overlapping, are also partly different.
 
-All sensitive data is End-to-End encrypted, which means encrypted by the [=Participant=] for the intended recipient using XML-based encryption to provide confidentiality. For Identifiers [EncryptedID](#dv-encryptedid) is used, for all other attributes and content [SAML encryption](#saml_encryption) is used.
+All sensitive data is End-to-End encrypted, which means encrypted by the [=Participant=] for the intended recipient using XML-based encryption to provide confidentiality. For Identifiers [EncryptedID](#dv-encryptedid) is used, for all other attributes and content [SAML encryption](#saml-encryption) is used.
 
 For "content" these basic measures are deemed sufficient.
 
-#### Additioal protection measures for Identifiers
+#### Additional protection measures for Identifiers
 
 For an "identifier" of a natural person (in role of [=EU=] or [=Service Consumer=])  some additional measures were taken on top these basic SAML measures. Because:
 
 - identifiers are more easily recognised by hackers, and allow for easy correlation of related data.
 - BSN is determined as extra sensitive in Dutch law.
 - RvIG authorises which [=DV=] MAY receive a BSN and [=BSNk=] enforces this authorisation.
-- Citizens need to be in control on which [=AD=] (even EU-countries!) have registered a authentication means on their name/BSN.
+- Citizens need to be in control on which [=AD=] (even EU-countries!) have registered an authentication means on their name/BSN.
 - Identifiers are sometimes relevant to multiple relying parties (aka 'recipients' e.g. [=DV=], [=MR=]) and must therefore be encrypted separately for each recipient.
 
 The additional measures for personal identifiers are:
 
-- ETD Pseudonymisation - when [=DV=] is not authorised to receive a [=BSN=] or a [=BSN=] is not strickly required for [=EU=] or [=Service Consumer=] the [=ETD Stelsel=] will provide a identifier_types_specific_pseudonym">[ETD Specific Pseudonym](#identifier_types_specific_pseudonym):
+- ETD Pseudonymisation - when [=DV=] is not authorised to receive a [=BSN=] or a [=BSN=] is not strictly required for [=EU=] or [=Service Consumer=] the [=ETD Stelsel=] will provide an [ETD Specific Pseudonym](#identifier_types_specific_pseudonym):
   - These pseudonyms are persistent per relying party, employer and authentication-means. A [=DV=] can recognise returning [=EU=] or [=Service Consumer=]".
   - Because these pseudonyms [=DV=] and employer specific, they cannot be traced across [=DV=]'s, employees or authentication-means.  - 
-- [=BSNk=] Polymophic Encryption of identifiers and Pseudonyms based on [=BSNk=] [polymorphic encryption](https://afsprakenstelsel.etoegang.nl/Startpagina/as/handreiking-polymorphic-pseudonimization-notation):
-  - [Polymorph encrypted pseudonym](#identifier_types_pseudonym) is cryptographically derived from a [=BSN=] and therefor can be recipient persistent independent of [=AD=], [=BVD=] and [=MR=]. [Polymorph encrypted pseudonym](#identifier_types_pseudonym) is not traceable back to the original BSN.
+- [=BSNk=] Polymorphic Encryption of identifiers and Pseudonyms based on [=BSNk=] [polymorphic encryption](https://afsprakenstelsel.etoegang.nl/Startpagina/as/handreiking-polymorphic-pseudonimization-notation):
+  - [Polymorph encrypted pseudonym](#identifier_types_pseudonym) is cryptographically derived from a [=BSN=] and therefore can be recipient persistent independent of [=AD=], [=BVD=] and [=MR=]. [Polymorph encrypted pseudonym](#identifier_types_pseudonym) is not traceable back to the original BSN.
   - [Polymorph encrypted BSN](#identifier_types_bsn) is cryptographically derived from a [=BSN=] and using the appropriate [=BSNk=] keys can be decrypted to a [=BSN=].
-  - Both [Polymorph encrypted pseudonym](#identifier_types_pseudonym) and [Polymorph encrypted BSN](#identifier_types_bsn) are verifiable attributes: succesfull decryption ensures the identity and qualification of the originating [=AD=], [=MR=] or [=BVD=] and the registration (by this party) of the BSN at the [=BSNk=] under control of the appropriate natural person or a authorised representative.
+  - Both [Polymorph encrypted pseudonym](#identifier_types_pseudonym) and [Polymorph encrypted BSN](#identifier_types_bsn) are verifiable attributes: successful decryption ensures the identity and qualification of the originating [=AD=], [=MR=] or [=BVD=] and the registration (by this party) of the BSN at the [=BSNk=] under control of the appropriate natural person or an authorised representative.
 
 
 
 > **NOTE**  
-> The use of [=BSNk=] Polymofic Encryption is mandatory for all private [=Participant=]s. The DigiD, DigiD-Machtigen and BVD can use 'legacy' [BSN](#identifier_types_legacy_bsn) during a migration period.
+> The use of [=BSNk=] Polymorphic Encryption is mandatory for all private [=Participant=]s. The DigiD, DigiD-Machtigen and BVD can use 'legacy' [BSN](#identifier_types_legacy_bsn) during a migration period.
 
 
 ### TLS transport
