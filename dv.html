@@ -139,6 +139,38 @@
 <section id='conformance'></section>
 <section id='tof'></section>
 <section id="index"></section>
+<script type="module">
+// Voeg tooltips toe aan alle interne verwijzingen op basis van gekoppelde dfn title="..."
+// document.respec.ready wordt pas vervuld nadat ReSpec de content (en dus alle [=Term=] links) heeft opgebouwd.
+// document.respec zelf bestaat ook nog niet meteen: de config-module roept haar async setup
+// aan zonder die af te wachten, dus we pollen totdat document.respec verschijnt.
+function waitForRespec() {
+  return new Promise(resolve => {
+    if (document.respec) return resolve(document.respec);
+    const interval = setInterval(() => {
+      if (document.respec) {
+        clearInterval(interval);
+        resolve(document.respec);
+      }
+    }, 20);
+  });
+}
+
+waitForRespec().then(respec => respec.ready).then(() => {
+  (() => {
+    document.querySelectorAll("a[href^='#']").forEach(link => {
+      const targetId = link.getAttribute("href").substring(1);
+      const dfn = document.getElementById(targetId);
+      if (dfn && dfn.tagName.toLowerCase() === 'dfn') {
+        const title = dfn.getAttribute("title");
+        if (title) {
+          link.setAttribute("title", title);
+        }
+      }
+    });
+  })();
+});
+</script>
 </body>
 
 </html>
