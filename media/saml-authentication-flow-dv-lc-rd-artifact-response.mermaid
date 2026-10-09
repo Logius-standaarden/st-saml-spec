@@ -6,14 +6,14 @@ sequenceDiagram
 autonumber
 participant A as User Agent
 participant B as DV / LC
-participant C as RD <br /> front-channel
-participant D as RD <br /> back-channel
+participant C as OD <br /> front-channel
+participant D as OD <br /> back-channel
 participant E as AD/BVD
 A->>B: GET resource
 B-->>A: AuthnRequest
 A->>C: AuthnRequest
 rect rgba(75, 75, 75,.4)
-    Note over D,E: Out of Scope: see RD#8594;AD/BVD
+    Note over D,E: Out of Scope: see OD#8594;AD/BVD
     C-->>A:
     A->>E:
     E-->>A:

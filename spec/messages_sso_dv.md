@@ -1,4 +1,4 @@
-### DV&rarr;RD login & logout {#dv-saml-sso}
+### DV&rarr;OD login & logout {#dv-saml-sso}
 
 >**NOTE**<br/>
 > Support for federated login and logout may be subject to change in future versions of this specification. [=DV=]/[=LC=]s which decide to make use of federated login and logout, as supported by this version of the specification, must be prepared to make all the necessary changes to their use of federated login and logout as soon as a later version of the specification mandates such changes.
@@ -11,7 +11,7 @@
 
 Federated Login via a [=SSO=] federation is only supported for multiple connections (websites) of a single [=DV=]. Furthermore, [=DigiD=] does not support SSO federation between [[DigiD SAML3.x]] and [[eID SAML4.4]] (or later) connections.
 
-A [=DV=] who wants to grant access to his services through [=SSO=]  can do so via the [=SSO=] service from [=RD=]. The [=DV=] then participates in an [=SSO=] federation which may include several websites of the [=DV=] who all want to use the [=SSO=] functionality that is offered within the [=SSO=] federation. Details on the [=SSO=] service are provided by [=RD=].
+A [=DV=] who wants to grant access to his services through [=SSO=]  can do so via the [=SSO=] service from [=OD=]. The [=DV=] then participates in an [=SSO=] federation which may include several websites of the [=DV=] who all want to use the [=SSO=] functionality that is offered within the [=SSO=] federation. Details on the [=SSO=] service are provided by [=OD=].
 In a number of cases, the [=EU=] is still asked to provide his credentials:
 
 1.	The Level of Assurance [=LoA=] that the [=DV=] website requests may be higher than the level of reliability that is stored in the existing [=SSO=] session.
@@ -20,27 +20,27 @@ In a number of cases, the [=EU=] is still asked to provide his credentials:
 1.	The existing [=SSO=] session has expired.
 
  
-#### DV&rarr;RD logout Request - Diagram {#dv-logout-request-diagram}
-A [=DV=] or [=LC=] can send this message to [=RD=] when an [=EU=] logs out at an [=DV=]. A [=RD=] can send this message to an [=AD=].
+#### DV&rarr;OD logout Request - Diagram {#dv-logout-request-diagram}
+A [=DV=] or [=LC=] can send this message to [=OD=] when an [=EU=] logs out at an [=DV=]. A [=OD=] can send this message to an [=AD=].
 
 Sender|Recipient
 ---|---
-[=DV=]|[=RD=]
-[=LC=]|[=RD=]
+[=DV=]|[=OD=]
+[=LC=]|[=OD=]
 
 
 <figure>
     <div class="mermaid" data-figure-name="logout-request-dv-lc-rd.mermaid"></div>
-    <figcaption>LogoutRequest DV/LC - RD</figcaption>
+    <figcaption>LogoutRequest DV/LC - OD</figcaption>
 </figure>
 
-Only SP ([=DV=]) initiated logout is supported by [=RD=]. On receiving a logout request (1) a [=DV=] which participates in a [=SSO=] federation MUST send a [Logout request](#dv-logout-request-message) to [=RD=] (2b).
+Only SP ([=DV=]) initiated logout is supported by [=OD=]. On receiving a logout request (1) a [=DV=] which participates in a [=SSO=] federation MUST send a [Logout request](#dv-logout-request-message) to [=OD=] (2b).
 
-This will result in [=RD=] to terminate the [=SSO=]  session if it still was active. As a result, the [=EU=] will have to re-authenticate when accessing a [=DV=] even if that [=DV=] is part of the same [=SSO=]  federation that was just terminated. 
+This will result in [=OD=] to terminate the [=SSO=]  session if it still was active. As a result, the [=EU=] will have to re-authenticate when accessing a [=DV=] even if that [=DV=] is part of the same [=SSO=]  federation that was just terminated. 
 
 SP initiated logout is limited in the sense that any other active [=SSO=]  originated sessions with DV's is not actively terminated upon receipt of a SP ([=DV=]) initiated logout message. Sessions with other active [=DV=]'s within the same federation will continue to be active until the local [=DV=] session times out or the [=EU=] logs out of the [=DV=].
 
-#### DV&rarr;RD logout Request - Message {#dv-logout-request-message}
+#### DV&rarr;OD logout Request - Message {#dv-logout-request-message}
 
 
 Element/@Attribute|0..n|Description
@@ -55,22 +55,22 @@ Element/@Attribute|0..n|Description
 <dfn title="MUST contain the  of the sender." data-dfn-for="dv-logout-request-message">Issuer</dfn>|1|MUST contain the  of the sender.
 
 
-#### DV&larr;RD logout Response - Diagram {#dv-logout-response-diagram}
+#### DV&larr;OD logout Response - Diagram {#dv-logout-response-diagram}
 
-In response to a [Logout Request message](#dv-logout-request-message) the [=RD=] will send this message to the [=DV=] or [=LC=], or a [=AD=] will send this message to the requesting [=RD=].
+In response to a [Logout Request message](#dv-logout-request-message) the [=OD=] will send this message to the [=DV=] or [=LC=], or a [=AD=] will send this message to the requesting [=OD=].
 
 Sender|Recipient
 :---:|:---:
-[=RD=]|[=DV=]
-[=RD=]|[=LC=]
+[=OD=]|[=DV=]
+[=OD=]|[=LC=]
 
 
 <figure>
     <div class="mermaid" data-figure-name="logout-response-dv-lc-rd.mermaid"></div>
-    <figcaption>LogoutResponse DV/LC - RD</figcaption>
+    <figcaption>LogoutResponse DV/LC - OD</figcaption>
 </figure>
 
-#### DV&larr;RD logout Response - Message {#dv-logout-response-message}
+#### DV&larr;OD logout Response - Message {#dv-logout-response-message}
 
 Element/@Attribute|0..n|Description
 ---|---|---

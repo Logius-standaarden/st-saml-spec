@@ -6,12 +6,12 @@ sequenceDiagram
 autonumber
 participant A as User Agent
 participant B as DV / LC
-participant C as RD <br /> front-channel-channel
-participant D as RD <br /> back-channel-channel
+participant C as OD <br /> front-channel-channel
+participant D as OD <br /> back-channel-channel
 participant E as AD <br /> front-channel-channel
 participant F as AD <br /> back-channel-channel
 rect rgba(75, 75, 75,.4)
-    Note over B,C: See DV#8594;RD
+    Note over B,C: See DV#8594;OD
     A->>B:
     B-->>A:
     A->>C:
@@ -33,7 +33,7 @@ end
 F-->>C: ArtifactResponse
 rect rgba(75, 75, 75,.4)
 rect rgba(75, 75, 75,.4)
-    Note over C,D: See DV#8594;RD
+    Note over C,D: See DV#8594;OD
         C-->>A:
         A->>B:
         B->>D:

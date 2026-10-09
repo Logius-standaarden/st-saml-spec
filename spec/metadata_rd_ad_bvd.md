@@ -1,32 +1,32 @@
-## RD metadata {#rd-metadata}
+## OD metadata {#rd-metadata}
 
-### RD→AD metadata {#rd-sp-metadata}
+### OD→AD metadata {#rd-sp-metadata}
 
 Published by|Consumed by
 ---|---
-[=RD=] |[=AD=] , [=BVD=] 
+[=OD=] |[=AD=] , [=BVD=] 
 
 
-This section describes the [=Metadata=] the [=RD=] publishes for the [=AD=]/[=BVD=] (acting as the SAML-role of a [=DV=]). The [=RD=] MUST provide the [=Metadata=] for each [=DV=] it supports. The [=Metadata=] MUST be signed by the [=RD=]. The [=Metadata=] of all [=DV=]s using an [=RD=] MUST be supplied as a single file and MAY additionally be supplied as individual files.
+This section describes the [=Metadata=] the [=OD=] publishes for the [=AD=]/[=BVD=] (acting as the SAML-role of a [=DV=]). The [=OD=] MUST provide the [=Metadata=] for each [=DV=] it supports. The [=Metadata=] MUST be signed by the [=OD=]. The [=Metadata=] of all [=DV=]s using an [=OD=] MUST be supplied as a single file and MAY additionally be supplied as individual files.
 
 This section describes the layout of the metadata. The XML schema for the Metadata is that of [[SAML2.METADATA]].
 
-See also [Example SAML-metadata RD for AD/BVD](#example-saml-metadata-rd-for-ad-bvd 'Example of SAML-metadata a RC needs te provide to a AD and a BVD')
+See also [Example SAML-metadata OD for AD/BVD](#example-saml-metadata-rd-for-ad-bvd 'Example of SAML-metadata a RC needs te provide to a AD and a BVD')
 
 Element/@Attribute|0..n|Description
 ---|---|---
 <dfn data-dfn-for="rd-sp-metadata">EntitiesDescriptor</dfn>|1|Required element to start metadata containing multiple [=rd-sp-metadata/EntityDescriptor=]s.
 -&#64;<dfn data-dfn-for="rd-sp-metadata">ID</dfn>|1|A document-unique identifier for the element, typically used as a reference point when signing.
 -&#64;<dfn data-dfn-for="rd-sp-metadata">validUntil</dfn>|1|Contains a datetime at which the metadata expires.<br/>If [=rd-sp-metadata/validUntil=] is expired, the metadata is considered invalid.<br/>This element MUST be present. (following OASIS specification [[SAML2.METADATA]]).
--<dfn data-dfn-for="rd-sp-metadata">Signature</dfn>|1|MUST contain the Digital signature of the [=RD=] to verify the integrity of this [=Metadata=] and MUST be generated with a (private signing key associated with a) PKIoverheid public-key certificate which contains the same OIN as used in the [=rd-sp-entitydescriptor/entityID=]. Also see technical requirements on [Signature](#signature) and on [Signing, encryption algorithms and hash functions](#signing-encryption-hash)
--<dfn data-dfn-for="rd-sp-metadata">EntityDescriptor</dfn>|1..n|MUST contain the [=rd-sp-entitydescriptor/EntityDescriptor=] of the [=RD=] (see [=rd-sp-entitydescriptor/EntityDescriptor=]).<br/>MUST contain the [=dv-entitydescriptor/EntityDescriptor=]s of all [=DV=]'s the [=RD=] supports (see [=dv-entitydescriptor/EntityDescriptor=]s).
+-<dfn data-dfn-for="rd-sp-metadata">Signature</dfn>|1|MUST contain the Digital signature of the [=OD=] to verify the integrity of this [=Metadata=] and MUST be generated with a (private signing key associated with a) PKIoverheid public-key certificate which contains the same OIN as used in the [=rd-sp-entitydescriptor/entityID=]. Also see technical requirements on [Signature](#signature) and on [Signing, encryption algorithms and hash functions](#signing-encryption-hash)
+-<dfn data-dfn-for="rd-sp-metadata">EntityDescriptor</dfn>|1..n|MUST contain the [=rd-sp-entitydescriptor/EntityDescriptor=] of the [=OD=] (see [=rd-sp-entitydescriptor/EntityDescriptor=]).<br/>MUST contain the [=dv-entitydescriptor/EntityDescriptor=]s of all [=DV=]'s the [=OD=] supports (see [=dv-entitydescriptor/EntityDescriptor=]s).
 
 #### <dfn data-dfn-for="rd-sp-entitydescriptor">EntityDescriptor</dfn> 
 
 Element/@Attribute|0..n|Description
 ---|---|---
 &#64;<dfn data-dfn-for="rd-sp-entitydescriptor">ID</dfn>|1|A document-unique identifier for the element, typically used as a reference point when signing.
-&#64;<dfn data-dfn-for="rd-sp-entitydescriptor">entityID</dfn>|1|MUST contain the entityID of the [=RD=].
+&#64;<dfn data-dfn-for="rd-sp-entitydescriptor">entityID</dfn>|1|MUST contain the entityID of the [=OD=].
 &#64;<dfn data-dfn-for="rd-sp-entitydescriptor">validUntil</dfn>|0..1|SHOULD NOT be used as [=rd-sp-metadata/validUntil=] is already present at [=rd-sp-metadata/EntitiesDescriptor=] level.<br/>MAY contain a datetime at which the metadata expires.<br/>If validUntil is expired, the metadata is considered invalid.
 <dfn data-dfn-for="rd-sp-entitydescriptor">Signature</dfn>|0..1|SHOULD NOT be used as the metadata is already signed at the [=rd-sp-metadata/EntitiesDescriptor=] level.<br/>If used it MUST be generated with the private signing key with an associated PKIoverheid public-key certificate which contains the same OIN as used in the [=rd-sp-entitydescripto/entityID=].
 <dfn data-dfn-for="rd-sp-entitydescriptor">SPSSODescriptor</dfn>|1|The `SPSSODescriptor` implements profiles specific to service providers.
@@ -37,7 +37,7 @@ Element/@Attribute|0..n|Description
 --<dfn data-dfn-for="rd-sp-entitydescriptor">KeyInfo</dfn>|1|	
 ---<dfn data-dfn-for="rd-sp-entitydescriptor">KeyName</dfn>|1|Contains the name which identifies the key. MAY be any string. Common practice is using the SHA1 fingerprint stripped of colons.
 ---<dfn data-dfn-for="rd-sp-entitydescriptor">X509Data</dfn>|1|Contains the encoded X509 certificate with the public key.
--<dfn data-dfn-for="rd-sp-entitydescriptor">SingleLogoutService</dfn>|0..n|Conditional: MUST be present if the [=RD=] supports [=SSO=]. Describes the endpoint used to log the [=EU=] out of its current session if participating in a [=SSO=] session.
+-<dfn data-dfn-for="rd-sp-entitydescriptor">SingleLogoutService</dfn>|0..n|Conditional: MUST be present if the [=OD=] supports [=SSO=]. Describes the endpoint used to log the [=EU=] out of its current session if participating in a [=SSO=] session.
 --&#64;<dfn data-dfn-for="rd-sp-entitydescriptor/SLS">Binding</dfn>|1|MUST contain the appropriate binding for the endpoint. The binding parameter denotes the type of binding used. This is a urn relating to [[SAML2.BINDINGS]]. At least one [=rd-sp-entitydescriptor/SingleLogoutService=] MUST contain the HTTP-POST binding.
 --&#64;<dfn data-dfn-for="rd-sp-entitydescriptor/SLS">Location</dfn>|1|MUST contain the URL of the [=rd-sp-entitydescriptor/SingleLogoutService=] endpoint for the &#64;<a data-link-type="dfn" data-link-for="rd-sp-entitydescriptor/SLS">Binding</a>.
 -<dfn data-dfn-for="rd-sp-entitydescriptor">AssertionConsumerService</dfn>|1..n|Must contain at least one URL to which the [=EU=] will be redirected after authentication.
@@ -48,7 +48,7 @@ Element/@Attribute|0..n|Description
 
 #### DV→AD <dfn data-dfn-for="dv-rd-entitydescriptor">EntityDescriptor</dfn>
 
-For each [=DV=] supported by an [=RD=] the following metadata must be included in the [=RD=] metadata.
+For each [=DV=] supported by an [=OD=] the following metadata must be included in the [=OD=] metadata.
 
 Element/@Attribute|0..n|Description
 ---|---|---
@@ -63,13 +63,13 @@ Element/@Attribute|0..n|Description
 --<dfn data-dfn-for="dv-rd-entitydescriptor">KeyInfo</dfn>|1|	
 ---<dfn data-dfn-for="dv-rd-entitydescriptor">KeyName</dfn>|1|Contains the name which identifies the key. MAY be any string. Common practice is using the SHA1 fingerprint stripped of colons.
 ---<dfn data-dfn-for="dv-rd-entitydescriptor">X509Data</dfn>|1|Contains the encoded X509 certificate with the public key.
--<dfn data-dfn-for="dv-rd-entitydescriptor">AssertionConsumerService</dfn>|1..n|According to saml-metadata-2.0 MUST contain at least one URL to which the [=EU=] will be redirected after authentication. MUST contain only one entry. MUST contain a copy of the [=rd-sp-entitydescriptor/AssertionConsumerService=] element in the RD’s [=rd-sp-entitydescriptor/EntityDescriptor=]. This entry will be ignored as the [=rd-sp-entitydescriptor/AssertionConsumerService=] definitions in the RD [=rd-sp-entitydescriptor/EntityDescriptor=] MUST be used.
+-<dfn data-dfn-for="dv-rd-entitydescriptor">AssertionConsumerService</dfn>|1..n|According to saml-metadata-2.0 MUST contain at least one URL to which the [=EU=] will be redirected after authentication. MUST contain only one entry. MUST contain a copy of the [=rd-sp-entitydescriptor/AssertionConsumerService=] element in the OD’s [=rd-sp-entitydescriptor/EntityDescriptor=]. This entry will be ignored as the [=rd-sp-entitydescriptor/AssertionConsumerService=] definitions in the OD [=rd-sp-entitydescriptor/EntityDescriptor=] MUST be used.
 
-### [=AD=]/[=BVD=]→RD metadata {#ad-bvd-metadata}
+### [=AD=]/[=BVD=]→OD metadata {#ad-bvd-metadata}
 
 Published by|Consumed by
 ---|---
-[=AD=], [=BVD=]|[=RD=]
+[=AD=], [=BVD=]|[=OD=]
 
 An AD/BVD publishes metadata in accordance with [[SAML2.METADATA]] with one [=ad-metadata/EntityDescriptor=] element. The metadata is signed in accordance with the SAML signature.
 
@@ -83,7 +83,7 @@ Element/@Attribute|0..n|Description
 -<dfn data-dfn-for="ad-metadata">Signature</dfn>|1|MUST contain the Digital signature of the [=AD=] to verify the integrity of this [=Metadata=] and MUST be generated with a (private signing key associated with a) PKIoverheid public-key certificate which contains the same OIN as used in the [=ad-metadata/entityID=]. Also see technical requirements on [Signature](#signature) and on [Signing, encryption algorithms and hash functions](#signing-encryption-hash)
 -<dfn data-dfn-for="ad-metadata">IDPSSODescriptor</dfn>|1|
 &#8209;&#8209;&#64;<dfn data-dfn-for="ad-metadata">protocolSupportEnumeration</dfn>|1|Set to: `urn:oasis:names:tc:SAML:2.0:protocol`
---&#64;<dfn data-dfn-for="ad-metadata">WantAuthnRequestsSigned</dfn>|1|Set to `true` indication that AuthnRequest messages MUST be signed by the [=RD=].
+--&#64;<dfn data-dfn-for="ad-metadata">WantAuthnRequestsSigned</dfn>|1|Set to `true` indication that AuthnRequest messages MUST be signed by the [=OD=].
 --<dfn data-dfn-for="ad-metadata">KeyDescriptor</dfn>|1..n|Contains at least 1 KeyDescriptor element with `@use="signing"`. A [=BVD=] MUST also provide at least 1 [=ad-metadata/KeyDescriptor=] element that supports encryption (`@use="encryption"`) for receiving ActingSubjectID (see [=dv-attributestatement/Attribute=]) with an EncryptedID's from an [=AD=]. A second [=ad-metadata/KeyDescriptor=] with `@use="encryption"` MAY be present to support certificate rollover.<br/>Also see technical requirements on [Signing, encryption algorithms and hash functions](#signing-encryption-hash)
 ---<dfn data-dfn-for="ad-metadata">KeyInfo</dfn>|1|
 ----<dfn data-dfn-for="ad-metadata">KeyName</dfn>|1|Contains the name which identifies the key.

@@ -27,9 +27,9 @@ During the process of authenticating and authorizing, an [=EU=] may cancel the p
 
 If an [=EU=] cancels, the [=Participant=] MUST direct the [=EU=] automatically to the latest sender of a SAML request, accompanying a valid SAML [=dv-artifact-response-message/StatusMessage|AuthN Response - StatusMessage=] including valid SAML status codes ([=urn:oasis:names:tc:SAML:2.0:status:Responder=] with [=urn:oasis:names:tc:SAML:2.0:status:AuthnFailed=]). A [=dv-artifact-response-message/StatusMessage|AuthN Response - StatusMessage=] element MUST be included, containing the exact phrase `Authentication cancelled`.
 
-If [=RD=] receives a cancellation message (from an [=AD=] or [=BVD=]), it MUST be forwarded to the [=DV=] or [=LC=].
+If [=OD=] receives a cancellation message (from an [=AD=] or [=BVD=]), it MUST be forwarded to the [=DV=] or [=LC=].
 
-If a [=DV=] or [=LC=] receives a cancellation message (from [=RD=]), it MUST indicate to the [=EU=] that he is not logged in, and MAY offer the [=EU=] the option to re-authenticate.
+If a [=DV=] or [=LC=] receives a cancellation message (from [=OD=]), it MUST indicate to the [=EU=] that he is not logged in, and MAY offer the [=EU=] the option to re-authenticate.
 
 ### Attributes not supported
 
@@ -48,7 +48,7 @@ A [=Participant=] receiving such a response:
 
 1. MUST show the [=EU=] a [AuthN-response message](#dv-authn-response-message) indicating authentication has failed, including the contents of [=dv-artifact-response-message/StatusMessage|AuthN Response - StatusMessage=]. 
 
-2. If the [=Participant=] is a [=RD=] then the [=RD=] MUST ask the [=EU=] to re-select an [=AD=] or [=BVD=] or cancel. Except in case of [Use Case AD-preselection](#uc-preselection), then the [=RD=] MUST forward the [AuthN-response message](#dv-authn-response-message) to the [=DV=] or [=LC=].
+2. If the [=Participant=] is a [=OD=] then the [=OD=] MUST ask the [=EU=] to re-select an [=AD=] or [=BVD=] or cancel. Except in case of [Use Case AD-preselection](#uc-preselection), then the [=OD=] MUST forward the [AuthN-response message](#dv-authn-response-message) to the [=DV=] or [=LC=].
 
 
 ### Incorrect message (non-recoverable)
