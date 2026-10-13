@@ -1,14 +1,14 @@
 ## DV Metadata {#dv-metadata}
 
-### DV→RD Metadata {#dv-metadata}
+### DV→OD Metadata {#dv-metadata}
 
 Published by|Consumed by
 ---|---
-[=DV=] that connects to [=RD=] directly|[=RD=]
+[=DV=] that connects to [=OD=] directly|[=OD=]
 
-This section describes the metadata that a [=DV=] with a direct connection to [=RD=] (not using a [=LC=]) must provide. This metadata MAY be published on a location known to [=RD=] or MAY be provided to [=RD=] by any other means supported.
+This section describes the metadata that a [=DV=] with a direct connection to [=OD=] (not using a [=LC=]) must provide. This metadata MAY be published on a location known to [=OD=] or MAY be provided to [=OD=] by any other means supported.
 
-See also [Example SAML-metadata DV for RD](#example-saml-metadata-dv-for-rd 'Example of SAML-metadata a DV needs te provide to a RD')
+See also [Example SAML-metadata DV for OD](#example-saml-metadata-dv-for-rd 'Example of SAML-metadata a DV needs te provide to a OD')
 
 
 Element/@Attribute|0..n|Description
@@ -31,25 +31,25 @@ Element/@Attribute|0..n|Description
  ---&#64;<dfn data-dfn-for="dv-metadata">Binding</dfn>|1|MUST contain the appropriate binding for the endpoint. The binding parameter denotes the type of binding used. This is an urn relating to [[SAML2.BINDINGS]]. At least one [=dv-metadata/SingleLogoutService=] MUST contain the HTTP-POST binding.
  ---&#64;<dfn data-dfn-for="dv-metadata">Location</dfn>|1|MUST contain the URL of the [=dv-metadata/SingleLogoutService=] endpoint for the [=dv-metadata/Binding=].
 --<dfn title="Contains at least one URL to which the EU will be redirected after authentication." data-dfn-for="dv-metadata">AssertionConsumerService</dfn>|1..n|Must contain at least one URL to which the [=EU=] will be redirected after authentication. If more than one is included one MUST contain the attribute `@isDefault` with value `true`.
---<dfn title="AttributeConsumingService MUST contain 1 or more elements that describe the Service requested using an @dv-metadata/Index to a Service Definition registered with Service Catalog kept by RD."  data-dfn-for="dv-metadata">AttributeConsumingService</dfn>|0..n|Conditional: MUST be present when [=DV=] uses a corresponding[=dv-authn-request-message/AttributeConsumingServiceIndex=] in the [=DV=] [AuthnRequest Message](#dv-authn-request-message). MUST NOT be present in any other case or by any other [=Participant=] role. <br\>When used, AttributeConsumingService MUST contain 1 or more elements that describe the [=Service=] requested using an @[=dv-metadata/Index=] to a [=Service Definition=] registered with [=Service Catalog=] kept by [=RD=].
+--<dfn title="AttributeConsumingService MUST contain 1 or more elements that describe the Service requested using an @dv-metadata/Index to a Service Definition registered with Service Catalog kept by OD."  data-dfn-for="dv-metadata">AttributeConsumingService</dfn>|0..n|Conditional: MUST be present when [=DV=] uses a corresponding[=dv-authn-request-message/AttributeConsumingServiceIndex=] in the [=DV=] [AuthnRequest Message](#dv-authn-request-message). MUST NOT be present in any other case or by any other [=Participant=] role. <br\>When used, AttributeConsumingService MUST contain 1 or more elements that describe the [=Service=] requested using an @[=dv-metadata/Index=] to a [=Service Definition=] registered with [=Service Catalog=] kept by [=OD=].
 ---&#64;<dfn data-dfn-for="dv-metadata">Index</dfn>|1|MUST be present.
 ---&#64;<dfn data-dfn-for="dv-metadata">isDefault</dfn>|0..1|MUST be present if more than one [=dv-metadata/Index=] is specified in the metadata. MAY only be present once.  If present indicates the default [=dv-metadata/AttributeConsumingService=] which is used when no [=dv-authn-request-message/AttributeConsumingServiceIndex=] was referenced in the [AuthN Request Message](#dv-authn-request-message). It is advised to always include an [=dv-authn-request-message/AttributeConsumingServiceIndex=] in the [AuthN Request Message](#dv-authn-request-message).
 ---<dfn data-dfn-for="dv-metadata">ServiceName</dfn>|1..n|One or more language-qualified names for the service. Only one descriptor per language MUST be present.
----<dfn data-dfn-for="dv-metadata">RequestedAttribute</dfn>|1..n|At least one [=dv-metadata/RequestedAttribute=] element MUST be present with `@name="urn:nl-eid-gdi:1.0:ServiceUUID"`.
-----<dfn data-dfn-for="dv-metadata">AttributeValue</dfn>|1|MUST contain the ServiceUUID to be used for this authentication. The [=ServiceUUID=] must be pre-registered with [=Service Catalog=] kept by [=RD=].
+---<dfn data-dfn-for="dv-metadata">RequestedAttribute</dfn>|1..n|At least one [=dv-metadata/RequestedAttribute=] element MUST be present with `@name="urn:etoegang:core:ServiceUUID"`.
+----<dfn data-dfn-for="dv-metadata">AttributeValue</dfn>|1|MUST contain the ServiceUUID to be used for this authentication. The [=ServiceUUID=] must be pre-registered with [=Service Catalog=] kept by [=OD=].
 
-### LC→RD metadata {#lc-metadata}
+### LC→OD metadata {#lc-metadata}
 
 Published by|Consumed by
 ---|---
-[=LC=]|[=RD=]
+[=LC=]|[=OD=]
 
 
-This section describes the metadata the [=LC=] publishes for the RD. The LC MUST provide the metadata for each [=DV=] it supports. The metadata MUST be signed by the [=LC=]. The metadata of all [=DV=]s using an [=LC=] MUST be supplied as a single file and MAY additionally be supplied as individual files.
+This section describes the metadata the [=LC=] publishes for the OD. The LC MUST provide the metadata for each [=DV=] it supports. The metadata MUST be signed by the [=LC=]. The metadata of all [=DV=]s using an [=LC=] MUST be supplied as a single file and MAY additionally be supplied as individual files.
 
 This section describes the layout of the metadata. The XML schema for the Metadata is that of [[SAML2.METADATA]].
 
-See also [Example SAML-metadata LC for RD](#example-saml-metadata-lc-for-rd 'Example of SAML-metadata a LC needs te provide to a RD')
+See also [Example SAML-metadata LC for OD](#example-saml-metadata-lc-for-rd 'Example of SAML-metadata a LC needs te provide to a OD')
 
 Element/@Attribute|0..n|Description
 ---|---|---
@@ -60,14 +60,16 @@ Element/@Attribute|0..n|Description
 -<dfn data-dfn-for="lc-metadata">Signature</dfn>|1|MUST contain the Digital signature of the [=LC=] to verify the integrity of this [=Metadata=] and MUST be generated with a (private signing key associated with a) PKIoverheid public-key certificate which contains the same OIN as used in the [=lc-entitydescriptor/entityID=]. Also see technical requirements on [Signature](#signature) and on [Signing, encryption algorithms and hash functions](#signing-encryption-hash)
 -<dfn data-dfn-for="lc-metadata">EntityDescriptor</dfn>|1..n|MUST contain the [=lc-entitydescriptor/EntityDescriptor=] of the [=LC=], see [LC EntityDescriptor](#lc-entitydescriptor).<br/>MUST contain the [=dv-entitydescriptor/EntityDescriptor=]s of all [=DV=]'s the [=LC=] supports, see [DV EntityDescriptor](#dv-metadata-entitydescriptor).
 
-#### LC→RD <dfn data-dfn-for="lc-entitydescriptor">EntityDescriptor</dfn> 
+<span id="lc-entitydescriptor"></span>
+
+#### LC→OD <dfn data-dfn-for="lc-entitydescriptor">EntityDescriptor</dfn> 
 
 Element/@Attribute|0..n|Description
 ---|---|---
 &#64;<dfn data-dfn-for="lc-entitydescriptor">ID</dfn>|1|A document-unique identifier for the element, typically used as a reference point when signing.
 &#64;<dfn data-dfn-for="lc-entitydescriptor">entityID</dfn>|1|MUST contain the [=entityid=] of the [=LC=].
 &#64;<dfn data-dfn-for="lc-entitydescriptor">validUntil</dfn>|0..1|SHOULD NOT be used as either [=lc-metadata/validUntil=] or [=lc-metadata/cacheDuration=] is already present at [=lc-metadata/EntitiesDescriptor=] level.<br/>MAY contain a datetime at which the metadata expires.<br/>If validUntil is expired, the metadata is considered invalid.
-&#64;<dfn data-dfn-for="lc-entitydescriptor">cacheDuration</dfn>|0..1|SHOULD NOT be used as either [=lc-metadata/validUntil=] or [=lc-metadata/cacheDuration=] is already present at [=lc-metadata/EntitiesDescriptor=] level.<br/>MAY contain cacheduration. [=RD=] is advised to check for new metadata after the given period.
+&#64;<dfn data-dfn-for="lc-entitydescriptor">cacheDuration</dfn>|0..1|SHOULD NOT be used as either [=lc-metadata/validUntil=] or [=lc-metadata/cacheDuration=] is already present at [=lc-metadata/EntitiesDescriptor=] level.<br/>MAY contain cacheduration. [=OD=] is advised to check for new metadata after the given period.
 &#64;<dfn data-dfn-for="lc-entitydescriptor">Signature</dfn>|0..1|SHOULD NOT be used as the metadata is already signed at the [=lc-metadata/EntitiesDescriptor=] level.<br/>If used it MUST be generated with the private signing key with an associated PKIoverheid public-key certificate which contains the same OIN as the [=entityid=] in the [=lc-entitydescriptor/EntityDescriptor=].
 &#64;<dfn data-dfn-for="lc-entitydescriptor">SPSSODescriptor</dfn>|1|The `SPSSODescriptor` implements profiles specific to service providers.
 -&#64;<dfn data-dfn-for="lc-entitydescriptor">AuthnRequestsSigned</dfn>|1|Must be set to `true`.
@@ -87,7 +89,9 @@ Element/@Attribute|0..n|Description
 --&#64;<dfn data-dfn-for="lc-entitydescriptor/ACS">isDefault</dfn>|0..1|If more than one [=lc-entitydescriptor/AssertionConsumerService=] elements are included, one of these elements MUST be flagged as default by setting the isDefault XML attribute with value `true`.
 
 
-#### DV→RD <dfn data-dfn-for="dv-entitydescriptor">EntityDescriptor</dfn> 
+<span id="dv-metadata-entitydescriptor"></span>
+
+#### DV→OD <dfn data-dfn-for="dv-entitydescriptor">EntityDescriptor</dfn> 
 
 For each [=DV=] supported by an [=LC=] the following metadata must be included in the [=LC=] metadata.
 
@@ -96,7 +100,7 @@ Element/@Attribute|0..n|Description
 &#64;<dfn data-dfn-for="dv-entitydescriptor">ID</dfn>|1|A document-unique identifier for the element, typically used as a reference point when signing.
 &#64;<dfn data-dfn-for="dv-entitydescriptor">entityID</dfn>|1|Specifies the unique identifier of the SAML entity whose metadata is described by the element's contents. MUST contain the [=entityid=] of the [=DV=].
 &#64;<dfn data-dfn-for="dv-entitydescriptor">validUntil</dfn>|0..1|SHOULD NOT be used as either [=lc-metadata/validUntil=] or [=lc-metadata/cacheDuration=] is already present at [=lc-metadata/EntitiesDescriptor=] level.<br/>MAY contain a datetime at which the metadata expires.<br/>If validUntil is expired, the metadata is considered invalid.
-&#64;<dfn data-dfn-for="dv-entitydescriptor">cacheDuration</dfn>|0..1|SHOULD NOT be used as either [=lc-metadata/validUntil=] or [=lc-metadata/cacheDuration=] is already present at [=lc-metadata/EntitiesDescriptor=] level.<br/>MAY contain cacheduration. [=RD=] is advised to check for new metadata after the given period.
+&#64;<dfn data-dfn-for="dv-entitydescriptor">cacheDuration</dfn>|0..1|SHOULD NOT be used as either [=lc-metadata/validUntil=] or [=lc-metadata/cacheDuration=] is already present at [=lc-metadata/EntitiesDescriptor=] level.<br/>MAY contain cacheduration. [=OD=] is advised to check for new metadata after the given period.
 <dfn data-dfn-for="dv-entitydescriptor">Signature</dfn>|0..1|SHOULD NOT be used as the metadata is already signed at the [=lc-metadata/EntitiesDescriptor=] level.<br/>If used it MUST be generated with the private signing key with an associates PKIoverheid public-key certificate which contains the same OIN as the [=entityid=] in the [=DV=] [=dv-entitydescriptor/EntityDescriptor=]. The public key certificate MUST be present in the KeyDescriptor metadata. MUST contain a `KeyInfo` element with a `KeyName` or `X509Certificate` elements.
 <dfn data-dfn-for="dv-entitydescriptor">SPSSODescriptor</dfn>|1|	
 @&#8209;&#64;<dfn data-dfn-for="dv-entitydescriptor">protocolSupportEnumeration</dfn>|1|Set to: `urn:oasis:names:tc:SAML:2.0:protocol`.
@@ -106,24 +110,24 @@ Element/@Attribute|0..n|Description
 ---<dfn data-dfn-for="dv-entitydescriptor">X509Data</dfn>|1|Contains the encoded X509 certificate with the public key.
 -<dfn data-dfn-for="dv-entitydescriptor">AssertionConsumerService</dfn>|1..n|According to saml-metadata-2.0 MUST contain at least one URL to which the [=EU=] will be redirected after authentication. MUST contain only one entry. MUST contain a copy of the [=lc-entitydescriptor/AssertionConsumerService=] element in the [=LC=]’s [=lc-entitydescriptor/EntityDescriptor=]. This entry will be ignored as the [=lc-entitydescriptor/AssertionConsumerService=] definitions in the LC [=lc-entitydescriptor/EntityDescriptor=] MUST be used.
 
-### RD→DV/LC metadata {#rd-idp-metadata}
+### OD→DV/LC metadata {#rd-idp-metadata}
 
 Published by|Consumed by
 ---|---
-[=RD=]|[=DV=] that connect directly with [=RD=], [=LC=]
+[=OD=]|[=DV=] that connect directly with [=OD=], [=LC=]
 
-[=RD=] publishes metadata in accordance with [[SAML2.METADATA]] with one [=rd-idp-metadata/EntityDescriptor=] element. The metadata is signed in accordance with the SAML signature.
+[=OD=] publishes metadata in accordance with [[SAML2.METADATA]] with one [=rd-idp-metadata/EntityDescriptor=] element. The metadata is signed in accordance with the SAML signature.
 
-See also [Example SAML-metadata a RD for DV](#example-saml-metadata-rd-for-dv 'Example of SAML-metadata a RD needs te provide to a DV')
+See also [Example SAML-metadata a OD for DV](#example-saml-metadata-rd-for-dv 'Example of SAML-metadata a OD needs te provide to a DV')
 
 Element/@Attribute|0..n|Description
 ---|---|---
 <dfn data-dfn-for="rd-idp-metadata">EntityDescriptor</dfn>|1|	
 -&#64;<dfn data-dfn-for="rd-idp-metadata">ID</dfn>|1|A document-unique identifier for the element, typically used as a reference point when signing.
--&#64;<dfn data-dfn-for="rd-idp-metadata">entityID</dfn>|1|Specifies the unique identifier of the SAML entity whose metadata is described by the element's contents. Contains the [=entityid=] of RD.
+-&#64;<dfn data-dfn-for="rd-idp-metadata">entityID</dfn>|1|Specifies the unique identifier of the SAML entity whose metadata is described by the element's contents. Contains the [=entityid=] of OD.
 -&#64;<dfn data-dfn-for="rd-idp-metadata">validUntil</dfn>|0..1|MAY contain a datetime at which the metadata expires.</br>If [=rd-idp-metadata/validUntil=] is expired, the metadata is considered invalid.</br>Either [=rd-idp-metadata/validUntil=] or [=rd-idp-metadata/cacheDuration=] MUST be present. (following OASIS specification [[SAML2.METADATA]])
 -&#64;<dfn data-dfn-for="rd-idp-metadata">cacheDuration</dfn>|0..1|MAY contain cache duration. DV or LC is advised to check for new metadata after the given period.<br/>Either [=rd-idp-metadata/validUntil=] or [=rd-idp-metadata/cacheDuration=] MUST be present. (following OASIS specification [[SAML2.METADATA]])
--<dfn data-dfn-for="rd-idp-metadata">Signature</dfn>|1|MUST contain the Digital signature of the [=RD=] to verify the integrity of this [=Metadata=] and MUST be generated with a (private signing key associated with a) PKIoverheid public-key certificate which contains the same OIN as used in the [=rd-idp-metadata/entityID=]. Also see technical requirements on [Signature](#signature) and on [Signing, encryption algorithms and hash functions](#signing-encryption-hash)
+-<dfn data-dfn-for="rd-idp-metadata">Signature</dfn>|1|MUST contain the Digital signature of the [=OD=] to verify the integrity of this [=Metadata=] and MUST be generated with a (private signing key associated with a) PKIoverheid public-key certificate which contains the same OIN as used in the [=rd-idp-metadata/entityID=]. Also see technical requirements on [Signature](#signature) and on [Signing, encryption algorithms and hash functions](#signing-encryption-hash)
 -<dfn data-dfn-for="rd-idp-metadata">IDPSSODescriptor</dfn>|1|	
 &#8209;&#8209;&#64;<dfn data-dfn-for="rd-idp-metadata">protocolSupportEnumeration</dfn>|1|Set to: `urn:oasis:names:tc:SAML:2.0:protocol`
 --&#64;<dfn data-dfn-for="rd-idp-metadata">WantAuthnRequestsSigned</dfn>|1|Set to `true` indication that AuthnRequest messages MUST be signed by the [=DV=] or [=LC=].

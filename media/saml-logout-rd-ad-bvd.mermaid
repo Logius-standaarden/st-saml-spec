@@ -6,10 +6,10 @@ sequenceDiagram
 autonumber
 participant A as UA
 participant B as DV / LC
-participant C as RD
+participant C as OD
 participant E as AD
 rect rgba(75, 75, 75,.4)
-    Note over B,C: See DV#8594;RD
+    Note over B,C: See DV#8594;OD
     A->>B:
     B-->>A:
     A->>C:
@@ -21,7 +21,7 @@ E-->>A: LogoutResponse
 A->>C: LogoutResponse
 rect rgba(75, 75, 75, .4)
 rect rgba(75, 75, 75, .4)
-    Note over B,C: See DV#8594;RD
+    Note over B,C: See DV#8594;OD
     C-->>A:
     A->>B:
 end
