@@ -101,9 +101,9 @@ Element/@Attribute|0..n|Description<br/>Issuer = DV or LC<br/>Recipient = OD
 <dfn title="MUST contain the EntityID of the issuer as registered in the metadata." data-dfn-for="dv-authn-request-message">Issuer</dfn>|1|MUST contain the [=EntityID=] of the issuer as registered in the [=Metadata=].
 <dfn title="MUST contain the XML signature of the sender for the enveloped message." data-dfn-for="dv-authn-request-message">Signature</dfn>|1|MUST contain the XML signature of the sender for the enveloped message. MUST contain a `KeyInfo` element with a `KeyName` or `X509Certificate` elements. See [Signature](#signature)
 <dfn title="If present MUST contain the attributes about IntendedAudience, ServiceUUID and IdpAssertion" data-dfn-for="dv-authn-request-message">Extensions</dfn>|0..1|Conditional. Only one of [=dv-authn-request-message/Extensions=] or [=dv-authn-request-message/AttributeConsumingServiceIndex=] MUST be present. And when `Extensions` is present, it MUST contain the attributes described below. <br/><br/>_**NOTE**: Also see the use of [@AttributeConsumingServiceIndex and Extensions](#dv-attributeconsumingserviceindex-extensions)_
--<dfn title="An `Attribute` with the `@Name=urn:nl-eid-gdi:1.0:IntendedAudience` MUST be present and contain an AttributeValue with the EntityID of the DV for which authentication is requested." data-dfn-for="IntendedAudience">Attribute</dfn>|1|An `Attribute` with the `@Name="urn:nl-eid-gdi:1.0:IntendedAudience"` MUST be present and contain an AttributeValue with the [=EntityID=] of the [=DV=] for which authentication is requested.<br/><br/>_**NOTE**: (future) support for more than one audience where each audience receives the audience specific [EncryptedID](#dv-encryptedid) is provided by the [=Service Definition=] registered with the [=Service Catalog=]._
--<dfn title="An Attribute with the @Name=urn:nl-eid-gdi:1.0:ServiceUUID MUST be present and contain an AttributeValue containing a ServiceUUID that is known at the Service Catalog of the receiver."  data-dfn-for="ServiceUUID">Attribute</dfn>|1|An Attribute with the `@Name="urn:nl-eid-gdi:1.0:ServiceUUID"` MUST be present and contain an AttributeValue containing a `[=ServiceUUID=]` that is known at the [=Service Catalog=] of the receiving [=OD=], [=AD=] and [=BVD=].
-<span data-hide-if="dv.html">-<dfn title="An `Attribute` with the `@Name=urn:nl-eid-gdi:1.0:IdpAssertion`."  data-dfn-for="IdpAssertion">Attribute</dfn></span>|<span data-hide-if="dv.html">0..1</span>|<span data-hide-if="dv.html">Conditional. An `Attribute` with the `@Name="urn:nl-eid-gdi:1.0:IdpAssertion"`. <br/><br/>_**NOTE**: This attribute MUST NOT be used (for [=DV=]&rarr;[=OD=] and [=LC=]&rarr;[=OD=]). See AuthN-Request differences for rules on using the Attribute with @Name="urn:nl-eid-gdi:1.0:IdpAssertion" for [=OD=]&rarr;[=AD=]/[=BVD=]_</span>
+-<dfn title="An `Attribute` with the `@Name=urn:etoegang:core:IntendedAudience` MUST be present and contain an AttributeValue with the EntityID of the DV for which authentication is requested." data-dfn-for="IntendedAudience">Attribute</dfn>|1|An `Attribute` with the `@Name="urn:etoegang:core:IntendedAudience"` MUST be present and contain an AttributeValue with the [=EntityID=] of the [=DV=] for which authentication is requested.<br/><br/>_**NOTE**: (future) support for more than one audience where each audience receives the audience specific [EncryptedID](#dv-encryptedid) is provided by the [=Service Definition=] registered with the [=Service Catalog=]._
+-<dfn title="An Attribute with the @Name=urn:etoegang:core:ServiceUUID MUST be present and contain an AttributeValue containing a ServiceUUID that is known at the Service Catalog of the receiver."  data-dfn-for="ServiceUUID">Attribute</dfn>|1|An Attribute with the `@Name="urn:etoegang:core:ServiceUUID"` MUST be present and contain an AttributeValue containing a `[=ServiceUUID=]` that is known at the [=Service Catalog=] of the receiving [=OD=], [=AD=] and [=BVD=].
+<span data-hide-if="dv.html">-<dfn title="An `Attribute` with the `@Name=urn:etoegang:core:IdpAssertion`."  data-dfn-for="IdpAssertion">Attribute</dfn></span>|<span data-hide-if="dv.html">0..1</span>|<span data-hide-if="dv.html">Conditional. An `Attribute` with the `@Name="urn:etoegang:core:IdpAssertion"`. <br/><br/>_**NOTE**: This attribute MUST NOT be used (for [=DV=]&rarr;[=OD=] and [=LC=]&rarr;[=OD=]). See AuthN-Request differences for rules on using the Attribute with @Name="urn:etoegang:core:IdpAssertion" for [=OD=]&rarr;[=AD=]/[=BVD=]_</span>
 <dfn title="Element MAY be used to limit the selection of AD's or BVD's at the OD"  data-dfn-for="dv-authn-request-message">Scoping</dfn>|0..1|Conditional. Element MAY be used to limit the selection of [=AD=]'s or [=BVD=]'s at the [=OD=].<span data-hide-if="dv.html"><br/><br/>_**NOTE**: different rules for [=OD=]&rarr;[=AD=]/[=BVD=], see AuthN-Request differences _</span>
 -<dfn title="List of IDP's - Element MUST be present in DV Authn-request message when Scoping element is used." data-dfn-for="dv-authn-request-message">IDPList</dfn>|0..1|Conditional. List of IDP's - Element MUST be present in DV Authn-request message when Scoping element is present.<span data-hide-if="dv.html"><br/><br/>_**NOTE**: MUST NOT be used for [=OD=]&rarr;[=AD=]/[=BVD=], see AuthN-Request differences_</span>
 --<dfn  title="At least one IDPEntry (of one AD) MUST be present if the IDPList element is present."  data-dfn-for="dv-authn-request-message">IDPEntry</dfn>|1..n|At least one IDPEntry (of an [=AD=]) MUST be present if the IDPList element is present. <br/>If no valid IDPEntry is present, the AuthnRequest will fail with a top level status code urn:oasis:names:tc:saml:2.0:status:Requester and second-level code depending on the condition according to [[SAML2.CORE]] section 3.2.2.2: urn:oasis:names:tc:SAML:2.0:status:NoSupportedIDP. <br/>If the list also contains the [=EntityID=] of a [=BVD=]. This indicates that representation using the [=BVD=] is optional in combination with the [=AD=]'(s) in the IDPList. The [=OD=] will let the [=EU=] choose whether to use representation with a [=BVD=]. The [=OD=] MUST limit the [=AD=] and [=BVD=] selection list presented to [=EU=]'s for [=AD=]'s or combination of [=AD=]’s and [=BVD=]’s that are supported.
@@ -302,7 +302,7 @@ Element/@Attribute|0..n|Description
 The [=dv-authn-response-assertion/NotBefore=] and [=dv-authn-response-assertion/NotOnOrAfter=] in the [=dv-authn-response-assertion/Conditions=] element limit the time during which the [AuthN Response - Assertion](#dv-authn-response-assertion) is considered valid within a prior established authenticated [=EU=] session based on this [AuthN Response - Assertion](#dv-authn-response-assertion). The value of these attributes should be aligned with the maximum session duration (which may be dependent on the [=LoA=]) and typically is much longer than the validity of the  [=dv-subjectconfirmation/SubjectConfirmation=] .
 
 ###### AttributeStatement - DV {#dv-attributestatement}
-The [AuthN Response - Assertion](#dv-authn-response-assertion) when present MUST contain an [=dv-authn-response-assertion/attributestatement=]. An [=dv-authn-response-assertion/attributestatement=] contains one or more [=dv-attributestatement/Attribute=] elements and MUST contain exactly one [=dv-attributestatement/Attribute=] with `@Name="urn:nl-eid-gdi:1.0:ActingSubjectID"`. It MAY contain exactly one [=dv-attributestatement/Attribute=] element with `@Name="urn:nl-eid-gdi:1.0:LegalSubjectID"` indicating representation. Both ActingSubjectID and LegalSubjectID [=dv-attributestatement/Attribute=]s MUST contain one or more [=dv-attributestatement/AttributeValue=]s for one or more Recipients (e.g. [=DV=]). And these Recipients must be included in the [=dv-authn-response-assertion/AudienceRestriction=] element. 
+The [AuthN Response - Assertion](#dv-authn-response-assertion) when present MUST contain an [=dv-authn-response-assertion/attributestatement=]. An [=dv-authn-response-assertion/attributestatement=] contains one or more [=dv-attributestatement/Attribute=] elements and MUST contain exactly one [=dv-attributestatement/Attribute=] with `@Name="urn:etoegang:core:ActingSubjectID"`. It MAY contain exactly one [=dv-attributestatement/Attribute=] element with `@Name="urn:etoegang:core:LegalSubjectID"` indicating representation. Both ActingSubjectID and LegalSubjectID [=dv-attributestatement/Attribute=]s MUST contain one or more [=dv-attributestatement/AttributeValue=]s for one or more Recipients (e.g. [=DV=]). And these Recipients must be included in the [=dv-authn-response-assertion/AudienceRestriction=] element.
 
 Element/@Attribute|0..n|Description
 ---|---|---
@@ -318,7 +318,7 @@ In all cases the [=ServiceUUID=] and [=ServiceID=] will be provided as unencrypt
 
 Attribute|1..n|Attribute Name|Description
 ---|---|---|---
-ServiceUUID|1|`[=dv-attributestatement/Name=]="urn:nl-eid-gdi:1.0:ServiceUUID"`|ST-SAML service identifier.
+ServiceUUID|1|`[=dv-attributestatement/Name=]="urn:etoegang:core:ServiceUUID"`|ST-SAML service identifier.
 &#8209;AttributeValue|1..n| |One or more [=ServiceUUID=] values applicable to this [SAML Response](#dv-artifact-response), as determined by the [=OD=] from the request and metadata.
 ServiceID|1|`[=dv-attributestatement/Name=]="urn:etoegang:core:ServiceID"`|Associated ETD service identifier.
 &#8209;AttributeValue|1..n|`urn:etoegang:DV:<OIN>:services:<index>`|The [=ServiceID=] corresponding to each returned [=ServiceUUID=], as registered in the [=Service Catalog=].
@@ -335,12 +335,12 @@ In any response the following attributes containing the Identifier(s) will be pr
 
 Attribute|1..n|Attribute Name|Description
 ---|---|---|---
-<dfn title="Identity of the EndUser (EU)" data-dfn-for="dv-attributestatement">ActingSubjectID</dfn>|1|`[=dv-attributestatement/Name=]="urn:nl-eid-gdi:1.0:ActingSubjectID"`| Identity of the EndUser ([=EU=])
+<dfn title="Identity of the EndUser (EU)" data-dfn-for="dv-attributestatement">ActingSubjectID</dfn>|1|`[=dv-attributestatement/Name=]="urn:etoegang:core:ActingSubjectID"`| Identity of the EndUser ([=EU=])
 &#8209;AttributeValue|1..n| |The (encrypted) ActingSubjectID as received from the [=AD=] at which the [=EU=] was authenticated.<br/>All contain identities of the same [=EU=].
-<dfn title="Identity of the Represented Party" data-dfn-for="dv-attributestatement">LegalSubjectID</dfn>|1|`[=dv-attributestatement/Name=]="urn:nl-eid-gdi:1.0:LegalSubjectID"`| Identity of the [=Service Consumer=]
+<dfn title="Identity of the Represented Party" data-dfn-for="dv-attributestatement">LegalSubjectID</dfn>|1|`[=dv-attributestatement/Name=]="urn:etoegang:core:LegalSubjectID"`| Identity of the [=Service Consumer=]
 &#8209;AttributeValue|1..n| |The LegalSubjectID contains at least one [Encrypted Identity](#dv-encryptedid) of the same [=Service Consumer=].
 
-The [=OD=] MAY map the visible `@Name` of the ActingSubjectID and LegalSubjectID [=dv-attributestatement/Attribute=] elements to the corresponding ST-SAML namespace. The contained [=dv-attributestatement/EncryptedID=] MUST be copied without modification.
+R1.15 uses the ETD attribute names listed in this specification. For connections using the earlier ST-SAML 1.0 interface, the [=OD=] MAY translate the visible, unencrypted attribute names to the corresponding ST-SAML 1.0 names as listed in [Attribute namespace conversion](#attribute-namespace-conversion). The contained [=dv-attributestatement/EncryptedID=] MUST be copied without modification. Original assertions received from an [=AD=] or [=BVD=], including those included in `Advice`, MUST NOT be rewritten as part of attribute namespace conversion.
 
 If there is no representation the AttributeValues of ActingSubjectID and LegalSubjectID MUST be exactly the same, indentifying both the [=EU=] and [=Service Consumer=] as the same natural person. In case of Representation the AttributeValues of ActingSubjectID and LegalSubjectID MUST be different. 
 
@@ -350,12 +350,12 @@ If there is no representation the AttributeValues of ActingSubjectID and LegalSu
 ```xml
 <saml2:AttributeStatement>
     …
-    <saml2:Attribute Name="urn:nl-eid-gdi:1.0:ActingSubjectID">
+    <saml2:Attribute Name="urn:etoegang:core:ActingSubjectID">
         <saml2:AttributeValue>
             // EncryptedID with BSN of ActingSubject 
        </saml2:AttributeValue>
     </saml2:Attribute>
-    <saml2:Attribute Name="urn:nl-eid-gdi:1.0:LegalSubjectID">
+    <saml2:Attribute Name="urn:etoegang:core:LegalSubjectID">
         <saml2:AttributeValue>
             // EncryptedID with BSN LegalSubject
        </saml2:AttributeValue>
@@ -368,7 +368,7 @@ If there is no representation the AttributeValues of ActingSubjectID and LegalSu
             urn:etoegang:DV:00000002003214394002:services:2
         </saml:AttributeValue>
     </saml:Attribute>
-    <saml:Attribute Name="urn:nl-eid-gdi:1.0:ServiceUUID">   // multivalue example
+    <saml:Attribute Name="urn:etoegang:core:ServiceUUID">   // multivalue example
         <saml:AttributeValue xsi:type="xs:string">
             dd4dae83-0f35-4695-b24a-29d470a63ea7
         </saml:AttributeValue>
@@ -387,7 +387,7 @@ In case of legal representation, via [=BVD=], the following attribute will be pr
 
 Type|1..n|Attribute Name|Description
 ---|---|---|---
-<dfn title="The type of (legal) representation" data-dfn-for="dv-attributestatement">RepresentationType</dfn>|0..1|`[=dv-attributestatement/Name=]="urn:nl-eid-gdi:1.1:RepresentationType"`| Optional for DigiD Machtigen; required for any type of legal representation by the [=BVD=].
+<dfn title="The type of (legal) representation" data-dfn-for="dv-attributestatement">RepresentationType</dfn>|0..1|`[=dv-attributestatement/Name=]="urn:etoegang:core:RepresentationType"`| Optional for DigiD Machtigen; required for any type of legal representation by the [=BVD=].
 &#8209;AttributeValue|1..n| |The [type of representation ](#representation-types), to be used by Service Provider [=DV=] for access decision<br/>multiple values of [=Legal Representation=] allowed.
 
 ###### Example Attribute Statement for Legal Representation
@@ -395,12 +395,12 @@ Type|1..n|Attribute Name|Description
 ```xml
 <saml2:AttributeStatement>
     …
-    <saml2:Attribute Name="urn:nl-eid-gdi:1.0:ActingSubjectID">
+    <saml2:Attribute Name="urn:etoegang:core:ActingSubjectID">
         <saml2:AttributeValue>
             // EncryptedID with BSN of ActingSubject (ouder/voogd)
        </saml2:AttributeValue>
     </saml2:Attribute>
-    <saml2:Attribute Name="urn:nl-eid-gdi:1.0:LegalSubjectID">
+    <saml2:Attribute Name="urn:etoegang:core:LegalSubjectID">
         <saml2:AttributeValue>
             // EncryptedID with BSN LegalSubject (kind)
        </saml2:AttributeValue>
@@ -410,13 +410,13 @@ Type|1..n|Attribute Name|Description
             urn:etoegang:DV:00000002003214394002:services:1
         </saml:AttributeValue>
     </saml:Attribute>
-    <saml:Attribute Name="urn:nl-eid-gdi:1.0:ServiceUUID">   // must have 1 value
+    <saml:Attribute Name="urn:etoegang:core:ServiceUUID">   // must have 1 value
         <saml:AttributeValue xsi:type="xs:string">
             dd4dae83-0f35-4695-b24a-29d470a63ea7
         </saml:AttributeValue>
     </saml:Attribute>
-    <saml2:Attribute Name="urn:nl-eid-gdi:1.1:RepresentationType">
-         <saml2:AttributeValue>urn:nl-eid-gdi:1.1:RT:Zorg_Volledig_Gezag_Kind</saml2:AttributeValue>
+    <saml2:Attribute Name="urn:etoegang:core:RepresentationType">
+         <saml2:AttributeValue>urn:etoegang:1.15:RT:Zorg_Volledig_Gezag_Kind</saml2:AttributeValue>
     </saml2:Attribute> 
     …
 </saml2:AttributeStatement>
@@ -443,12 +443,12 @@ Type|1..n|Encrypted Attribute Name|Description
 ```xml
 <saml2:AttributeStatement>
     …
-    <saml2:Attribute Name="urn:nl-eid-gdi:1.0:ActingSubjectID">
+    <saml2:Attribute Name="urn:etoegang:core:ActingSubjectID">
         <saml2:AttributeValue>
             // EncryptedID with BSN of ActingSubject 
        </saml2:AttributeValue>
     </saml2:Attribute>
-    <saml2:Attribute Name="urn:nl-eid-gdi:1.0:LegalSubjectID">
+    <saml2:Attribute Name="urn:etoegang:core:LegalSubjectID">
         <saml2:AttributeValue>
             // EncryptedID with BSN LegalSubject
        </saml2:AttributeValue>
@@ -461,7 +461,7 @@ Type|1..n|Encrypted Attribute Name|Description
             urn:etoegang:DV:00000002003214394002:services:2
         </saml:AttributeValue>
     </saml:Attribute>
-    <saml:Attribute Name="urn:nl-eid-gdi:1.0:ServiceUUID">   // multivalue example
+    <saml:Attribute Name="urn:etoegang:core:ServiceUUID">   // multivalue example
         <saml:AttributeValue xsi:type="xs:string">
             dd4dae83-0f35-4695-b24a-29d470a63ea7
         </saml:AttributeValue>

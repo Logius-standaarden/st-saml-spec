@@ -35,7 +35,7 @@ Element/@Attribute|0..n|Description
 ---&#64;<dfn data-dfn-for="dv-metadata">Index</dfn>|1|MUST be present.
 ---&#64;<dfn data-dfn-for="dv-metadata">isDefault</dfn>|0..1|MUST be present if more than one [=dv-metadata/Index=] is specified in the metadata. MAY only be present once.  If present indicates the default [=dv-metadata/AttributeConsumingService=] which is used when no [=dv-authn-request-message/AttributeConsumingServiceIndex=] was referenced in the [AuthN Request Message](#dv-authn-request-message). It is advised to always include an [=dv-authn-request-message/AttributeConsumingServiceIndex=] in the [AuthN Request Message](#dv-authn-request-message).
 ---<dfn data-dfn-for="dv-metadata">ServiceName</dfn>|1..n|One or more language-qualified names for the service. Only one descriptor per language MUST be present.
----<dfn data-dfn-for="dv-metadata">RequestedAttribute</dfn>|1..n|At least one [=dv-metadata/RequestedAttribute=] element MUST be present with `@name="urn:nl-eid-gdi:1.0:ServiceUUID"`.
+---<dfn data-dfn-for="dv-metadata">RequestedAttribute</dfn>|1..n|At least one [=dv-metadata/RequestedAttribute=] element MUST be present with `@name="urn:etoegang:core:ServiceUUID"`.
 ----<dfn data-dfn-for="dv-metadata">AttributeValue</dfn>|1|MUST contain the ServiceUUID to be used for this authentication. The [=ServiceUUID=] must be pre-registered with [=Service Catalog=] kept by [=OD=].
 
 ### LC→OD metadata {#lc-metadata}

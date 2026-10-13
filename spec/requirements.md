@@ -80,7 +80,7 @@ SAML and XML-encryption allow for multiple recipients of the same encrypted elem
 Upon decryption, elements without an [=dv-attributestatement/EncryptedKey=] intended for the decrypting recipient MAY be ignored and [=dv-attributestatement/EncryptedKey=] for other recipients of encrypted elements SHOULD be ignored.
 
 ##### EncryptedID {#dv-encryptedid}
-Both ActingSubjectID as LegalSubjectID ([=dv-attributestatement/Attribute=] with `@Name="urn:nl-eid-gdi:1.0:ActingSubjectID"` respectivly `@Name="urn:nl-eid-gdi:1.0:LegalSubjectID"`) are unencrypted [=dv-attributestatement/Attribute=]s and MUST contain one or more [=dv-attributestatement/AttributeValue=]s. Each of these [=dv-attributestatement/AttributeValue=]s MUST contain exactly one [=dv-attributestatement/EncryptedID=] element. 
+Both ActingSubjectID as LegalSubjectID ([=dv-attributestatement/Attribute=] with `@Name="urn:etoegang:core:ActingSubjectID"` respectivly `@Name="urn:etoegang:core:LegalSubjectID"`) are unencrypted [=dv-attributestatement/Attribute=]s and MUST contain one or more [=dv-attributestatement/AttributeValue=]s. Each of these [=dv-attributestatement/AttributeValue=]s MUST contain exactly one [=dv-attributestatement/EncryptedID=] element.
 
 Element/@Attribute|0..n|Description
 ---|---|---
@@ -147,7 +147,7 @@ An [=dv-attributestatement/EncryptedID=] MUST contain a SAML `NameID` after decr
 <saml2:NameID 
     xmlns:saml2="urn:oasis:names:tc:SAML:2.0:assertion" 
     Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent" 
-    NameQualifier="urn:nl-eid-gdi:1.0:id:legacy-BSN">999999047</saml2:NameID>
+    NameQualifier="urn:etoegang:1.15:EntityConcernedID:Legacy-BSN">999999047</saml2:NameID>
 ```
 
 ##### EncryptedAttribute
@@ -166,7 +166,7 @@ See also: [Example Encrypted Attribute](#example-encrypted-attribute) and
 <div class="note" data-hide-if="dv.html">
 When copying encrypted XML elements ([=dv-attributestatement/EncryptedID=]) to create a summary declaration [=OD=] substitutes XML identifiers for the EncryptedID's with a unique identifier. This MAY be accomplished by pre- or suffixing the original identifier in the copy. Rationale: `@ID` values must uniquely identify the elements which bear them. Identifiers that appear in the summary assertion and also in the advice assertion(s) will break XML validation.
 
-If the type of identity is `urn:nl-eid-gdi:1.0:id:legacy-BSN`, only one [=dv-attributestatement/EncryptedData=] element MUST be used in combination with one or more [=dv-attributestatement/EncryptedKey=] elements (one for each recipient).
+If the type of identity is `urn:etoegang:1.15:EntityConcernedID:Legacy-BSN`, only one [=dv-attributestatement/EncryptedData=] element MUST be used in combination with one or more [=dv-attributestatement/EncryptedKey=] elements (one for each recipient).
 
 Because a polymorphic identity or pseudonym of a single person will be distinct for different recipients by design, a single [=dv-attributestatement/EncryptedData=] element cannot be used when encryption for multiple recipients is required. Therefore, for each recipient, one [=dv-attributestatement/EncryptedData=] element paired with one [=dv-attributestatement/EncryptedKey=]  element MUST be used.
 

@@ -59,7 +59,7 @@
                 Location="https://login.dv.test/saml/sp/acs" index="0" isDefault="true"/>
         <md:AttributeConsumingService index="0" isDefault="true">
             <md:ServiceName xml:lang="nl-NL">Dienstnaam 1</md:ServiceName>
-            <md:RequestedAttribute Name="urn:nl-eid-gdi:1.0:ServiceUUID">
+            <md:RequestedAttribute Name="urn:etoegang:core:ServiceUUID">
                 <saml:AttributeValue xsi:type="xs:string">f847dc11-ac24-47b2-
                     84a8-a057440ce56d
                 </saml:AttributeValue>

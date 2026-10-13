@@ -27,10 +27,10 @@
         <ds:SignatureValue>...</ds:SignatureValue>
     </ds:Signature>
     <samlp:Extensions>
-        <saml:Attribute Name="urn:nl-eid-gdi:1.0:ServiceUUID">
+        <saml:Attribute Name="urn:etoegang:core:ServiceUUID">
             <saml:AttributeValue>336fa5edb569-13fb-b3e4-8968-86c62aea</saml:AttributeValue>
         </saml:Attribute>
-        <saml:Attribute Name="urn:nl-eid-gdi:1.0:IntendedAudience">
+        <saml:Attribute Name="urn:etoegang:core:IntendedAudience">
             <saml:AttributeValue>urn:nl-eid-gdi:1.0:DV:00000009999999999001:entities:0000</saml:AttributeValue>
         </saml:Attribute>
     </samlp:Extensions>

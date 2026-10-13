@@ -92,8 +92,8 @@ Element/@Attribute|DV / LC&rarr;OD|OD&rarr;AD|OD&rarr;BVD
 ---|---|---|---
 [=dv-authn-request-message/AttributeConsumingServiceIndex=]|If present, [=dv-authn-request-message/Extensions=] MUST NOT be present.</br>Forbidden for [=LC=]|MUST not be present (ignored)|MUST not be present (ignored)
 [=dv-authn-request-message/Extensions=]|If present, [=dv-authn-request-message/AttributeConsumingServiceIndex=] MUST NOT be present.</br>Mandatory for [=LC=]|Mandatory|Mandatory
--[=IntendedAudience/Attribute=] with `@Name="urn:nl-eid-gdi:1.0:IntendedAudience"`|Mandatory if [=dv-authn-request-message/Extensions=] is present|Mandatory|Mandatory
--[=IdpAssertion/Attribute=] with `@Name="urn:nl-eid-gdi:1.0:IdpAssertion"`|MUST NOT be present (ignored)|MUST NOT be present (ignored)|MUST be present and contain an [=dv-attributestatement/AttributeValue=] holding an [Assertion](#dv-authn-response-assertion) received from a compliant [=AD=].
+-[=IntendedAudience/Attribute=] with `@Name="urn:etoegang:core:IntendedAudience"`|Mandatory if [=dv-authn-request-message/Extensions=] is present|Mandatory|Mandatory
+-[=IdpAssertion/Attribute=] with `@Name="urn:etoegang:core:IdpAssertion"`|MUST NOT be present (ignored)|MUST NOT be present (ignored)|MUST be present and contain an [=dv-attributestatement/AttributeValue=] holding an [Assertion](#dv-authn-response-assertion) received from a compliant [=AD=].
 [=dv-authn-request-message/Scoping=]</br>-[=dv-authn-request-message/RequesterID=]|Optional|Optional|MUST NOT be present (ignored)
 
 
@@ -191,8 +191,8 @@ Element/@Attribute|DV / LC&larr;OD|OD&larr;AD|OD&larr;BVD
 [=dv-authn-response-assertion/Conditions=]</br>-[=dv-authn-response-assertion/AudienceRestriction=]<br/>--[=dv-authn-response-assertion/Audience=]|MUST contain [=EntityID=] of [=DV=] and (if applicable) [=LC=].|MUST contain [=EntityID=] of [=OD=] and (in case of representation)[=BVD=] .|MUST contain [=EntityID=] of [=OD=].
 [=dv-authn-response-assertion/AuthnStatement=]</br>‐[=dv-authn-response-assertion/AuthnContext=]</br>‐‐[=dv-authn-response-assertion/AuthnContextClassRef=]|MUST be present.|MUST be present.|MUST be `urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified`.
 &#8209;&#8209;[=dv-authn-response-assertion/AuthenticatingAuthority=]|MUST contain the [=EntityID=] of [=AD=] and (in case of representation respectively legal representation) [=BVD-DDM=] or [=BVD-OG=].|MUST NOT be present.|MUST NOT be present.
-[=dv-attributestatement/attributestatement=]</br>-[=dv-attributestatement/attribute=] with [=dv-attributestatement/Name=]="urn:nl‐eid‐gdi:1.0:ActingSubjectID"|MUST be present and MUST be decipherable for [=DV=].|MUST be present and MUST be decipherable for [=DV=] and (in case of representation respectively legal representation) [=BVD-DDM=] or [=BVD-OG=].|MUST be present and MUST be decipherable for [=DV=].
-[=dv-attributestatement/attributestatement=]</br>-[=dv-attributestatement/attribute=] with [=dv-attributestatement/=Name=]="urn:nl‐eid‐gdi:1.0:LegalSubjectID"|In case of representation MUST be present and MUST be decipherable for [=DV=].|MUST NOT be present.|MUST be present and MUST be decipherable for [=DV=].
-[=dv-attributestatement/attributestatement=]</br>-[=dv-attributestatement/attribute=] with [=dv-attributestatement/Name=]="urn:nl-eid-gdi:1.1:RepresentationType"|In case of legal representation MUST be present and MUST be used by [=DV=] when deciding on access.|MUST NOT be present.|MUST be present
+[=dv-attributestatement/attributestatement=]</br>-[=dv-attributestatement/attribute=] with [=dv-attributestatement/Name=]="urn:etoegang:core:ActingSubjectID"|MUST be present and MUST be decipherable for [=DV=].|MUST be present and MUST be decipherable for [=DV=] and (in case of representation respectively legal representation) [=BVD-DDM=] or [=BVD-OG=].|MUST be present and MUST be decipherable for [=DV=].
+[=dv-attributestatement/attributestatement=]</br>-[=dv-attributestatement/attribute=] with [=dv-attributestatement/=Name=]="urn:etoegang:core:LegalSubjectID"|In case of representation MUST be present and MUST be decipherable for [=DV=].|MUST NOT be present.|MUST be present and MUST be decipherable for [=DV=].
+[=dv-attributestatement/attributestatement=]</br>-[=dv-attributestatement/attribute=] with [=dv-attributestatement/Name=]="urn:etoegang:core:RepresentationType"|In case of legal representation MUST be present and MUST be used by [=DV=] when deciding on access.|MUST NOT be present.|MUST be present
 [=dv-authn-response-assertion/Advice=]|MUST be present.|MUST NOT be present.|MUST NOT be present.
 
