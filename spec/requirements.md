@@ -173,6 +173,8 @@ Because a polymorphic identity or pseudonym of a single person will be distinct 
 Although a [=LC=] or [=OD=] may be an [=dv-authn-response-assertion/Audience=] as it will process the SAML Assertion, it is not a [Subject Confirmation - @Recipient](#dfn-recipient) and will not be able to decrypt [=dv-attributestatement/EncryptedID=]'s.
 </div>
 
+<span id="example-encrypted-attribute"></span>
+
 ###### Example EncryptedAttribute
 
 ```xml

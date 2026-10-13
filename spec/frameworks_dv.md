@@ -19,7 +19,7 @@ The diagram below depicts the authentication flow between a [=DV=] and  [=LC=] a
 
 Step&nbsp;#|Route|Message|Endpoint|Binding|Metadata
 ---|---|---|---|---|---
-2 + 3|[=DV=]/[=LC=]&nbsp;(&rarr;[=UA=])&rarr;[=OD=]|[AuthN Request message](# 'Authentication Request to obtain assertions containing authentication statements to establish a security context')|[=rd-idp-metadata/SingleSignOnService=]|HTTP-POST|[OD&rarr;DV](#rd-idp-metadata 'SAML-metadata OD for DV')
+2 + 3|[=DV=]/[=LC=]&nbsp;(&rarr;[=UA=])&rarr;[=OD=]|[AuthN Request message](#dv-authn-request-message 'Authentication Request to obtain assertions containing authentication statements to establish a security context')|[=rd-idp-metadata/SingleSignOnService=]|HTTP-POST|[OD&rarr;DV](#rd-idp-metadata 'SAML-metadata OD for DV')
 8 + 9|[=OD=]&nbsp;(&rarr;[=UA=])&rarr;[=DV=]/[=LC=]|[Artifact binding message](#dv-saml-response-artifact-binding-message '(SAML) Pointer to SAML message that is send through the Front-channel, to avoid exposing sensitive data to the Webbrowser (UA) of the EndUser (EU).')|[=dv-metadata/AssertionConsumerService=]&nbsp;([=DV=])<br/>[=lc-entitydescriptor/AssertionConsumerService=]&nbsp;([=LC=])|HTTP-Artifact|[DV&rarr;OD](#dv-metadata 'SAML-metadata DV for OD') [LC&rarr;OD](#lc-metadata 'SAML-metadata LC for OD')
 
 </span>

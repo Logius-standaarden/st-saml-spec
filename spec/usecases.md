@@ -125,6 +125,6 @@ This use case is a functional extension to Authentication. Instead of choosing t
 
 The [=DV=]  will offer the [=EU=] to make a choice from the list of applicable [=AD=]s before sending a request for authentication to the [=OD=]. Simultaneously with the choice for an [=AD=], the choice to represent another will be offered the [=EU=] with (optionally) the [=BVD=]  to be used. After making the choice for an [=AD=], acting-as-a-representative and the choice for a [=BVD=] , these choices will be included in the request for authentication to the [=OD=]. In case the [=EU=] acts on behalf of another without pre-selecting a [=BVD=], the choice for a [=BVD=]  will be presented in a later stage at the [=OD=].
 
-The technical steps in the authentication flow are described in the [SAML-Message-specification](#SAML-Message-specification).
+The technical steps in the authentication flow are described in the [SAML-Message-specification](#dv-saml-messages).
 
 

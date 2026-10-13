@@ -60,6 +60,8 @@ Element/@Attribute|0..n|Description
 -<dfn data-dfn-for="lc-metadata">Signature</dfn>|1|MUST contain the Digital signature of the [=LC=] to verify the integrity of this [=Metadata=] and MUST be generated with a (private signing key associated with a) PKIoverheid public-key certificate which contains the same OIN as used in the [=lc-entitydescriptor/entityID=]. Also see technical requirements on [Signature](#signature) and on [Signing, encryption algorithms and hash functions](#signing-encryption-hash)
 -<dfn data-dfn-for="lc-metadata">EntityDescriptor</dfn>|1..n|MUST contain the [=lc-entitydescriptor/EntityDescriptor=] of the [=LC=], see [LC EntityDescriptor](#lc-entitydescriptor).<br/>MUST contain the [=dv-entitydescriptor/EntityDescriptor=]s of all [=DV=]'s the [=LC=] supports, see [DV EntityDescriptor](#dv-metadata-entitydescriptor).
 
+<span id="lc-entitydescriptor"></span>
+
 #### LC→OD <dfn data-dfn-for="lc-entitydescriptor">EntityDescriptor</dfn> 
 
 Element/@Attribute|0..n|Description
@@ -86,6 +88,8 @@ Element/@Attribute|0..n|Description
 --&#64;<dfn data-dfn-for="lc-entitydescriptor/ACS">Index</dfn>|1|The index of the binding, MUST be unique for all [=lc-entitydescriptor/AssertionConsumerService=] elements.
 --&#64;<dfn data-dfn-for="lc-entitydescriptor/ACS">isDefault</dfn>|0..1|If more than one [=lc-entitydescriptor/AssertionConsumerService=] elements are included, one of these elements MUST be flagged as default by setting the isDefault XML attribute with value `true`.
 
+
+<span id="dv-metadata-entitydescriptor"></span>
 
 #### DV→OD <dfn data-dfn-for="dv-entitydescriptor">EntityDescriptor</dfn> 
 
