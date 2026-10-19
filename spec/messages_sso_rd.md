@@ -20,7 +20,7 @@ Sender|Recipient
 #### OD→AD logout Request - Message {#rd-logout-request-message}
 
 A [=DV=] or [=LC=] can send this message to [=OD=] when a user logs out at an [=DV=]. A [=OD=] can send this message to an [=AD=].
-he message is identical to [DV/LC→OD SAML Federated logout Request - Message](#dv-logout-request-message)
+The XML message follows [DV/LC→OD SAML Federated logout Request - Message](#dv-logout-request-message)
 
 
 
@@ -41,5 +41,7 @@ Sender|Recipient
 
 
 An [=AD=] can send this Federated logout response message to the requesting [=OD=].
-The message is identical to [DV/LC→OD SAML Federated logout Response - Message](#dv-logout-response-message)
+TThe XML message follows [DV/LC→OD SAML Federated logout Response - Message](#dv-logout-response-message)
 
+
+The backend binding differs from DV→OD logout: both the OD→AD LogoutRequest and the AD→OD LogoutResponse use HTTP-Artifact. The receiver resolves the artifact over mutually authenticated SOAP at the issuer's ArtifactResolutionService, receives the signed XML message in an ArtifactResponse, and validates the response, signature, destination and correlation before processing it. Only the intended recipient may resolve an artifact, and an artifact MUST be accepted at most once. The BVD has no logout endpoint and MUST NOT be included in this exchange.

@@ -1,4 +1,14 @@
-<md:EntitiesDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" ID="_AF72A2C0B2EB1117E0532604F40A3DA2" validUntil="2021-09-17T15:59:52.197Z">
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Illustrative MD2026 OD metadata, not a signed interoperability test vector.
+     Signature and certificate values are placeholders. This OD serves G2C
+     and does not support eIDAS; an eIDAS-capable OD also publishes ACS index 5.
+     Connected DVs and their encryption certificates are registered in DC2026,
+     not as additional EntityDescriptors in this participant metadata. -->
+<md:EntitiesDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
+    xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+    xmlns:eme="urn:etoegang:2026:metadata-extension"
+    ID="_AF72A2C0B2EB1117E0532604F40A3DA2"
+    Name="urn:etoegang:2026:metadata:T:1" cacheDuration="PT1H">
     <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
         <ds:SignedInfo>
             <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
@@ -17,7 +27,25 @@
             <ds:KeyName>07c3d08bc6c3303a85c5e0c9547dfd91047f7c58</ds:KeyName>
         </ds:KeyInfo>
     </ds:Signature>
-    <md:EntityDescriptor ID="_AF72A2C0B2ED1117E0532604F40A3DA2" entityID="urn:nl-eid-gdi:1.0:RD:00000004000000149000:entities:9002">
+    <md:EntityDescriptor entityID="urn:etoegang:OD:00000004000000149000:entities:9002" eme:version="1.15">
+        <md:Extensions>
+            <eme:RPSector>urn:etoegang:2026:RPSector:G2C</eme:RPSector>
+        </md:Extensions>
+        <md:IDPSSODescriptor WantAuthnRequestsSigned="true" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+            <md:KeyDescriptor use="signing">
+                <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                    <ds:KeyName>07c3d08bc6c3303a85c5e0c9547dfd91047f7c58</ds:KeyName>
+                    <ds:X509Data>
+                        <ds:X509Certificate>...</ds:X509Certificate>
+                    </ds:X509Data>
+                </ds:KeyInfo>
+            </md:KeyDescriptor>
+            <md:ArtifactResolutionService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="https://od.example.org/saml/ars" index="1"/>
+            <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact" Location="https://od.example.org/saml/logout/artifact"/>
+            <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://od.example.org/saml/logout/post"/>
+            <md:NameIDFormat>urn:etoegang:1.12:EntityConcernedID:BSN</md:NameIDFormat>
+            <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact" Location="https://od.example.org/saml/sso"/>
+        </md:IDPSSODescriptor>
         <md:SPSSODescriptor AuthnRequestsSigned="true" WantAssertionsSigned="true" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
             <md:KeyDescriptor use="signing">
                 <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
@@ -27,42 +55,23 @@
                     </ds:X509Data>
                 </ds:KeyInfo>
             </md:KeyDescriptor>
-            <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://pp2.toegang.overheid.nl/foam/saml/logout" />
-            <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact" Location="https://pp2.toegang.overheid.nl/foam/saml/acs" index="0" isDefault="true" />
+            <md:ArtifactResolutionService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="https://od.example.org/saml/ars" index="1"/>
+            <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact" Location="https://od.example.org/saml/acs/ad" index="1" isDefault="true"/>
+            <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact" Location="https://od.example.org/saml/acs/mr" index="2"/>
         </md:SPSSODescriptor>
-    </md:EntityDescriptor>
-    <md:EntityDescriptor ID="_AF72A2C0B2F41117E0532604F40A3DA2" entityID="urn:nl-eid-gdi:1.0:DV:00000004000000010000:entities:9002">
-        <md:SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
-            <md:KeyDescriptor use="encryption">
-                <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-                    <ds:KeyName>cdb948c5dfde5c9a53bf4916763dc973d55e8dd0</ds:KeyName>
-                    <ds:X509Data>
-                        <ds:X509Certificate>...</ds:X509Certificate>
-                    </ds:X509Data>
-                </ds:KeyInfo>
-            </md:KeyDescriptor>
-            <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact" Location="https://pp2.toegang.overheid.nl/foam/saml/acs" index="0" isDefault="true" />
-        </md:SPSSODescriptor>
-    </md:EntityDescriptor>
-    <md:EntityDescriptor ID="_AF72A2C0B3051117E0532604F40A3DA2" entityID="urn:nl-eid-gdi:1.0:DV:00000004000000020000:entities:9003">
-        <md:SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
-            <md:KeyDescriptor use="encryption">
-                <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-                    <ds:KeyName>b459c1ecee731f2be4f50f68abe9bb070b5e2509</ds:KeyName>
-                    <ds:X509Data>
-                        <ds:X509Certificate>...</ds:X509Certificate>
-                    </ds:X509Data>
-                </ds:KeyInfo>
-            </md:KeyDescriptor>
-            <md:KeyDescriptor use="encryption">
-                <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-                    <ds:KeyName>45214df11fbed62751adf608d768f65d7fcd1e25</ds:KeyName>
-                    <ds:X509Data>
-                        <ds:X509Certificate>...</ds:X509Certificate>
-                    </ds:X509Data>
-                </ds:KeyInfo>
-            </md:KeyDescriptor>
-            <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact" Location="https://pp2.toegang.overheid.nl/foam/saml/acs" index="0" isDefault="true" />
-        </md:SPSSODescriptor>
+        <md:Organization>
+            <md:Extensions>
+                <eme:LogoURL xml:lang="nl">https://od.example.org/logo.svg</eme:LogoURL>
+            </md:Extensions>
+            <md:OrganizationName xml:lang="nl">Voorbeeld OD</md:OrganizationName>
+            <md:OrganizationDisplayName xml:lang="nl">Voorbeeld Ontsluitende Dienst</md:OrganizationDisplayName>
+            <md:OrganizationURL xml:lang="nl">https://od.example.org/</md:OrganizationURL>
+        </md:Organization>
+        <md:ContactPerson contactType="administrative">
+            <md:Company>Voorbeeld OD</md:Company>
+            <md:GivenName>Servicedesk</md:GivenName>
+            <md:EmailAddress>mailto:servicedesk@od.example.org</md:EmailAddress>
+            <md:TelephoneNumber>+31 88 0000000</md:TelephoneNumber>
+        </md:ContactPerson>
     </md:EntityDescriptor>
 </md:EntitiesDescriptor>

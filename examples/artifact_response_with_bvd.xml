@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Illustrative XML, not a cryptographic test vector. Advice retains historical source assertions; summary fields illustrate R1.15. -->
 <soap11:Envelope xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/">
     <soap11:Body>
         <saml2p:ArtifactResponse xmlns:saml2p="urn:oasis:names:tc:SAML:2.0:protocol"

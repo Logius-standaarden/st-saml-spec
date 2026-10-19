@@ -12,5 +12,6 @@ NCSC ICT-beveiligingsrichtlijnen voor Transport Layer Security (TLS) [[NCSC.TLS]
 
 **SAML profiles**
 A SAML profile is a specific set of rules that are used for a specific use case. [=ST-SAML=] uses two profiles of the SAML standard, namely:
-- Web Browser SSO Profile ([[SAML2.PROFILES]], par 4.1), with HTTP Post binding (see below).
-- Single Logout Profile ([[SAML2.PROFILES]], par 4.4), with HTTP Post binding, issued by Session Participant to Identity Provider.
+- Web Browser SSO Profile ([[SAML2.PROFILES]], par 4.1), with the bindings specified for each interface below.
+- Single Logout Profile ([[SAML2.PROFILES]], par 4.4), issued by Session Participant to Identity Provider, with the bindings specified for each interface below.
+DV→OD authentication requests and DV↔OD logout use HTTP-POST; authentication responses use HTTP-Artifact. The R1.15 OD↔AD/BVD backend uses HTTP-Artifact for authentication requests and responses, and OD↔AD logout uses HTTP-Artifact in both directions. Artifacts are resolved over SOAP. A binding supported on one interface MUST NOT be assumed to be supported on another.

@@ -66,7 +66,7 @@ The [=DV=] (or [=LC=]) will now redirect the [=EU=] to [=OD=], requesting authen
 Next, the [=EU=] is redirected to the [=AD=]. After successful authentication, the [=AD=] redirects the [=EU=] to [=OD=]. [=OD=] will then redirect the [=EU=] to [=BVD-DDM=]. Here the [=EU=] selects the representation relationship to use, if multiple options are available. Afterwards the [=BVD=] redirects the [=EU=] back to [=OD=].
 
 [=OD=] now includes the attestation of identity and the attestation of the representation relationship in the relevant interface response to the [=DV=] (or [=LC=]) .
-This response includes an identifier of the [=EU=] and the [=Represented Party=] and in case of legal representation also the specific [type of legal representation](#representation-types) between both. Also the requested [=ServiceUUID=] and the [=LoA=] of the authentication is included in the response. The [=LoA=] is at minimum equal to or higher than the configured [=LoA=] for the [=Service=] within the [=Service Catalog=].
+This response includes an identifier of the [=EU=] and the [=Represented Party=] and in case of legal representation also the specific [type of legal representation](#representation-types) between both. Also the requested [=ServiceUUID=] and the effective [=LoA=], including the applicable mandate levels, is included in the response; see [Effective LoA](#effective-loa). The [=LoA=] is at minimum equal to or higher than the configured [=LoA=] for the [=Service=] within the [=Service Catalog=].
 
 The [=DV=] can now take an access control decision to its [=Service=] for the [=EU=] on behalf of the [=Represented Party=].
 
@@ -90,9 +90,9 @@ Roles|Description
 [=OD=]|
 
 #### Technical description
-The Cluster Connection is acknowledged during requests for authentication, as made in the supported use cases. The [=LC=] is registered at [=OD=] and is also responsible for registering all [=DV=]'s he provides access for. Relationship between [=DV=] and [=LC=] must be established in the registration/on-boarding process with [=OD=] and in [=LC=]-metadata. 
+The Cluster Connection is acknowledged during requests for authentication, as made in the supported use cases. The [=LC=] is registered at [=OD=] and is also responsible for registering all [=DV=]'s he provides access for. Relationship between [=DV=] and [=LC=] must be established in the registration/on-boarding process with [=OD=] and in the Service Catalog using ClusteraansluiterId. The LC uses its own ordinary DV metadata, not per-clustered-DV metadata.
 
-[=DV=] initiates authentication via the [=LC=].  The [=LC=] will send an [AuthN Request Message](#dv-authn-request-message) to [=OD=] on behalf of [=DV=].
+[=DV=] initiates authentication via the [=LC=].  The [=LC=] will send an [AuthN Request Message](#dv-authn-request-message) using its own DV Issuer, index `0` and Extensions containing the clustered DV as IntendedAudience and the ServiceID. The OD validates ClusteraansluiterId, resolves and adds ServiceUUID, and constructs the downstream request under its own Issuer.
 
 Data in the response from [=OD=] will be encrypted only for the [=DV=] to decrypt, not the [=LC=].
 

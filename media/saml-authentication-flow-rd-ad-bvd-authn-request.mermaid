@@ -17,8 +17,12 @@ rect rgba(75, 75, 75,.4)
     A->>C:
 end
 rect rgba(255,0,0,.1)
-    C-->>A: AuthnRequest
-    A->>E: AuthnRequest
+    C-->>A: Request artifact
+    A->>E: Request artifact
+    autonumber off
+    E->>D: ArtifactResolve (request)
+    D-->>E: ArtifactResponse (AuthnRequest)
+    autonumber 6
 end
 rect rgba(75, 75, 75,.4)
     loop

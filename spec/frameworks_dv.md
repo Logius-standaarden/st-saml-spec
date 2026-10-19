@@ -20,7 +20,7 @@ The diagram below depicts the authentication flow between a [=DV=] and  [=LC=] a
 Step&nbsp;#|Route|Message|Endpoint|Binding|Metadata
 ---|---|---|---|---|---
 2 + 3|[=DV=]/[=LC=]&nbsp;(&rarr;[=UA=])&rarr;[=OD=]|[AuthN Request message](#dv-authn-request-message 'Authentication Request to obtain assertions containing authentication statements to establish a security context')|[=rd-idp-metadata/SingleSignOnService=]|HTTP-POST|[OD&rarr;DV](#rd-idp-metadata 'SAML-metadata OD for DV')
-8 + 9|[=OD=]&nbsp;(&rarr;[=UA=])&rarr;[=DV=]/[=LC=]|[Artifact binding message](#dv-saml-response-artifact-binding-message '(SAML) Pointer to SAML message that is send through the Front-channel, to avoid exposing sensitive data to the Webbrowser (UA) of the EndUser (EU).')|[=dv-metadata/AssertionConsumerService=]&nbsp;([=DV=])<br/>[=lc-entitydescriptor/AssertionConsumerService=]&nbsp;([=LC=])|HTTP-Artifact|[DV&rarr;OD](#dv-metadata 'SAML-metadata DV for OD') [LC&rarr;OD](#lc-metadata 'SAML-metadata LC for OD')
+8 + 9|[=OD=]&nbsp;(&rarr;[=UA=])&rarr;[=DV=]/[=LC=]|[Artifact binding message](#dv-saml-response-artifact-binding-message '(SAML) Pointer to SAML message that is send through the Front-channel, to avoid exposing sensitive data to the Webbrowser (UA) of the EndUser (EU).')|[=dv-metadata/AssertionConsumerService=]&nbsp;([=DV=])<br/>[=dv-metadata/AssertionConsumerService=]&nbsp;([=LC=])|HTTP-Artifact|[DV&rarr;OD](#dv-metadata 'SAML-metadata DV for OD') [LC&rarr;OD](#lc-metadata 'SAML-metadata LC for OD')
 
 </span>
 
@@ -54,6 +54,6 @@ The diagram below depicts the single logout flow between a [=DV=] and [=LC=] and
 Step&nbsp;#|Route|Message|Endpoint|Binding|Meta-data
 ---|---|---|---|---|---
 2 + 3|[=DV=]/[=LC=] (&rarr;[=UA=])&rarr;[=OD=]|[Logout Request](#dv-logout-request-message 'Specification of Federated logout request message of DV/LC to OD')|[=rd-idp-metadata/SingleLogoutService=]|HTTP-POST|[OD&rarr;DV](#rd-idp-metadata 'OD IdP metadata: SAML-metadata OD for DV')
-7 + 8|[=OD=] (&rarr;[=UA=])&rarr;[=DV=]/[=LC=]|[Logout Response](#dv-logout-response-message)|[=dv-metadata/SingleLogoutService=]&nbsp;(DV)<br/>[=lc-entitydescriptor/SingleLogoutService=]&nbsp;(LC)|HTTP-POST|[DV&rarr;OD](#dv-metadata 'DV metadata: SAML-metadata DV for OD') [LC&rarr;OD](#lc-metadata 'LC metadata: SAML-metadata LC for OD')
+7 + 8|[=OD=] (&rarr;[=UA=])&rarr;[=DV=]/[=LC=]|[Logout Response](#dv-logout-response-message)|[=dv-metadata/SingleLogoutService=]&nbsp;(DV)<br/>[=dv-metadata/SingleLogoutService=]&nbsp;(LC)|HTTP-POST|[DV&rarr;OD](#dv-metadata 'DV metadata: SAML-metadata DV for OD') [LC&rarr;OD](#lc-metadata 'LC metadata: SAML-metadata LC for OD')
  
 </span>

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Illustrative XML, not a cryptographic test vector. Advice retains historical source assertions; summary fields illustrate R1.15. -->
 <soap11:Envelope xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/">
     <soap11:Body>
         <saml2p:ArtifactResponse xmlns:saml2p="urn:oasis:names:tc:SAML:2.0:protocol"
@@ -224,6 +225,45 @@
                                         </xenc:CipherData>
                                         <xenc:ReferenceList>
                                             <xenc:DataReference URI="#_91c893eba1c1f87099c1d5a10b870b51"/>
+                                        </xenc:ReferenceList>
+                                    </xenc:EncryptedKey>
+                                </saml2:EncryptedID>
+                            </saml2:AttributeValue>
+                        </saml2:Attribute>
+                        <!-- Self-representation: copied DigiD identifier for the same person. -->
+                        <saml2:Attribute Name="urn:etoegang:core:LegalSubjectID">
+                            <saml2:AttributeValue>
+                                <saml2:EncryptedID>
+                                    <xenc:EncryptedData xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"
+                                                        Id="_91c893eba1c1f87099c1d5a10b870b51_legal"
+                                                        Type="http://www.w3.org/2001/04/xmlenc#Element">
+                                        <xenc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc"
+                                                               xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"/>
+                                        <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                                            <ds:RetrievalMethod Type="http://www.w3.org/2001/04/xmlenc#EncryptedKey"
+                                                                URI="#_449673558dd0810e91009297f56fd051_legal"/>
+                                        </ds:KeyInfo>
+                                        <xenc:CipherData xmlns:xenc="http://www.w3.org/2001/04/xmlenc#">
+                                            <xenc:CipherValue>...</xenc:CipherValue>
+                                        </xenc:CipherData>
+                                    </xenc:EncryptedData>
+                                    <xenc:EncryptedKey xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"
+                                                       Id="_449673558dd0810e91009297f56fd051_legal"
+                                                       Recipient="urn:nl-eid-gdi:1.0:DV:00000009999999999004:entities:0000">
+                                        <xenc:EncryptionMethod
+                                                Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p"
+                                                xmlns:xenc="http://www.w3.org/2001/04/xmlenc#">
+                                            <ds:DigestMethod xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+                                                             Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+                                        </xenc:EncryptionMethod>
+                                        <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                                            <ds:KeyName>1d0bc832d839df789eca8bae611c3ad7ec5c5074</ds:KeyName>
+                                        </ds:KeyInfo>
+                                        <xenc:CipherData xmlns:xenc="http://www.w3.org/2001/04/xmlenc#">
+                                            <xenc:CipherValue>...</xenc:CipherValue>
+                                        </xenc:CipherData>
+                                        <xenc:ReferenceList>
+                                            <xenc:DataReference URI="#_91c893eba1c1f87099c1d5a10b870b51_legal"/>
                                         </xenc:ReferenceList>
                                     </xenc:EncryptedKey>
                                 </saml2:EncryptedID>

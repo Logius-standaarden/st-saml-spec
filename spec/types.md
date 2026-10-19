@@ -26,10 +26,10 @@ The table shows the allowed representationTypes in URN format that are supported
 
 representation-types|urn|Sector|description
 ---|---|:---:|---
-Zorg_Volledig_Gezag_Kind|urn:etoegang:1.15:RT:Zorg_Volledig_Gezag_Kind|health care| Specific Parental authority for children under 12 years old in healthcare
-Curatele|urn:nl-eid-gdi:1.1:RT:WV_Curator|All| "Curatele" as registered at the "centraal curatele- en bewindregister (CCBR)"
-Bewindvoering|urn:nl-eid-gdi:1.1:RT:WV_Bewindvoerder|All| "Bewindvoering" as registered at the "centraal curatele- en bewindregister (CCBR)"
-Mentorschap|urn:nl-eid-gdi:1.1:RT:WV_Mentor|All| "Mentoring" as registered at the "centraal curatele- en bewindregister (CCBR)"
+Zorg_Volledig_Gezag_Kind|urn:etoegang:2026:RT:Zorg_Volledig_Gezag_Kind|health care| Specific Parental authority for children under 12 years old in healthcare
+Curatele|urn:etoegang:2026:RT:WV_Curator|All| "Curatele" as registered at the "centraal curatele- en bewindregister (CCBR)"
+Bewindvoering|urn:etoegang:2026:RT:WV_Bewindvoerder|All| "Bewindvoering" as registered at the "centraal curatele- en bewindregister (CCBR)"
+Mentorschap|urn:etoegang:2026:RT:WV_Mentor|All| "Mentoring" as registered at the "centraal curatele- en bewindregister (CCBR)"
 
 
 ### EntityID Format {#entityid_format}
@@ -57,8 +57,9 @@ Indication of the role of the entity:
 - AD
 - DV
 - BVD
-- LC
-- RD
+- OD
+- MR
+- EB
 
 
 </dd>
@@ -98,7 +99,7 @@ ActingSubjectID|`urn:etoegang:core:ActingSubjectID`|`urn:nl-eid-gdi:1.0:ActingSu
 LegalSubjectID|`urn:etoegang:core:LegalSubjectID`|`urn:nl-eid-gdi:1.0:LegalSubjectID`
 RepresentationType|`urn:etoegang:core:RepresentationType`|`urn:nl-eid-gdi:1.1:RepresentationType`
 
-The R1.15 value for parental authority in healthcare is `urn:etoegang:1.15:RT:Zorg_Volledig_Gezag_Kind`; the earlier value is `urn:nl-eid-gdi:1.1:RT:Zorg_Volledig_Gezag_Kind`. This mapping applies only to an unencrypted RepresentationType value. It does not establish mappings for `WV_Curator`, `WV_Bewindvoerder` or `WV_Mentor`.
+The R1.15 value for parental authority in healthcare is `urn:etoegang:2026:RT:Zorg_Volledig_Gezag_Kind`; the earlier value is `urn:nl-eid-gdi:1.1:RT:Zorg_Volledig_Gezag_Kind`. This mapping applies only to an unencrypted RepresentationType value. The current Service Catalog 2026 also defines `urn:etoegang:2026:RT:WV_Curator`, `urn:etoegang:2026:RT:WV_Bewindvoerder` and `urn:etoegang:2026:RT:WV_Mentor`. A DV selects the permitted subset per service.
 
 ### Identifier namespace conversion {#identifier-namespace-conversion}
 
@@ -109,4 +110,4 @@ Legacy-BSN|`urn:etoegang:1.15:EntityConcernedID:Legacy-BSN`|`urn:nl-eid-gdi:1.0:
 BSN|`urn:etoegang:1.12:EntityConcernedID:BSN`|`urn:nl-eid-gdi:1.0:id:BSN`
 Pseudonym|`urn:etoegang:1.12:EntityConcernedID:PseudoID`|`urn:nl-eid-gdi:1.0:id:Pseudonym`
 
-The EntityID namespace conversion preserves the role code, OIN and index. A change of role is not implied by this conversion. Identifier types inside an encrypted element are determined by the issuer before encryption; the OD MUST NOT rewrite the encrypted content or original assertions to perform this conversion.
+The namespace prefix conversion by itself preserves the role code, OIN and index. R1.15 roles use the role codes listed above; a cluster operator uses DV. Earlier RD and LC identifiers in historical examples and original assertions describe their earlier interface, and MUST NOT be globally rewritten. Identifier types inside an encrypted element are determined by the issuer before encryption; the OD MUST NOT rewrite the encrypted content or original assertions to perform this conversion.

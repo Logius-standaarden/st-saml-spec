@@ -22,7 +22,7 @@ For messages between [=AD=] and [=OD=] see [DV-OD authentication diagram](#dv-sa
 
 **Step 4 and 5**
 
-The [=OD=] will send the [=EU=] to an [=AD=] for authentication or to a [=BVD=] for proof of representation (or both).
+The [=OD=] sends the [=EU=] to an [=AD=] for authentication or to a [=BVD=] for proof of representation (or both), using HTTP-Artifact. The browser carries a request artifact, not the AuthnRequest XML. Before processing the request, the AD/BVD resolves the artifact over mutually authenticated SOAP at the OD's ArtifactResolutionService. The OD returns an ArtifactResponse containing the signed AuthnRequest. The request and its artifact MUST be bound to the intended recipient and validated according to [[SAML2.BINDINGS]].
 
 **Step 6 and 7 (out of scope for this specification)**
 
@@ -90,27 +90,28 @@ Sender|Recipient
 
 Element/@Attribute|DV / LC&rarr;OD|OD&rarr;AD|OD&rarr;BVD
 ---|---|---|---
-[=dv-authn-request-message/AttributeConsumingServiceIndex=]|If present, [=dv-authn-request-message/Extensions=] MUST NOT be present.</br>Forbidden for [=LC=]|MUST not be present (ignored)|MUST not be present (ignored)
-[=dv-authn-request-message/Extensions=]|If present, [=dv-authn-request-message/AttributeConsumingServiceIndex=] MUST NOT be present.</br>Mandatory for [=LC=]|Mandatory|Mandatory
+[=dv-authn-request-message/AttributeConsumingServiceIndex=]|Required: ordinary metadata index for own services; `0` with Extensions for clustered services.|MUST be `4`.|MUST not be present (ignored)
+[=dv-authn-request-message/Extensions=]|MUST be present with index `0` for clustered services; MUST NOT be present for own services.|Mandatory|Mandatory
 -[=IntendedAudience/Attribute=] with `@Name="urn:etoegang:core:IntendedAudience"`|Mandatory if [=dv-authn-request-message/Extensions=] is present|Mandatory|Mandatory
+`urn:etoegang:core:ServiceID`|Required in clustered Extensions; selected through metadata for own services.|MUST be present in Extensions.|MUST identify the requested service.
+`urn:etoegang:core:ServiceUUID`|MUST NOT be supplied by DV/LC.|MUST contain the value resolved by the OD.|MUST contain the applicable registered value.
+`esp:RequestedAttributes`|Optional for clustered requests.|Contains the permitted requested attributes, if any.|According to the applicable representation interface.
 -[=IdpAssertion/Attribute=] with `@Name="urn:etoegang:core:IdpAssertion"`|MUST NOT be present (ignored)|MUST NOT be present (ignored)|MUST be present and contain an [=dv-attributestatement/AttributeValue=] holding an [Assertion](#dv-authn-response-assertion) received from a compliant [=AD=].
 [=dv-authn-request-message/Scoping=]</br>-[=dv-authn-request-message/RequesterID=]|Optional|Optional|MUST NOT be present (ignored)
 
 
 
+##### OD→AD request artifact binding {#rd-request-artifact-binding}
+
+The OD publishes the ArtifactResolutionService used to resolve request artifacts in its SPSSODescriptor. The AD/BVD MUST obtain that endpoint from validated OD metadata and authenticate the OD on the back channel. The OD MUST authenticate the resolving participant, enforce the artifact's intended recipient and one-time use, and return only the matching request. The AD/BVD MUST validate the ArtifactResponse and the signed AuthnRequest before processing the request; a browser-supplied artifact alone does not establish trust. The AuthnRequest's AssertionConsumerServiceIndex selects the registered OD response endpoint, independently of AttributeConsumingServiceIndex.
+
 ##### OD→AD AuthnRequest Processing rules {#rd-authnrequest-processing-rules}
 
-In addition to the processing rules required by the SAML specification the following rule applies. If any of these validations fails, the authentication MUST fail:
-1.	[=AD=] MUST:
-- validate that the [=DV=] is registered for the requested [=ServiceUUID=] referenced by the index in the [DV metadata](#dv-metadata) or the [=dv-authn-request-message/Extensions|Extensions element of the DV AuthN-request=] and that the registration is valid;
-- (in case when an [=LC=] is involved) validate that the [=DV=] is registered to use the requested [=ServiceUUID=] with the [=LC=] that sends the [AuthN Request Message](#dv-authn-request-message) on behalf of the [=DV=] and that the registration is valid;
-- If any of these validations fails, the authentication MUST fail.
-1.	[=AD=] [=BVD=] MUST validate that the [=DV=] is registered for the requested [=ServiceUUID=] referenced by the index in the [DV metadata](#dv-metadata) or the [=dv-authn-request-message/Extensions|Extensions element of the DV AuthN-request=] and that the registration is valid;
-
+The AD MUST validate the OD's signature and metadata, the intended DV and the registered service referenced by ServiceID and ServiceUUID in the OD's Extensions. The LC is not the issuer of this downstream request. Authorization of the LC is checked by the OD before constructing the downstream request; it MUST NOT be delegated to the AD. A failed validation MUST fail authentication.
 
 #### OD&larr;AD Response - Artifact Binding {#rd-response-artifact-binding}
 
-The SAML response of a [=AD=] or [=BVD=] to a SAML request of a [=OD=] uses an [=Artifact=]-Binding for extra security see  [[SAML2.BINDINGS]] section 3.6.6. Therefor SAML Response does not return the actual SAML message with an Authentication Assertion but an [=Artifact=] as a reference to actual the SAML [AuthN Response - Assertion](#dv-authn-response-assertion) message. The Artifact is used by the [=DV=] (or [=LC=]) to retrieve the SAML [AuthN Response - Assertion](#dv-authn-response-assertion) at the [=OD=].
+The SAML response of a [=AD=] or [=BVD=] to a SAML request of a [=OD=] uses an [=Artifact=]-Binding for extra security see  [[SAML2.BINDINGS]] section 3.6.6. Therefor SAML Response does not return the actual SAML message with an Authentication Assertion but an [=Artifact=] as a reference to actual the SAML [AuthN Response - Assertion](#dv-authn-response-assertion) message. The OD uses the artifact to retrieve the matching response at the issuing AD/BVD over the mutually authenticated SOAP back channel.
 
 ##### OD&larr;AD Response - Artifact Binding - Diagram{#rd-response-artifact-binding}
 The possible sender and recipient of the AuthnRequest message are the following:
@@ -128,7 +129,7 @@ Sender|Recipient
 
 ##### OD&larr;AD Response - Artifact Binding - Message {#rd-saml-response-artifact-binding-message} 
 
-The receiver of the previous [AuthN Request message](#rd-authn-request-message) sends a SAML [=Artifact=] message via the front channel by a redirect to the [=dv-metadata/AssertionConsumerService=] referenced in the [AuthN Request message](#rd-authn-request-message). An [=Artifact=] is a reference to the SAML [AuthN Response - Assertion](#rd-authn-response-assertion) message. Even if no authentication has taken place, an Artifact will be send. The Artifact message is send to the recipient via an HTTP Redirect. The [=Artifact=] is used by the receiver to retrieve the SAML [AuthN Response - Assertion](#rd-authn-response-assertion) at the sender.
+The receiver of the previous [AuthN Request message](#rd-authn-request-message) sends a SAML [=Artifact=] message via the front channel by a redirect to the [=rd-sp-entitydescriptor/AssertionConsumerService=] referenced in the [AuthN Request message](#rd-authn-request-message). An [=Artifact=] is a reference to the SAML [AuthN Response - Assertion](#rd-authn-response-assertion) message. Even if no authentication has taken place, an Artifact will be send. The Artifact message is send to the recipient via an HTTP Redirect. The [=Artifact=] is used by the receiver to retrieve the SAML [AuthN Response - Assertion](#rd-authn-response-assertion) at the sender.
 
 #### OD→AD ArtifactResolve {#rd-artifact-resolve}
 
@@ -189,10 +190,10 @@ The [SAML Response Message](#rd-authn-response-message) to the [AuthN Request me
 Element/@Attribute|DV / LC&larr;OD|OD&larr;AD|OD&larr;BVD
 ---|---|---|---
 [=dv-authn-response-assertion/Conditions=]</br>-[=dv-authn-response-assertion/AudienceRestriction=]<br/>--[=dv-authn-response-assertion/Audience=]|MUST contain [=EntityID=] of [=DV=] and (if applicable) [=LC=].|MUST contain [=EntityID=] of [=OD=] and (in case of representation)[=BVD=] .|MUST contain [=EntityID=] of [=OD=].
-[=dv-authn-response-assertion/AuthnStatement=]</br>‐[=dv-authn-response-assertion/AuthnContext=]</br>‐‐[=dv-authn-response-assertion/AuthnContextClassRef=]|MUST be present.|MUST be present.|MUST be `urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified`.
+[=dv-authn-response-assertion/AuthnStatement=]</br>‐[=dv-authn-response-assertion/AuthnContext=]</br>‐‐[=dv-authn-response-assertion/AuthnContextClassRef=]|MUST state the effective LoA; see [Effective LoA](#effective-loa).|MUST state the authentication LoA.|For a registered voluntary mandate, MUST state the actually achieved mandate LoA. For legal representation MAY be `urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified`. See [Effective LoA](#effective-loa).
 &#8209;&#8209;[=dv-authn-response-assertion/AuthenticatingAuthority=]|MUST contain the [=EntityID=] of [=AD=] and (in case of representation respectively legal representation) [=BVD-DDM=] or [=BVD-OG=].|MUST NOT be present.|MUST NOT be present.
 [=dv-attributestatement/attributestatement=]</br>-[=dv-attributestatement/attribute=] with [=dv-attributestatement/Name=]="urn:etoegang:core:ActingSubjectID"|MUST be present and MUST be decipherable for [=DV=].|MUST be present and MUST be decipherable for [=DV=] and (in case of representation respectively legal representation) [=BVD-DDM=] or [=BVD-OG=].|MUST be present and MUST be decipherable for [=DV=].
-[=dv-attributestatement/attributestatement=]</br>-[=dv-attributestatement/attribute=] with [=dv-attributestatement/=Name=]="urn:etoegang:core:LegalSubjectID"|In case of representation MUST be present and MUST be decipherable for [=DV=].|MUST NOT be present.|MUST be present and MUST be decipherable for [=DV=].
+[=dv-attributestatement/attributestatement=]</br>-[=dv-attributestatement/attribute=] with [=dv-attributestatement/Name=]="urn:etoegang:core:LegalSubjectID"|MUST always be present and decipherable for [=DV=], including self-representation.|Optional in the AD interface; MUST be present for self-representation together with ActingSubjectID. Identifier types follow ASTA and ECTA respectively.|MUST be present and MUST be decipherable for [=DV=].
 [=dv-attributestatement/attributestatement=]</br>-[=dv-attributestatement/attribute=] with [=dv-attributestatement/Name=]="urn:etoegang:core:RepresentationType"|In case of legal representation MUST be present and MUST be used by [=DV=] when deciding on access.|MUST NOT be present.|MUST be present
 [=dv-authn-response-assertion/Advice=]|MUST be present.|MUST NOT be present.|MUST NOT be present.
 
