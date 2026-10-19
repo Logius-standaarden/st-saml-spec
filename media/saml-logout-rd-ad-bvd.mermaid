@@ -6,22 +6,30 @@ sequenceDiagram
 autonumber
 participant A as UA
 participant B as DV / LC
-participant C as RD
+participant C as OD
 participant E as AD
 rect rgba(75, 75, 75,.4)
-    Note over B,C: See DV#8594;RD
+    Note over B,C: See DV#8594;OD
     A->>B:
     B-->>A:
     A->>C:
 end
-C-->>A: LogoutRequest!
-A->>E: LogoutRequest
+C-->>A: Request artifact
+A->>E: Request artifact
+autonumber off
+E->>C: SOAP ArtifactResolve
+C-->>E: ArtifactResponse (LogoutRequest)
+autonumber 6
 E->>E: terminate SSO session
-E-->>A: LogoutResponse
-A->>C: LogoutResponse
+E-->>A: Response artifact
+A->>C: Response artifact
+autonumber off
+C->>E: SOAP ArtifactResolve
+E-->>C: ArtifactResponse (LogoutResponse)
+autonumber 9
 rect rgba(75, 75, 75, .4)
 rect rgba(75, 75, 75, .4)
-    Note over B,C: See DV#8594;RD
+    Note over B,C: See DV#8594;OD
     C-->>A:
     A->>B:
 end

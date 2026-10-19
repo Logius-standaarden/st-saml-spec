@@ -92,6 +92,7 @@
 
     <section id="example-artifactresponse-representation">
       <h3>Example - ArtifactResponse with Representation</h3>
+      <p class="note">This example retains historical DigiD Machtigen source assertions in Advice. An unspecified voluntary mandate level in an earlier assertion does not establish an R1.15 effective mandate LoA; apply the <a href="#effective-loa">effective LoA rules</a> before accepting a response.</p>
       <aside class="example" title="ArtifactResponse with Representation">
         <pre class="xml" data-include="./examples/artifact_response_with_bvd.xml" data-include-format="text"></pre>
       </aside>
@@ -116,22 +117,22 @@
   <h2>Example SAML metadata</h2>
 
   <section id="example-saml-metadata-dv-rd">
-    <h3>Example - Metadata DV for RD</h3>
-    <aside class="example" title="SAML metadata DV for RD">
+    <h3 id="example-saml-metadata-dv-for-rd">Example - Metadata DV for OD</h3>
+    <aside class="example" title="SAML metadata DV for OD">
       <pre class="xml" data-include="./examples/saml_metadata_dv_for_rd.xml" data-include-format="text"></pre>
     </aside>
   </section>
 
   <section id="example-saml-metadata-lc-rd">
-    <h3>Example - Metadata LC for RD</h3>
-    <aside class="example" title="SAML metadata LC for RD">
+    <h3 id="example-saml-metadata-lc-for-rd">Example - Metadata LC for OD</h3>
+    <aside class="example" title="SAML metadata LC for OD">
       <pre class="xml" data-include="./examples/saml_metadata_lc_for_rd.xml" data-include-format="text"></pre>
     </aside>
   </section>
 
   <section id="example-saml-metadata-rd-dv">
-    <h3>Example - Metadata RD for DV</h3>
-    <aside class="example" title="SAML metadata RD for DV">
+    <h3 id="example-saml-metadata-rd-for-dv">Example - Metadata OD for DV</h3>
+    <aside class="example" title="SAML metadata OD for DV">
       <pre class="xml" data-include="./examples/saml_metadata_rd_for_dv.xml" data-include-format="text"></pre>
     </aside>
   </section>
@@ -139,6 +140,38 @@
 <section id='conformance'></section>
 <section id='tof'></section>
 <section id="index"></section>
+<script type="module">
+// Voeg tooltips toe aan alle interne verwijzingen op basis van gekoppelde dfn title="..."
+// document.respec.ready wordt pas vervuld nadat ReSpec de content (en dus alle [=Term=] links) heeft opgebouwd.
+// document.respec zelf bestaat ook nog niet meteen: de config-module roept haar async setup
+// aan zonder die af te wachten, dus we pollen totdat document.respec verschijnt.
+function waitForRespec() {
+  return new Promise(resolve => {
+    if (document.respec) return resolve(document.respec);
+    const interval = setInterval(() => {
+      if (document.respec) {
+        clearInterval(interval);
+        resolve(document.respec);
+      }
+    }, 20);
+  });
+}
+
+waitForRespec().then(respec => respec.ready).then(() => {
+  (() => {
+    document.querySelectorAll("a[href^='#']").forEach(link => {
+      const targetId = link.getAttribute("href").substring(1);
+      const dfn = document.getElementById(targetId);
+      if (dfn && dfn.tagName.toLowerCase() === 'dfn') {
+        const title = dfn.getAttribute("title");
+        if (title) {
+          link.setAttribute("title", title);
+        }
+      }
+    });
+  })();
+});
+</script>
 </body>
 
 </html>

@@ -6,16 +6,17 @@ sequenceDiagram
 autonumber
 participant A as User Agent
 participant B as DV / LC
-participant C as RD <br /> front-channel
-participant D as RD <br /> back-channel
+participant C as OD <br /> front-channel
+participant D as OD <br /> back-channel
 participant E as AD/BVD
 A->>B: GET resource
 rect rgba(255,0,0,.1)
-    B-->>A: AuthnRequest
+    B-->>A: AuthnRequest (LC: index 0, ServiceID)
     A->>C: AuthnRequest
+    Note over C: Validate LC authorization and resolve ServiceUUID
 end
 rect rgba(75, 75, 75,.4)
-    Note over D,E: Out of Scope: see RD#8594;AD/BVD
+    Note over D,E: Out of Scope: see OD#8594;AD/BVD
     C-->>A:
     A->>E:
     E-->>A:

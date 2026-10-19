@@ -8,12 +8,12 @@ export const baseConfig = {
   useLogo: true,
   useLabel: true,
   license: "cc-by",
-  specStatus: "DEF",
+  specStatus: "wv",
   specType: "HR",
   pubDomain: "st",
   shortName: "saml",
-  publishDate: "2026-06-01",
-  publishVersion: "1.0.0",
+  publishDate: "2026-08-03",
+  publishVersion: "1.15.0",
   prevVersion: [],
 
   editors: [{
@@ -134,6 +134,10 @@ export const baseConfig = {
       title: "BSNk PP technische specificaties",
       href: "https://gitlab.com/logius/bsnk/bsnk-techspecs/bsnk/-/raw/main/BPTSlive.pdf",
       publisher: "Logius"
+    },
+    "ETD-Stelsel": {
+      title: "Afsprakenstelsel Elektronische Toegangsdiensten",
+      href: "https://afsprakenstelsel.etoegang.nl/Startpagina/as/",
     },
   },
 };

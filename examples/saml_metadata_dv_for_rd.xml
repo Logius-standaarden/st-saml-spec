@@ -12,7 +12,7 @@
             <dsig:CanonicalizationMethod
                     Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
             <dsig:SignatureMethod
-                    Algorithm="http://www.w3.org2001/04/xmldsig-more#rsa-sha256"/>
+                    Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
             <dsig:Reference
                     URI="#_d611bce3fb2b4ee587bd508acfb89f2f1154815b">
                 <dsig:Transforms>
@@ -57,13 +57,9 @@
         <md:AssertionConsumerService
                 Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact"
                 Location="https://login.dv.test/saml/sp/acs" index="0" isDefault="true"/>
-        <md:AttributeConsumingService index="0" isDefault="true">
+        <md:AttributeConsumingService index="1" isDefault="true">
             <md:ServiceName xml:lang="nl-NL">Dienstnaam 1</md:ServiceName>
-            <md:RequestedAttribute Name="urn:nl-eid-gdi:1.0:ServiceUUID">
-                <saml:AttributeValue xsi:type="xs:string">f847dc11-ac24-47b2-
-                    84a8-a057440ce56d
-                </saml:AttributeValue>
-            </md:RequestedAttribute>
+            <md:RequestedAttribute Name="urn:etoegang:DV:00000004000000010000:services:1"/>
         </md:AttributeConsumingService>
     </md:SPSSODescriptor>
 </md:EntityDescriptor>
